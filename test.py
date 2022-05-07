@@ -1,5 +1,6 @@
 import pygame
 from Events import Events
+from datamanager import DataManager
 from gamemanager import GameManager
 from gameobject import GameObject
 from mouse import Mouse
@@ -10,6 +11,7 @@ from waterWell import WaterWell
 def main():
     pygame.init()
     pygame.display.set_caption("Teste Projetinho P1")
+    DataManager.load()
 
     FPS = 60
     clock = pygame.time.Clock()

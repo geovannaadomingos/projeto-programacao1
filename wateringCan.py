@@ -9,13 +9,13 @@ class WateringCan(GameObject):
         super().__init__(v2_spawnPos, v2_size, clickable=True)
         self.amountOfWater = 1
 
-    def water(self, plantation, amountOfWater):
+    def water(self, plantation):
 
-        if amountOfWater < plantation.amountWaterNeeded:
+        if self.amountOfWater < plantation.amountWaterNeeded:
             self.restock()
         else:
             plantation.receiveWater(plantation.amountWaterNeeded)
-            amountOfWater -= plantation.amountWaterNeeded
+            self.amountOfWater -= plantation.amountWaterNeeded
 
-    def restock(self):
-        print("Ir pegar água no poço")
+    def restock(self, receivedWater):
+        self.amountOfWater += receivedWater

@@ -1,0 +1,54 @@
+{
+    "Cenoura": {
+        "name": "Cenoura",
+        "time_to_grow_sec": 4
+    },
+    "Repolho": {
+        "name": "Repolho",
+        "time_to_grow_sec": 4
+    },
+    "Goiaba": {
+        "name": "Goiaba",
+        "time_to_grow_sec": 4
+    },
+    "Berinjela": {
+        "name": "Berinjela",
+        "time_to_grow_sec": 4
+    },
+    "Azulzinha": {
+        "name": "Azulzinha",
+        "time_to_grow_sec": 4
+    },
+    "Alface": {
+        "name": "Alface",
+        "time_to_grow_sec": 4
+    },
+    "Trigo": {
+        "name": "Trigo",
+        "time_to_grow_sec": 4
+    },
+    "Abobora": {
+        "name": "Abobora",
+        "time_to_grow_sec": 4
+    },
+    "Nabo": {
+        "name": "Nabo",
+        "time_to_grow_sec": 4
+    },
+    "Rosinha": {
+        "name": "Rosinha",
+        "time_to_grow_sec": 4
+    },
+    "Beterraba": {
+        "name": "Beterraba",
+        "time_to_grow_sec": 4
+    },
+    "Estrelinha": {
+        "name": "Estrelinha",
+        "time_to_grow_sec": 4
+    },
+    "Pepino": {
+        "name": "Pepino",
+        "time_to_grow_sec": 4
+    }
+}

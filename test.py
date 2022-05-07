@@ -1,10 +1,10 @@
 import pygame
 from Events import Events
-from place import Place
 from gamemanager import GameManager
 from gameobject import GameObject
 from mouse import Mouse
 from vector2 import Vector2
+from waterWell import WaterWell
 
 
 def main():
@@ -21,8 +21,8 @@ def main():
 
     running = True
 
-    # Cria o estabelecimento exemplo
-    Place(Vector2(25, 325), Vector2(50, 50), color=(0, 255, 0))
+    # Cria lago
+    WaterWell(Vector2(25, 325), Vector2(50, 50))
 
     while running:
         clock.tick(FPS)

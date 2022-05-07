@@ -1,6 +1,7 @@
 import pygame
 from Events import Events
-from datamanager import DataManager
+import datamanager
+from farmer import Farmer
 from gamemanager import GameManager
 from gameobject import GameObject
 from mouse import Mouse
@@ -21,20 +22,13 @@ def main():
     SCREEN_W = 400
     SCREEN_H = 400
     screen = pygame.display.set_mode((SCREEN_W, SCREEN_H))
-    DataManager.load()
+    datamanager.DataManager.load()
 
     running = True
 
     # Cria lago
     # WaterWell(Vector2(25, 325), Vector2(50, 50))
-    terreno = Plantation(Vector2(100, 50))
-    terreno.receiveSeed(Seed("Cenoura"))
-    terreno = Plantation(Vector2(100, 100))
-    terreno.receiveSeed(Seed("Beterraba"))
-    terreno = Plantation(Vector2(100, 150))
-    terreno.receiveSeed(Seed("Pepino"))
-    terreno = Plantation(Vector2(100, 200))
-    terreno.receiveSeed(Seed("Goiaba"))
+    GameManager.farmer = Farmer(Vector2(25, 200), speed=1.5)
 
     GameManager.updateTime()
     

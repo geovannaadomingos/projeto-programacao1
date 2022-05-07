@@ -1,5 +1,6 @@
 import pygame
 from Events import Events
+from farmer import Farmer
 from gameobject import GameObject
 from mouse import Mouse
 import time
@@ -8,6 +9,8 @@ class GameManager():
     time = 0
     lastTime = 0
     deltaTime = 0
+    scale = 2
+    farmer = None
 
     def updateTime():
         GameManager.lastTime = GameManager.time
@@ -28,7 +31,9 @@ class GameManager():
                 if event.key == pygame.K_j:  # J
                     mouse3 = True
 
-        pass
+        if GameManager.farmer != None:
+            if Mouse.clicked(0):
+                GameManager.farmer.moveTo(v2_mousePos)
 
     def loop():
         GameManager.updateTime()

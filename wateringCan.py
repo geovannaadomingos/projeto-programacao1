@@ -19,3 +19,4 @@ class WateringCan(GameObject):
 
     def restock(self, receivedWater):
         self.amountOfWater += receivedWater
+        self.amountOfWater  = min(self.amountOfWater, 1)

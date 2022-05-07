@@ -1,11 +1,10 @@
 import pygame
 from Events import Events
-from datamanager import DataManager
-from place import Place
 from gamemanager import GameManager
 from gameobject import GameObject
 from mouse import Mouse
 from vector2 import Vector2
+from waterWell import WaterWell
 
 
 def main():
@@ -22,10 +21,8 @@ def main():
 
     running = True
 
-    # Cria o estabelecimento exemplo
-    Place(Vector2(25, 325), Vector2(50, 50), color=(0, 255, 0))
-
-    DataManager.load()
+    # Cria lago
+    WaterWell(Vector2(25, 325), Vector2(50, 50))
 
     while running:
         clock.tick(FPS)
@@ -39,13 +36,6 @@ def main():
         # desenha todos os objetos na tela
         for go in GameObject.all_objects:
             go.draw(screen)
-
-        screen.blit(DataManager.PLANTAS["Cenoura"]["planta-sprites"][0], (0,0))
-        screen.blit(DataManager.PLANTAS["Cenoura"]["planta-sprites"][1], (16,0))
-        screen.blit(DataManager.PLANTAS["Cenoura"]["planta-sprites"][2], (16*2,0))
-        screen.blit(DataManager.PLANTAS["Cenoura"]["planta-sprites"][3], (16*3,0))
-        screen.blit(DataManager.PLANTAS["Cenoura"]["semente-sprite"], (16*4,0))
-
 
         for event in Events.events:
             if event.type == pygame.KEYDOWN:

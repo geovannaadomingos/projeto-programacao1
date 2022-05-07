@@ -2,9 +2,18 @@ import pygame
 from Events import Events
 from gameobject import GameObject
 from mouse import Mouse
-
+import time
 
 class GameManager():
+    time = 0
+    lastTime = 0
+    deltaTime = 0
+
+    def updateTime():
+        GameManager.lastTime = GameManager.time
+        GameManager.time = time.time()
+        GameManager.deltaTime = GameManager.time - GameManager.lastTime
+
     def handleClick(gameObject):
         if GameObject in type(gameObject).mro():
             if gameObject.clickable == False:
@@ -22,6 +31,7 @@ class GameManager():
         pass
 
     def loop():
+        GameManager.updateTime()
         # objeto que está sob o mouse
         go_sob_mouse = None
 

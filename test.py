@@ -4,6 +4,8 @@ from datamanager import DataManager
 from gamemanager import GameManager
 from gameobject import GameObject
 from mouse import Mouse
+from plantation import Plantation
+from seeds import Seed
 from vector2 import Vector2
 from waterWell import WaterWell
 
@@ -11,7 +13,6 @@ from waterWell import WaterWell
 def main():
     pygame.init()
     pygame.display.set_caption("Teste Projetinho P1")
-    DataManager.load()
 
     FPS = 60
     clock = pygame.time.Clock()
@@ -20,16 +21,27 @@ def main():
     SCREEN_W = 400
     SCREEN_H = 400
     screen = pygame.display.set_mode((SCREEN_W, SCREEN_H))
+    DataManager.load()
 
     running = True
 
     # Cria lago
-    WaterWell(Vector2(25, 325), Vector2(50, 50))
+    # WaterWell(Vector2(25, 325), Vector2(50, 50))
+    terreno = Plantation(Vector2(100, 50))
+    terreno.receiveSeed(Seed("Cenoura"))
+    terreno = Plantation(Vector2(100, 100))
+    terreno.receiveSeed(Seed("Beterraba"))
+    terreno = Plantation(Vector2(100, 150))
+    terreno.receiveSeed(Seed("Pepino"))
+    terreno = Plantation(Vector2(100, 200))
+    terreno.receiveSeed(Seed("Goiaba"))
 
+    GameManager.updateTime()
+    
     while running:
         clock.tick(FPS)
         # Preenche o display com a cor preta (0, 0, 0)
-        screen.fill((0, 0, 0))
+        screen.fill((255, 255, 255))
 
         Events.loop()
         Mouse.loop()

@@ -28,8 +28,10 @@ class DataManager():
                 DataManager.PLANTAS[planta]["planta-sprites"].append(DataManager.getImageFromSpriteSheet(
                     DataManager.plant_sheet, frameX=x, frameY=index+2))
 
-    def getImageFromSpriteSheet(sheet, frameX, frameY, width=16, height=16):
-        image = pygame.Surface((width, height)).convert_alpha()
+    def getImageFromSpriteSheet(sheet, frameX, frameY, width=16, height=16, scale=2):
+        image = pygame.Surface((width, height), pygame.SRCALPHA, 32).convert_alpha()
         image.blit(sheet, (0, 0), ((frameX * width),
                    frameY * height, width, height))
+        # Scale
+        image = pygame.transform.scale(image, (width*scale, height*scale))
         return image

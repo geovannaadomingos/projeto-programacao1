@@ -8,10 +8,10 @@ class WateringCan(GameObject):
         self.amountOfWater = 1
 
     def water(self, plantation):
-
-        if self.amountOfWater >= plantation.amountWaterNeeded:
-            plantation.receiveWater(plantation.amountWaterNeeded)
-            self.amountOfWater -= plantation.amountWaterNeeded
+        amountWaterNeeded = 1 - plantation.water
+        if self.amountOfWater >= amountWaterNeeded:
+            plantation.receiveWater(amountWaterNeeded)
+            self.amountOfWater -= amountWaterNeeded
 
     def restock(self, receivedWater):
         self.amountOfWater += receivedWater

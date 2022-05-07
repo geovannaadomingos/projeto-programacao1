@@ -1,5 +1,3 @@
-import pygame
-import time
 from gamemanager import GameManager
 from gameobject import GameObject
 from mouse import Mouse
@@ -20,11 +18,23 @@ class Plantation(GameObject):
         # screen.blit()
         # planta
         if self.seed != None:
-            screen.blit(self.seed.data["planta-sprites"][3], self.v2_pos)
+            #screen.blit(self.seed.data["planta-sprites"][3], self.v2_pos)
 
             if self.needWater():
                 # desenha gotinha
                 pass
+
+            if 0 <= self.getEvolution() <= 0.25:
+                #fase 1 evolution
+                screen.blit(self.seed.data['planta-sprites'][0], self.v2_pos)
+            elif 0.3 >= self.getEvolution() <= 0.5:
+                screen.blit(self.seed.data['planta-sprites'][1], self.v2_pos)
+            elif 0.51 >= self.getEvolution() <= 0.75:
+                screen.blit(self.seed.data['planta-sprites'][2], self.v2_pos)
+            elif 0.76 >= self.getEvolution() <= 1:
+                screen.blit(self.seed.data['planta-sprites'][3], self.v2_pos)
+            #elif self.getEvolution() == 1:
+                #screen.blit(self.seed.data['planta-sprites'][3], self.v2_pos)
     
     def receiveSeed(self, seed): # receber semente
         self.seed = seed

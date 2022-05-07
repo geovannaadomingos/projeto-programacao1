@@ -1,6 +1,6 @@
 import pygame
 from Events import Events
-from estabelecimento import Estabelecimento
+from place import Place
 from gamemanager import GameManager
 from gameobject import GameObject
 from mouse import Mouse
@@ -22,7 +22,7 @@ def main():
     running = True
 
     # Cria o estabelecimento exemplo
-    Estabelecimento(Vector2(25, 325), Vector2(50, 50), color=(0, 255, 0))
+    Place(Vector2(25, 325), Vector2(50, 50), color=(0, 255, 0))
 
     while running:
         clock.tick(FPS)

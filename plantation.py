@@ -18,14 +18,14 @@ class Plantation:
     def draw(self):
         pygame.draw.rect((SCREEN_W, SCREEN_H), color_earth_rect, earth_rect)
     
-    def receiveSeed(self, seeds):
+    def receiveSeed(self, seeds): # receber sementes
         self.seeds_recive = seeds
         self.time_received = time.time()
 
-    def reciveWatter(self, amountWaterNeeded):
+    def reciveWatter(self, amountWaterNeeded): # receber agua
         self.amountOfWatter = amountWaterNeeded
 
-    def needWater(self):
+    def needWater(self): # pede agua quando a planta tiver secando
         if self.amountOfWatter <= 50:
             print('preciso de agua')
 
@@ -34,26 +34,26 @@ class Plantation:
             #imagem1...
             pass"""
 
-    def collectPlant(self, seeds):
+    def collectPlant(self, seeds): #colher planta
         self.plantCollect = seeds
     
     def loop(self):
         if self.seeds_recive != None:
             tempo_passado = time.time() - self.time_received
-            if tempo_passado >= self.seeds_recive.tempo_colher:
+            if tempo_passado >= self.seeds_recive.tempo_colher: #cronometro até a planta ficar "madura"
                 print('planta madura')
                 self.seeds_recive.evolucao = 100
             elif tempo_passado < self.seeds_recive.tempo_colher:
                 print('planta crescendo')
         
         if self.plantCollect != None:
-            if self.plantCollect.evolucao == 100:
+            if self.plantCollect.evolucao == 100: # colhendo a planta
                 #pygame.blit(screen, img ,earth_rect)
                 print('PLANTA COLETADA')
                 self.seeds_recive = None
                 self.plantCollect = None
 
-        if self.amountOfWatter != None:
+        if self.amountOfWatter != None: #usando a agua a cada 10s
             if tempo_passado >= 10:
                 self.amountOfWatter -= 10
                 self.amountOfWatter = None

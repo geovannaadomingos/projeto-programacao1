@@ -8,7 +8,7 @@ from vector2 import Vector2
 class Plantation(GameObject):
     def __init__(self, v2_pos):
         super().__init__(v2_pos, Vector2(16, 16), clickable=True)
-        self.amountOfWater = 0 #porcentagem_agua abaixo de 50% a terra já pede
+        self.amountOfWater = 1 #porcentagem_agua abaixo de 50% a terra já pede
         self.evolucao = 0
         self.seed = None
 

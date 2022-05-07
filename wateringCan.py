@@ -1,6 +1,4 @@
-from typing_extensions import Self
 from gameobject import GameObject
-from plantation import Plantation
 
 
 class WateringCan(GameObject):
@@ -11,12 +9,10 @@ class WateringCan(GameObject):
 
     def water(self, plantation):
 
-        if self.amountOfWater < plantation.amountWaterNeeded:
-            self.restock()
-        else:
+        if self.amountOfWater >= plantation.amountWaterNeeded:
             plantation.receiveWater(plantation.amountWaterNeeded)
             self.amountOfWater -= plantation.amountWaterNeeded
 
     def restock(self, receivedWater):
         self.amountOfWater += receivedWater
-        self.amountOfWater  = min(self.amountOfWater, 1)
+        self.amountOfWater = min(self.amountOfWater, 1)

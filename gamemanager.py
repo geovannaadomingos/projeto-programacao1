@@ -5,7 +5,7 @@ from gameobject import GameObject
 from mouse import Mouse
 import time
 
-from tilemap import Grid
+from tilemapEditor import Grid
 
 class GameManager():
     time = 0

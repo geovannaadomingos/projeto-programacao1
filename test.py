@@ -7,7 +7,7 @@ from gameobject import GameObject
 from mouse import Mouse
 from plantation import Plantation
 from seeds import Seed
-from tilemap import Grid
+from tilemapEditor import Grid
 from vector2 import Vector2
 from waterWell import WaterWell
 

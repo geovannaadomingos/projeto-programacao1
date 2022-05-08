@@ -1,7 +1,7 @@
 {
     "Cenoura": {
         "name": "Cenoura",
-        "time_to_grow_sec": 4
+        "time_to_grow_sec": 6
     },
     "Repolho": {
         "name": "Repolho",
@@ -9,7 +9,7 @@
     },
     "Goiaba": {
         "name": "Goiaba",
-        "time_to_grow_sec": 4
+        "time_to_grow_sec": 11
     },
     "Berinjela": {
         "name": "Berinjela",
@@ -41,7 +41,7 @@
     },
     "Beterraba": {
         "name": "Beterraba",
-        "time_to_grow_sec": 4
+        "time_to_grow_sec": 8
     },
     "Estrelinha": {
         "name": "Estrelinha",
@@ -49,6 +49,6 @@
     },
     "Pepino": {
         "name": "Pepino",
-        "time_to_grow_sec": 4
+        "time_to_grow_sec": 10
     }
 }

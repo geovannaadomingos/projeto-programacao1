@@ -1,0 +1,36 @@
+{
+    "1": {
+        "harvestGoal": {
+            "Cenoura": 4,
+            "Repolho": 6,
+            "Goiaba": 2,
+            "Berinjela": 0,
+            "Azulzinha": 8,
+            "Alface": 8,
+            "Trigo": 7,
+            "Abobora": 8,
+            "Nabo": 0,
+            "Rosinha": 0,
+            "Beterraba": 0,
+            "Estrelinha": 0,
+            "Pepino": 0
+        }
+    },
+    "2":{
+        "harvestGoal": {
+            "Cenoura": 4,
+            "Repolho": 6,
+            "Goiaba": 2,
+            "Berinjela": 0,
+            "Azulzinha": 8,
+            "Alface": 8,
+            "Trigo": 7,
+            "Abobora": 8,
+            "Nabo": 4,
+            "Rosinha": 8,
+            "Beterraba": 20,
+            "Estrelinha": 9,
+            "Pepino": 10
+        }
+    }
+}

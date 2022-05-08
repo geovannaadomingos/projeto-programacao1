@@ -5,12 +5,15 @@ from gameobject import GameObject
 from mouse import Mouse
 import time
 
+from tilemap import Grid
+
 class GameManager():
     time = 0
     lastTime = 0
     deltaTime = 0
     scale = 2
     farmer = None
+    grid = None
 
     def updateTime():
         GameManager.lastTime = GameManager.time
@@ -18,22 +21,17 @@ class GameManager():
         GameManager.deltaTime = GameManager.time - GameManager.lastTime
 
     def handleClick(gameObject):
-        if GameObject in type(gameObject).mro():
-            if gameObject.clickable == False:
-                return
         # pega a posição do mouse
         v2_mousePos = Mouse.getMousePos()
 
-        mouse3 = Mouse.clicked(1) # False
-
-        for event in Events.events:
-            if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_j:  # J
-                    mouse3 = True
+        # if GameObject in type(gameObject).mro():
+        #     if gameObject.clickable == False:
+        #         return
 
         if GameManager.farmer != None:
             if Mouse.clicked(0):
-                GameManager.farmer.moveTo(v2_mousePos)
+                if GameManager.grid != None:
+                    GameManager.farmer.moveTo(GameManager.grid.getScreenPosFromPoint(v2_mousePos))
 
     def loop():
         GameManager.updateTime()

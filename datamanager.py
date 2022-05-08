@@ -36,22 +36,22 @@ class DataManager():
             list_animations = []
             for x in range(8):
                 list_animations.append(DataManager.getImageFromSpriteSheet(
-                    DataManager.player_sheet, frameX=x, frameY=index, width=48, height=48))
+                    DataManager.player_sheet, frameX=x, frameY=index, width=48, height=48, scale=GameManager.scale))
             DataManager.PLAYER_ANIMATIONS[animation] = list_animations
 
     def loadPlantasData():
         DataManager.PLANTAS = json.load(open("data\plants.json"))
         for index, planta in enumerate(DataManager.PLANTAS.keys()):
-            DataManager.PLANTAS[planta]["semente-sprite"] = DataManager.getImageFromSpriteSheet(DataManager.itens_sheet, frameX=0, frameY=index+2)
+            DataManager.PLANTAS[planta]["semente-sprite"] = DataManager.getImageFromSpriteSheet(DataManager.itens_sheet, frameX=0, frameY=index+2, scale=GameManager.scale)
             DataManager.PLANTAS[planta]["planta-sprites"] = []
             for x in range(4):
                 DataManager.PLANTAS[planta]["planta-sprites"].append(DataManager.getImageFromSpriteSheet(
-                    DataManager.plant_sheet, frameX=x, frameY=index+2))
+                    DataManager.plant_sheet, frameX=x, frameY=index+2, scale=GameManager.scale))
 
-    def getImageFromSpriteSheet(sheet, frameX, frameY, width=16, height=16):
+    def getImageFromSpriteSheet(sheet, frameX, frameY, width=16, height=16, scale=1):
         image = pygame.Surface((width, height), pygame.SRCALPHA, 32).convert_alpha()
         image.blit(sheet, (0, 0), ((frameX * width),
                    frameY * height, width, height))
         # Scale
-        image = pygame.transform.scale(image, (width*GameManager.scale, height*GameManager.scale))
+        image = pygame.transform.scale(image, (width*scale, height*scale))
         return image

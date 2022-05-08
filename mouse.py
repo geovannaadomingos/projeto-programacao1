@@ -31,5 +31,8 @@ class Mouse():
     def clicked(index):
         return Mouse.mouse_buttons_pressed[index]
 
+    def clicked_default(index):
+        return Mouse.last_mouse_events[index]
+
     def getMousePos():
         return Mouse.v2_mousePos

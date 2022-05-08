@@ -1,6 +1,6 @@
 {
     "1": {
-        "goal": {
+        "harvestGoal": {
             "Cenoura": 4,
             "Repolho": 6,
             "Goiaba": 2,
@@ -17,7 +17,7 @@
         }
     },
     "2":{
-        "goal": {
+        "harvestGoal": {
             "Cenoura": 4,
             "Repolho": 6,
             "Goiaba": 2,

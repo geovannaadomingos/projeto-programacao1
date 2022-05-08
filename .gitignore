@@ -2,3 +2,4 @@ __pycache__/*
 assets/sprites/*
 assets/sounds/*
 sounds/*
+data/levels/editor/*

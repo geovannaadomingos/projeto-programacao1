@@ -1,3 +1,4 @@
+import json
 import pygame
 from Events import Events
 import datamanager
@@ -5,7 +6,7 @@ from gameobject import GameObject
 from mouse import Mouse
 from vector2 import Vector2
 import pathlib
-
+import time
 
 class Node():
     def __init__(self, x, y, blocked, surface, item=None):
@@ -17,7 +18,7 @@ class Node():
 
 
 class Grid(GameObject):
-    def __init__(self, v2_pos, v2_size, nodeDiameter, nodeSurface=None):
+    def __init__(self, v2_pos, v2_size, nodeDiameter, nodeSurface=None, item=None):
         super().__init__(v2_pos, v2_size, False)
         self.nodeDiameter = nodeDiameter
         self.sizeX = v2_size.x // self.nodeDiameter
@@ -30,7 +31,7 @@ class Grid(GameObject):
         for y in range(self.sizeY):
             self.grid.append([])
             for x in range(self.sizeX):
-                self.grid[y].insert(x, Node(x, y, False, nodeSurface))
+                self.grid[y].insert(x, Node(x, y, False, nodeSurface, item))
 
         self.nodeSurfaceMouse = pygame.Surface(
             (self.nodeDiameter, self.nodeDiameter))
@@ -81,10 +82,10 @@ class Grid(GameObject):
 
 class Tile():
     def __init__(self, path, surface, tileX, tileY):
-        self.path = str(path)
         self.tileX = tileX
         self.tileY = tileY
-        self.fileName = self.path.split("\\")[-1]+f"/{self.tileX}_{self.tileY}"
+        self.filePath = str(path) +f"/{self.tileX}_{self.tileY}"
+        self.fileName = self.filePath.split("\\")[-1]+f"/{self.tileX}_{self.tileY}"
         self.surface = surface
 
 class TilemapEditor():
@@ -135,7 +136,7 @@ class TilemapEditor():
         tileY = 0
         for tile in tiles:
             grid_tiles.grid[tileY][tileX].surface = tile.surface
-            grid_tiles.grid[tileY][tileX].tile = tile
+            grid_tiles.grid[tileY][tileX].item = tile
 
             if tileX % (TILES_GRID_W // TILE_LENGHT) == (TILES_GRID_W // TILE_LENGHT)-1:
                 tileY += 1
@@ -145,9 +146,9 @@ class TilemapEditor():
             tileX = (tileX) % (TILES_GRID_W // TILE_LENGHT)
 
         layers.append(Grid(Vector2(0, 0), Vector2(
-            GRID_W, GRID_H), TILE_LENGHT, tiles[-1].surface))
+            GRID_W, GRID_H), TILE_LENGHT, tiles[-1].surface, tiles[-1]))
 
-        imageSelected = None
+        tileSelected = None
 
         print(f"Layer atual >: {current_layer_index}")
         apagar = False
@@ -194,18 +195,47 @@ class TilemapEditor():
                 layers.append(newLayer)
                 print(f"Nova Layer criada >: {len(layers)-1}")
             elif salvar:
-                pass
+                fileName = f"level_{int(time.time())}.json"
+                file = open(f"data\\levels\\editor\\{fileName}", 'w')
+                file_dict = {}
+                file_dict["tiles"] = []
+                file_dict["layers"] = []
+                for layer in layers:
+                    grid = {}
+                    grid['grid'] = []
 
+                    for row in layer.grid:
+                        tiles = []
+                        for node in row:
+                            node_dict = {}
+                            node_dict["x"] = node.x
+                            node_dict["y"] = node.y
+                            node_dict["blocked"] = node.blocked
+                            if node.item != None:
+                                node_dict["tile"] = {}
+                                if node.item.filePath not in file_dict["tiles"]:
+                                    file_dict["tiles"].append(node.item.filePath)
+                                node_dict["tile"]["path"] = node.item.filePath
+                            tiles.append(node_dict)
+                        grid['grid'].append(tiles)
+                    file_dict["layers"].append(grid)
+                file.write(json.dumps(file_dict, indent=4))
+                file.close()
+                print(f"Tilemap({fileName}) salvo com sucesso")
 
             if layers[current_layer_index].isPointInside(Mouse.getMousePos()):
-                if Mouse.clicked_default(0) and imageSelected != None:
-                    layers[current_layer_index].getNodeFromPoint(Mouse.getMousePos()).surface = imageSelected
+                if Mouse.clicked_default(0) and tileSelected != None:
+                    node = layers[current_layer_index].getNodeFromPoint(Mouse.getMousePos())
+                    node.item = tileSelected
+                    node.surface = tileSelected.surface
                 elif apagar:
-                    layers[current_layer_index].getNodeFromPoint(Mouse.getMousePos()).surface = None
+                    node = layers[current_layer_index].getNodeFromPoint(Mouse.getMousePos())
+                    node.item = None
+                    node.surface = None
             elif grid_tiles.isPointInside(Mouse.getMousePos()):
                 if Mouse.clicked(0):
-                    imageSelected = grid_tiles.getNodeFromPoint(Mouse.getMousePos()).surface
-                    layers[current_layer_index].nodeSurfaceMouse = imageSelected
+                    tileSelected = grid_tiles.getNodeFromPoint(Mouse.getMousePos()).item
+                    layers[current_layer_index].nodeSurfaceMouse = tileSelected.surface
 
 
             for layer in layers:

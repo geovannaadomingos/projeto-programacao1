@@ -198,7 +198,7 @@ class TilemapEditor():
             elif salvar:
                 fileName = f"level_{int(time.time())}.json"
                 if os.path.exists("data\\levels\\editor") == False:
-                    os.mkdir("data\\levels\\editor")
+                    os.mkdir("data/levels/editor")
                     
                 file = open(f"data\\levels\\editor\\{fileName}", 'w')
                 file_dict = {}

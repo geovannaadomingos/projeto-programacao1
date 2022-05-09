@@ -13,7 +13,7 @@ class GameManager():
     time = 0
     lastTime = 0
     deltaTime = 0
-    scale = 2
+    scale = 1
     farmer = None
     grid = None
     grid_collider = None

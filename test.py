@@ -6,6 +6,7 @@ import datamanager
 from farmer import Farmer
 from gamemanager import GameManager
 from gameobject import GameObject
+from hud import HudReport
 from item import Item, PlantItem, SeedItem
 from mouse import Mouse
 from plantation import Plantation
@@ -57,6 +58,7 @@ def main():
 
     GameManager.updateTime()
     
+    relatorio_hud = HudReport(SCREEN_W, SCREEN_H)
     while running:
         clock.tick(FPS)
         # Preenche o display com a cor preta (0, 0, 0)
@@ -75,12 +77,17 @@ def main():
         for go in GameObject.all_objects:
             go.draw(screen)
 
+        relatorio_hud.draw(screen)
+
         for event in Events.events:
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_ESCAPE:  # ESC
                     running = False
                 elif event.key == pygame.K_r:
                     print(Report.currentHarvest)
+            elif event.type == pygame.QUIT:
+                running = False
+    
 
         # Atualiza a tela do pygame
         pygame.display.update()

@@ -25,14 +25,15 @@ class Plantation(GameObject):
                 # desenha gotinha
                 pass
 
-            if 0 <= self.getEvolution() <= 0.25:
-                #fase 1 evolution
+            evolucao = self.getEvolution()
+
+            if evolucao <= 0.25:
                 screen.blit(self.seed.data['planta-sprites'][0], self.v2_pos)
-            elif 0.3 >= self.getEvolution() <= 0.5:
+            elif evolucao <= 0.5:
                 screen.blit(self.seed.data['planta-sprites'][1], self.v2_pos)
-            elif 0.51 >= self.getEvolution() <= 0.75:
+            elif evolucao <= 0.75:
                 screen.blit(self.seed.data['planta-sprites'][2], self.v2_pos)
-            elif 0.76 >= self.getEvolution() <= 1:
+            else:
                 screen.blit(self.seed.data['planta-sprites'][3], self.v2_pos)
             #elif self.getEvolution() == 1:
                 #screen.blit(self.seed.data['planta-sprites'][3], self.v2_pos)
@@ -60,7 +61,7 @@ class Plantation(GameObject):
             return 0
 
     def brotar(self):
-        PlantItem(self.v2_pos, "Cenoura")
+        PlantItem(self.v2_pos, self.seed.name)
         self.seed = None
     
     def loop(self):

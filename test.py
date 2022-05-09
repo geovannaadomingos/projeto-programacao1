@@ -10,7 +10,6 @@ from item import Item, PlantItem, SeedItem
 from mouse import Mouse
 from plantation import Plantation
 from report import Report
-from seeds import Seed
 from tilemap import Tilemap
 from tilemapEditor import Grid
 from vector2 import Vector2
@@ -37,7 +36,7 @@ def main():
     running = True
 
     # Cria poço
-    waterWell = WaterWell(Vector2(500, 225), Vector2(50, 50))
+    # waterWell = WaterWell(Vector2(500, 225), Vector2(50, 50))
 
     # Criar plantas coletaveis
     for y, planta_nome in enumerate(datamanager.DataManager.PLANTAS):
@@ -45,11 +44,16 @@ def main():
     
     # Criar sementes coletaveis
     for y, planta_nome in enumerate(datamanager.DataManager.PLANTAS):
-        SeedItem(Vector2(100, y*16*1.5*GameManager.scale), planta_nome)
+        seedItem = SeedItem(Vector2(100, y*16*1.5*GameManager.scale), planta_nome)
+
+        platation = Plantation(Vector2(700, y*16*1.5*GameManager.scale))
+        platation.receiveSeed(seedItem)
+
 
     spawnPoint = tilemap.layers[-1].getNodeWithState(NodeState.FarmerSpawn)
     GameManager.grid = Grid(Vector2(0,0), Vector2(SCREEN_W, SCREEN_H), 16 * GameManager.scale, enableLines=False)
     GameManager.farmer = Farmer(tilemap.layers[-1].getNodeScreenPos(spawnPoint), speed=1.5)
+
 
     GameManager.updateTime()
     

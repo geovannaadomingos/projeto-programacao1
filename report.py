@@ -1,5 +1,5 @@
 import json
-levels = json.load(open("data\levels.json"))
+levels = json.load(open("data\\levels.json"))
 
 
 class Report():

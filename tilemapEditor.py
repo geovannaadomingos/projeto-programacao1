@@ -19,12 +19,15 @@ class Node():
 
 
 class Grid(GameObject):
-    def __init__(self, v2_pos, v2_size, nodeDiameter, nodeSurface=None, item=None):
+    def __init__(self, v2_pos, v2_size, nodeDiameter, nodeSurface=None, item=None, enableLines=False):
         super().__init__(v2_pos, v2_size, False)
         self.nodeDiameter = nodeDiameter
         self.sizeX = v2_size.x // self.nodeDiameter
         self.sizeY = v2_size.y // self.nodeDiameter
         self.grid = []
+        self.enableLines = enableLines
+        self.lineWidth = 1
+        self.lineColor = (0,0,0)
 
         if nodeSurface == None:
             nodeSurface = pygame.Surface((self.nodeDiameter, self.nodeDiameter), pygame.SRCALPHA, 32).convert_alpha()
@@ -63,22 +66,25 @@ class Grid(GameObject):
         x, y = self.getPositionFromPoint(v2_point)
         return self.getScreenPosCenter(x, y)
 
-    def draw(self, screen):
-        mousePos = Mouse.getMousePos()
-        node_over_mouse = None
+    def drawLines(self, screen):
+        if self.enableLines == False:
+            return
         
-        if self.isPointInside(mousePos):
-            node_over_mouse = self.getNodeFromPoint(mousePos)
+        for x in range(self.sizeX):
+            #(self.x + (x * diameter), pos.y)
+            #(self.x + (x * diameter), pos.y + size.y)
+            pygame.draw.line(screen, self.lineColor, (self.v2_pos.x + (x*self.nodeDiameter), self.v2_pos.y), (self.v2_pos.x + (x*self.nodeDiameter), self.v2_pos.y+self.v2_size.y), width=self.lineWidth)
+        for y in range(self.sizeY):
+            #(pos.x, self.y + (y * diameter), width=self.lineWidth)
+            #(pos.x + size.x, self.y + (y * diameter))
+            pygame.draw.line(screen, self.lineColor, (self.v2_pos.x, self.v2_pos.y + y*self.nodeDiameter), (self.v2_pos.x+self.v2_size.x, self.v2_pos.y+y*self.nodeDiameter))
 
+    def draw(self, screen):
         for nodeList in self.grid:
             for node in nodeList:
-                if node != node_over_mouse:
-                    if node.surface != None:
-                        screen.blit(node.surface, self.getNodeScreenPos(node))
-                else:
-                    if self.nodeSurfaceMouse != None:
-                        screen.blit(self.nodeSurfaceMouse,
-                                    self.getNodeScreenPos(node))
+                if node.surface != None:
+                    screen.blit(node.surface, self.getNodeScreenPos(node))
+        self.drawLines(screen)
 
 
 class Tile():
@@ -118,6 +124,8 @@ class TilemapEditor():
         layers = []
 
         grid_tiles = Grid(Vector2(GRID_W, 0), Vector2(TILES_GRID_W, TILES_GRID_H), TILE_LENGHT)
+        grid_tiles.enableLines = True
+        grid_tiles.lineColor = (156, 98, 54)
 
         tileset_folder = datamanager.PREMIUM_ASSETS_FOLDER + "\\tilesets"
         tilesets_sheets_paths = list(
@@ -147,7 +155,7 @@ class TilemapEditor():
             tileX = (tileX) % (TILES_GRID_W // TILE_LENGHT)
 
         layers.append(Grid(Vector2(0, 0), Vector2(
-            GRID_W, GRID_H), TILE_LENGHT, tiles[-1].surface, tiles[-1]))
+            GRID_W, GRID_H), TILE_LENGHT, tiles[-1].surface, tiles[-1], enableLines = True))
 
         tileSelected = None
 
@@ -192,7 +200,7 @@ class TilemapEditor():
                 print(f"Layer atual >: {current_layer_index}")
             
             elif criar_layer:
-                newLayer = Grid(Vector2(0, 0), Vector2(GRID_W, GRID_H), TILE_LENGHT)
+                newLayer = Grid(Vector2(0, 0), Vector2(GRID_W, GRID_H), TILE_LENGHT, enableLines = True)
                 layers.append(newLayer)
                 print(f"Nova Layer criada >: {len(layers)-1}")
             elif salvar:

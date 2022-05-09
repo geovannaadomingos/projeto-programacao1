@@ -7,9 +7,9 @@ from vector2 import Vector2
 class Farmer(GameObject):
 
     def __init__(self, v2_pos, speed, frameDuration=6):
-        super().__init__(v2_pos, Vector2(48,48), clickable=True)
-
         self.animations = datamanager.DataManager.PLAYER_ANIMATIONS
+        super().__init__(v2_pos, Vector2.FromList(self.animations["idle_left"][0].get_size()), clickable=True)
+
         self.speed = speed
         self.v2_targetPos = None
         self.v2_direction = Vector2(0,0)
@@ -19,8 +19,8 @@ class Farmer(GameObject):
         self.frameDuration = frameDuration
         self.state = "idle"
 
-        self.surface = pygame.Surface(self.v2_size)
-        self.surface.fill((0,0,0))
+        self.surface = pygame.Surface(self.v2_size*0.1)
+        self.surface.fill((255,0,0))
         
     def loop(self):
         self.move()
@@ -45,8 +45,6 @@ class Farmer(GameObject):
             temp_event(self)
 
     def draw(self, screen):
-        # screen.blit(self.surface, self.v2_pos)
-
         direction = ""
         if abs(self.v2_direction.x) > abs(self.v2_direction.y):
             if self.v2_direction.x < 0:

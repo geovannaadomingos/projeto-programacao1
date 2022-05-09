@@ -168,10 +168,10 @@ if __name__ == "__main__":
                 run = False
         
         mouse_pos = pygame.mouse.get_pos()
-        if pygame.mouse.get_pressed()[2]: #click esquerdo = obstaculos
+        if pygame.mouse.get_pressed()[2]: #click direito = obstaculos
             mouse_cube =  grade.get_screen_cube_pos(mouse_pos) #cubo sob o mouse
             mouse_cube.color = BLACK
-        elif pygame.mouse.get_pressed()[0]: #click direito = ponto inicial; dois clicks direito = ponto final
+        elif pygame.mouse.get_pressed()[0]: #click esquerdo = ponto inicial; dois clicks esquerdo = ponto final
             mouse_cube = grade.get_screen_cube_pos(mouse_pos)
             if mouse_cube.color == TURQUOISE:
                 mouse_cube.color = YELLOW

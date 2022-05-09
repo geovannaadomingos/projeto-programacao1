@@ -1,4 +1,5 @@
 import json
+import os
 import pygame
 from Events import Events
 import datamanager
@@ -196,6 +197,9 @@ class TilemapEditor():
                 print(f"Nova Layer criada >: {len(layers)-1}")
             elif salvar:
                 fileName = f"level_{int(time.time())}.json"
+                if os.path.exists("data\\levels\\editor") == False:
+                    os.mkdir("data\\levels\\editor")
+                    
                 file = open(f"data\\levels\\editor\\{fileName}", 'w')
                 file_dict = {}
                 file_dict["tiles"] = []

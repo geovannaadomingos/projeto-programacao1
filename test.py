@@ -1,6 +1,7 @@
 import json
 import pygame
 from Events import Events
+from NodeState import NodeState
 import datamanager
 from farmer import Farmer
 from gamemanager import GameManager
@@ -35,8 +36,9 @@ def main():
 
     # Cria lago
     # WaterWell(Vector2(25, 325), Vector2(50, 50))
+    spawnPoint = tilemap.layers[-1].getNodeWithState(NodeState.FarmerSpawn)
     GameManager.grid = Grid(Vector2(0,0), Vector2(SCREEN_W, SCREEN_H), 16 * GameManager.scale)
-    GameManager.farmer = Farmer(Vector2(25, 200), speed=1.5)
+    GameManager.farmer = Farmer(tilemap.layers[-1].getNodeScreenPos(spawnPoint), speed=1.5)
     
 
     GameManager.updateTime()

@@ -197,6 +197,8 @@ class TilemapEditor():
                 print(f"Nova Layer criada >: {len(layers)-1}")
             elif salvar:
                 fileName = f"level_{int(time.time())}.json"
+                if os.path.exists("data\\levels") == False:
+                    os.mkdir("data/levels")
                 if os.path.exists("data\\levels\\editor") == False:
                     os.mkdir("data/levels/editor")
                     

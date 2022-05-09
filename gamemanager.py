@@ -2,7 +2,7 @@ import pygame
 from Events import Events
 from farmer import Farmer
 from gameobject import GameObject
-from item import Item
+from item import Item, PlantItem
 from mouse import Mouse
 import time
 
@@ -53,7 +53,8 @@ class GameManager():
 
         for item in Item.all_itens:
             if item.isCollide(GameManager.farmer):
-                # Coletar item
-                Item.all_itens.remove(item)
-                GameObject.all_objects.remove(item)
-                Report.harvestReport(item.name)
+                if type(item) == PlantItem:
+                    # Coletar planta
+                    Item.all_itens.remove(item)
+                    GameObject.all_objects.remove(item)
+                    Report.harvestReport(item.name)

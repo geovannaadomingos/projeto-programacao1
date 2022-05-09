@@ -2,12 +2,13 @@ import pygame
 from Events import Events
 from farmer import Farmer
 from gameobject import GameObject
-from item import Item, PlantItem
+from item import Item, PlantItem, SeedItem
 from mouse import Mouse
 import time
 
 from report import Report
 from tilemapEditor import Grid
+
 
 class GameManager():
     time = 0
@@ -33,7 +34,8 @@ class GameManager():
         if GameManager.farmer != None:
             if Mouse.clicked(0):
                 if GameManager.grid != None:
-                    GameManager.farmer.moveTo(GameManager.grid.getScreenPosFromPoint(v2_mousePos))
+                    GameManager.farmer.moveTo(
+                        GameManager.grid.getScreenPosFromPoint(v2_mousePos))
 
     def loop():
         GameManager.updateTime()
@@ -58,3 +60,8 @@ class GameManager():
                     Item.all_itens.remove(item)
                     GameObject.all_objects.remove(item)
                     Report.harvestReport(item.name)
+
+                elif type(item) == SeedItem:
+                    # Adicionar no inventario do fazendeiro
+                    # fazendeiro referencia -> GameManager.farmer
+                    pass

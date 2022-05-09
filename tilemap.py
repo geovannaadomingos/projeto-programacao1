@@ -39,8 +39,8 @@ class Tilemap():
                     if spritePath != None:
                         spritePath = spritePath["path"]
 
-                    grid.grid[y][x].state = tuple(tile.get("state"))
-                    grid.grid[y][x].surface = self.tiles[spritePath]
+                    grid.matrix[y][x].state = tuple(tile.get("state"))
+                    grid.matrix[y][x].surface = self.tiles[spritePath]
             self.layers.append(grid)
         print("loaded")
 

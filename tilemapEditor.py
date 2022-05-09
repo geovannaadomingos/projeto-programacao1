@@ -17,6 +17,12 @@ class Node():
         self.state = state
         self.surface = surface
         self.item = item
+        self.parent = None
+        self.g = 0
+        self.h = 0
+
+    def valor_f(self):
+        return self.g + self.h
 
 
 class Grid(GameObject):
@@ -25,7 +31,7 @@ class Grid(GameObject):
         self.nodeDiameter = nodeDiameter
         self.sizeX = v2_size.x // self.nodeDiameter
         self.sizeY = v2_size.y // self.nodeDiameter
-        self.grid = []
+        self.matrix = []
         self.enableLines = enableLines
         self.lineWidth = 1
         self.lineColor = (0,0,0)
@@ -35,13 +41,27 @@ class Grid(GameObject):
             nodeSurface = pygame.Surface((self.nodeDiameter, self.nodeDiameter), pygame.SRCALPHA, 32).convert_alpha()
 
         for y in range(self.sizeY):
-            self.grid.append([])
+            self.matrix.append([])
             for x in range(self.sizeX):
-                self.grid[y].insert(x, Node(x, y, surface=nodeSurface, item=item))
+                self.matrix[y].insert(x, Node(x, y, surface=nodeSurface, item=item))
 
         self.nodeSurfaceMouse = pygame.Surface(
             (self.nodeDiameter, self.nodeDiameter))
         self.nodeSurfaceMouse.fill((255, 0, 0))
+
+    def neighbors(self, node):
+        neighbors_list = []
+
+        if node.x + 1 < self.sizeX:
+            neighbors_list.append(self.matrix[node.y][node.x+1]) #vizinho da direita
+        if node.x - 1 >= 0:
+            neighbors_list.append(self.matrix[node.y][node.x-1]) #vizinho da esquerda
+        if node.y + 1 < self.sizeY:
+            neighbors_list.append(self.matrix[node.y+1][node.x]) #vizinho de cima
+        if node.y - 1 >= 0:
+            neighbors_list.append(self.matrix[node.y-1][node.x]) #vizinho de baixo
+        
+        return neighbors_list
 
     def getPositionFromPoint(self, v2_point):
         pointX = (v2_point.x - self.v2_pos.x) // self.nodeDiameter
@@ -49,10 +69,10 @@ class Grid(GameObject):
         pointX = min(self.sizeX-1, max(0, pointX))
         pointY = min(self.sizeY-1, max(0, pointY))
 
-        return pointX, pointY
+        return int(pointX), int(pointY)
 
     def getNodeWithState(self, state):
-        for row in self.grid:
+        for row in self.matrix:
             for node in row:
                 if node.state == state:
                     return node
@@ -60,7 +80,7 @@ class Grid(GameObject):
 
     def getNodeFromPoint(self, v2_point):
         pointX, pointY = self.getPositionFromPoint(v2_point)
-        return self.grid[pointY][pointX]
+        return self.matrix[pointY][pointX]
 
     def getScreenPos(self, x, y):
         return self.v2_pos + Vector2(x * self.nodeDiameter, y * self.nodeDiameter)
@@ -70,6 +90,9 @@ class Grid(GameObject):
 
     def getNodeScreenPos(self, node):
         return self.getScreenPos(node.x, node.y)
+
+    def getNodeScreenPosCenter(self, node):
+        return self.getScreenPosCenter(node.x, node.y)
 
     def getScreenPosFromPoint(self, v2_point):
         x, y = self.getPositionFromPoint(v2_point)
@@ -89,7 +112,7 @@ class Grid(GameObject):
             pygame.draw.line(screen, self.lineColor, (self.v2_pos.x, self.v2_pos.y + y*self.nodeDiameter), (self.v2_pos.x+self.v2_size.x, self.v2_pos.y+y*self.nodeDiameter))
 
     def draw(self, screen):
-        for nodeList in self.grid:
+        for nodeList in self.matrix:
             for node in nodeList:
                 if node.surface != None:
                     screen.blit(node.surface, self.getNodeScreenPos(node))
@@ -158,8 +181,8 @@ class TilemapEditor():
         tileX = 0
         tileY = 0
         for tile in tiles:
-            grid_tiles.grid[tileY][tileX].surface = tile.surface
-            grid_tiles.grid[tileY][tileX].item = tile
+            grid_tiles.matrix[tileY][tileX].surface = tile.surface
+            grid_tiles.matrix[tileY][tileX].item = tile
 
             if tileX % (TILES_GRID_W // TILE_LENGHT) == (TILES_GRID_W // TILE_LENGHT)-1:
                 tileY += 1

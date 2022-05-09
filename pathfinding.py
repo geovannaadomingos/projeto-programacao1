@@ -30,7 +30,7 @@ class Grid():
         for row in range(self.qtd_cube_height):
             for column in range(self.qtd_cube_length):
                 cube = self.matrix[row][column]
-                img.fill(cube.color)
+                img.fill(cube.state)
                 screen.blit(img, (cube.x * self.cube_size, cube.y * self.cube_size))
         
         self.draw_grid(screen, 2)
@@ -65,19 +65,19 @@ class Grid():
     def find_cube_color(self, color):
         for row in self.matrix:
             for cube in row:
-                if cube.color == color:
+                if cube.state == color:
                     return cube
         return None
 
 class Cube():
     
-    def __init__(self, x, y, color):
-        self.color = color
+    def __init__(self, x, y, state):
+        self.state = state
         self.x = x
         self.y = y
         self.g = 0
         self.h = 0
-        self.parente = None
+        self.parent = None
     
     #g = distancia do cubo até o cubo_inicial(partida)
     #h = distancia do cubo até o cubo_final(destino)
@@ -100,7 +100,7 @@ class Pathfinding():
         
         while current_cube != None: #current_cube = None seria o cube_start (já que não tem pai/parente)
             path.append(current_cube)
-            current_cube = current_cube.parente
+            current_cube = current_cube.parent
         
         return path[::-1] #inverte o caminho; cubo_final, ...., cubo_inicial
 
@@ -116,7 +116,7 @@ class Pathfinding():
             for cube in row:
                 cube.h = 0
                 cube.g = 0
-                cube.parente = None
+                cube.parent = None
         
         while len(list_open_cubes) > 0:
             current_cube = list_open_cubes[0]
@@ -132,14 +132,14 @@ class Pathfinding():
                 return Pathfinding.retrace_path(cube_start, cube_end)
             
             for neighborCube in grid.neighbors(current_cube):
-                if neighborCube.color == BLACK or neighborCube in list_closed_cubes:
+                if neighborCube.state == BLACK or neighborCube in list_closed_cubes:
                     continue
                 
                 movement_cost = current_cube.g + Pathfinding.find_distance(current_cube, neighborCube) #se for diagonal, mas quando n for sempre vai ser 10
                 if movement_cost < neighborCube.g or neighborCube not in list_open_cubes:
                     neighborCube.g = movement_cost
                     neighborCube.h = Pathfinding.find_distance(neighborCube, cube_end)
-                    neighborCube.parente = current_cube
+                    neighborCube.parent = current_cube
                     
                     if neighborCube not in list_open_cubes:
                         list_open_cubes.append(neighborCube)
@@ -170,13 +170,13 @@ if __name__ == "__main__":
         mouse_pos = pygame.mouse.get_pos()
         if pygame.mouse.get_pressed()[2]: #click direito = obstaculos
             mouse_cube =  grade.get_screen_cube_pos(mouse_pos) #cubo sob o mouse
-            mouse_cube.color = BLACK
+            mouse_cube.state = BLACK
         elif pygame.mouse.get_pressed()[0]: #click esquerdo = ponto inicial; dois clicks esquerdo = ponto final
             mouse_cube = grade.get_screen_cube_pos(mouse_pos)
-            if mouse_cube.color == TURQUOISE:
-                mouse_cube.color = YELLOW
+            if mouse_cube.state == TURQUOISE:
+                mouse_cube.state = YELLOW
             else:
-                mouse_cube.color = TURQUOISE
+                mouse_cube.state = TURQUOISE
 
         for event in events:
             if event.type == KEYDOWN:
@@ -186,7 +186,7 @@ if __name__ == "__main__":
                     path = Pathfinding.get_path(cube_start, cube_end, grade) #lista de cubinhos
 
                     for cube in path:
-                        cube.color = BLUE
+                        cube.state = BLUE
 
         grade.draw(screen)
         pygame.display.update()

@@ -1,6 +1,9 @@
+from math import gamma
 import pygame
 import datamanager
+import gamemanager
 from gameobject import GameObject
+from pathfinding import Pathfinding
 from vector2 import Vector2
 
 
@@ -24,6 +27,9 @@ class Farmer(GameObject):
 
         self.surface = pygame.Surface(self.v2_collideBox)
         self.surface.fill((0,0,0))
+
+        self.targetPath = []
+        self.targetPathIndex = 0
         
     def loop(self):
         self.move()
@@ -34,14 +40,19 @@ class Farmer(GameObject):
 
     def move(self):
         if self.v2_targetPos != None:
-            self.v2_direction = (self.v2_targetPos - self.getCenterPos())
+            self.v2_direction = (self.targetPath[self.targetPathIndex] - self.getCenterPos())
             if self.v2_direction.magnitude() > self.speed:
                 self.v2_pos += self.v2_direction.normalize() * self.speed
             else:
-                self.arrived()
+                if self.targetPath[self.targetPathIndex] == self.v2_targetPos:
+                    self.arrived()
+                else:
+                    self.targetPathIndex += 1
+                    self.move()
 
     def arrived(self):
         self.changeState("idle")
+        self.v2_targetPos = None
         if self.arriveEvent != None:
             temp_event = self.arriveEvent
             self.arriveEvent = None
@@ -69,9 +80,19 @@ class Farmer(GameObject):
 
     def moveTo(self, v2_targetPos, eventHandler=None):
         if v2_targetPos != None:
-            self.changeState("walking")
-            self.v2_targetPos = v2_targetPos
-            self.arriveEvent = eventHandler
+            nodeFarmer = gamemanager.GameManager.grid.getNodeFromPoint(gamemanager.GameManager.farmer.getCenterPos())
+            nodeDestino = gamemanager.GameManager.grid.getNodeFromPoint(v2_targetPos)
+            path = Pathfinding.get_path(nodeFarmer, nodeDestino, gamemanager.GameManager.grid)
+            caminho = []
+            if len(path) > 0:
+                for node in path:
+                    caminho.append(gamemanager.GameManager.grid.getNodeScreenPosCenter(node))
+
+                self.v2_targetPos = caminho[-1]
+                self.arriveEvent = eventHandler
+                self.targetPath = caminho
+                self.targetPathIndex = 0
+                self.changeState("walking")
         else:
             self.v2_targetPos = None
             self.arriveEvent = None

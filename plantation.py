@@ -10,7 +10,6 @@ class Plantation(GameObject):
         self.amountOfWater = 1 #porcentagem_agua abaixo de 50% a terra já pede
         self.evolucao = 0
         self.seed = None
-
         self.tempo_plantado = 0
         self.tempo_terreno = 0
 

@@ -2,8 +2,11 @@ import pygame
 from Events import Events
 from farmer import Farmer
 from gameobject import GameObject
+from item import Item
 from mouse import Mouse
 import time
+
+from report import Report
 
 class GameManager():
     time = 0
@@ -18,9 +21,6 @@ class GameManager():
         GameManager.deltaTime = GameManager.time - GameManager.lastTime
 
     def handleClick(gameObject):
-        if GameObject in type(gameObject).mro():
-            if gameObject.clickable == False:
-                return
         # pega a posição do mouse
         v2_mousePos = Mouse.getMousePos()
 
@@ -50,3 +50,10 @@ class GameManager():
 
         for go in GameObject.all_objects:
             go.loop()
+
+        for item in Item.all_itens:
+            if item.isCollide(GameManager.farmer):
+                # Coletar item
+                Item.all_itens.remove(item)
+                GameObject.all_objects.remove(item)
+                Report.harvestReport(item.name)

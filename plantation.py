@@ -1,5 +1,6 @@
 from gamemanager import GameManager
 from gameobject import GameObject
+from item import PlantItem
 from mouse import Mouse
 from vector2 import Vector2
 
@@ -59,10 +60,8 @@ class Plantation(GameObject):
             return 0
 
     def brotar(self):
-        print('planta madura')
-        print(f"{self.seed.name} brotou")
+        PlantItem(self.v2_pos, "Cenoura")
         self.seed = None
-        pass
     
     def loop(self):
         if self.seed != None:

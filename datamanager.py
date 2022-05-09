@@ -42,6 +42,7 @@ class DataManager():
     def loadPlantasData():
         DataManager.PLANTAS = json.load(open("data\plants.json"))
         for index, planta in enumerate(DataManager.PLANTAS.keys()):
+            DataManager.PLANTAS[planta]["item-sprite"] = DataManager.getImageFromSpriteSheet(DataManager.itens_sheet, frameX=1, frameY=index+2)
             DataManager.PLANTAS[planta]["semente-sprite"] = DataManager.getImageFromSpriteSheet(DataManager.itens_sheet, frameX=0, frameY=index+2)
             DataManager.PLANTAS[planta]["planta-sprites"] = []
             for x in range(4):

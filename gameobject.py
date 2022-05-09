@@ -1,13 +1,16 @@
+from vector2 import Vector2
 import gamemanager
 
 
 class GameObject():
     all_objects = []
 
-    def __init__(self, v2_spawnPos, v2_size, clickable=False):
-        self.v2_pos = v2_spawnPos
-        self.v2_size = v2_size * gamemanager.GameManager.scale
+    def __init__(self, v2_pos, v2_size, clickable=False):
+        self.v2_pos = v2_pos
+        self.v2_size = v2_size
         self.clickable = clickable
+        self.v2_collideOffset = Vector2(0,0)
+        self.v2_collideBox = self.v2_size
 
         GameObject.all_objects.append(self)
     
@@ -19,6 +22,12 @@ class GameObject():
 
     def getCenterPos(self):
         return self.v2_pos + (self.v2_size/2.0)
+
+    def isCollide(self, gameObject):
+        if (self.v2_pos.x + self.v2_collideOffset.x) <= (gameObject.v2_pos.x + gameObject.v2_collideOffset.x) <= (self.v2_pos.x + self.v2_collideOffset.x) + self.v2_collideBox.x or (gameObject.v2_pos.x + gameObject.v2_collideOffset.x) <= (self.v2_pos.x + self.v2_collideOffset.x) <= (gameObject.v2_pos.x + gameObject.v2_collideOffset.x) + gameObject.v2_collideBox.x:
+            if (self.v2_pos.y + self.v2_collideOffset.y) <= (gameObject.v2_pos.y + gameObject.v2_collideOffset.y) <= (self.v2_pos.y + self.v2_collideOffset.y) + self.v2_collideBox.y or (gameObject.v2_pos.y + gameObject.v2_collideOffset.y) <= (self.v2_pos.y + self.v2_collideOffset.y) <= (gameObject.v2_pos.y + gameObject.v2_collideOffset.y) + gameObject.v2_collideBox.y:
+                return True
+        return False
 
     def draw(self, screen):
         pass

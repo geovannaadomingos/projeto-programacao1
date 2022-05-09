@@ -15,8 +15,8 @@ class GameObject():
         GameObject.all_objects.append(self)
     
     def isPointInside(self, v2_point):
-        if self.v2_pos.x <= v2_point.x <= self.v2_pos.x + self.v2_size.x:
-                if self.v2_pos.y <= v2_point.y <= self.v2_pos.y + self.v2_size.y:
+        if self.v2_pos.x <= v2_point.x < (self.v2_pos.x + self.v2_size.x):
+                if self.v2_pos.y <= v2_point.y < (self.v2_pos.y + self.v2_size.y):
                     return True
         return False
 

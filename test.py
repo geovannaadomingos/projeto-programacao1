@@ -1,3 +1,4 @@
+import json
 import pygame
 from Events import Events
 import datamanager
@@ -9,6 +10,8 @@ from mouse import Mouse
 from plantation import Plantation
 from report import Report
 from seeds import Seed
+from tilemap import Tilemap
+from tilemapEditor import Grid
 from vector2 import Vector2
 from waterWell import WaterWell
 
@@ -21,17 +24,24 @@ def main():
     clock = pygame.time.Clock()
 
     # Screen
-    SCREEN_W = 400
-    SCREEN_H = 400
+    SCREEN_W = 16 * 32 * GameManager.scale
+    SCREEN_H = 16 * 24 * GameManager.scale
     screen = pygame.display.set_mode((SCREEN_W, SCREEN_H))
-    datamanager.DataManager.load()
+    datamanager.DataManager.load(GameManager.scale)
+
+    tilemap = Tilemap()
+    dataJson = json.load(open("data\\levels\\level_test.json"))
+    tilemap.load(dataJson, scale=GameManager.scale)
 
     running = True
 
     # Cria lago
     waterWell = WaterWell(Vector2(100, 225), Vector2(50, 50))
     PlantItem(Vector2(100, 100), "Cenoura")
+    # WaterWell(Vector2(25, 325), Vector2(50, 50))
+    GameManager.grid = Grid(Vector2(0,0), Vector2(SCREEN_W, SCREEN_H), 16 * GameManager.scale)
     GameManager.farmer = Farmer(Vector2(25, 200), speed=1.5)
+    
 
     GameManager.updateTime()
     
@@ -45,6 +55,11 @@ def main():
         GameManager.loop()
 
         # desenha todos os objetos na tela
+        # if GameManager.grid != None:
+        #     GameManager.grid.draw(screen)
+
+        tilemap.draw(screen)
+
         for go in GameObject.all_objects:
             go.draw(screen)
 

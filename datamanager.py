@@ -17,10 +17,10 @@ class DataManager():
     itens_sheet = None
     player_sheet = None
 
-    def load():
+    def load(scale):
         DataManager.loadSheets()
-        DataManager.loadPlantasData()
-        DataManager.loadPlayerData()
+        DataManager.loadPlantasData(scale)
+        DataManager.loadPlayerData(scale)
 
     def loadSheets():
         DataManager.plant_sheet = pygame.image.load(
@@ -30,16 +30,16 @@ class DataManager():
         DataManager.player_sheet = pygame.image.load(
             PREMIUM_ASSETS_FOLDER_CHARACTERS+"\Premium Charakter Spritesheet.png")
 
-    def loadPlayerData():
+    def loadPlayerData(scale):
         ordem = ["idle_down", "idle_up", "idle_left", "idle_right", "walking_down", "walking_up", "walking_right", "walking_left", "running_down", "running_up", "running_right", "running_left", "enxada_down", "enxada_up", "enxada_left", "enxada_right", "machado_down", "machado_up", "machado_left", "machado_right", "regador_down", "regador_up", "regador_left", "regador_right"]
         for index, animation in enumerate(ordem):
             list_animations = []
             for x in range(8):
                 list_animations.append(DataManager.getImageFromSpriteSheet(
-                    DataManager.player_sheet, frameX=x, frameY=index, width=48, height=48))
+                    DataManager.player_sheet, frameX=x, frameY=index, width=48, height=48, scale=scale))
             DataManager.PLAYER_ANIMATIONS[animation] = list_animations
 
-    def loadPlantasData():
+    def loadPlantasData(scale):
         DataManager.PLANTAS = json.load(open("data\plants.json"))
         for index, planta in enumerate(DataManager.PLANTAS.keys()):
             DataManager.PLANTAS[planta]["item-sprite"] = DataManager.getImageFromSpriteSheet(DataManager.itens_sheet, frameX=1, frameY=index+2)
@@ -47,12 +47,12 @@ class DataManager():
             DataManager.PLANTAS[planta]["planta-sprites"] = []
             for x in range(4):
                 DataManager.PLANTAS[planta]["planta-sprites"].append(DataManager.getImageFromSpriteSheet(
-                    DataManager.plant_sheet, frameX=x, frameY=index+2))
+                    DataManager.plant_sheet, frameX=x, frameY=index+2, scale=scale))
 
-    def getImageFromSpriteSheet(sheet, frameX, frameY, width=16, height=16):
+    def getImageFromSpriteSheet(sheet, frameX, frameY, width=16, height=16, scale=1):
         image = pygame.Surface((width, height), pygame.SRCALPHA, 32).convert_alpha()
         image.blit(sheet, (0, 0), ((frameX * width),
                    frameY * height, width, height))
         # Scale
-        image = pygame.transform.scale(image, (width*GameManager.scale, height*GameManager.scale))
+        image = pygame.transform.scale(image, (width*scale, height*scale))
         return image

@@ -2,8 +2,13 @@ import pygame
 from Events import Events
 from farmer import Farmer
 from gameobject import GameObject
+from item import Item, PlantItem, SeedItem
 from mouse import Mouse
 import time
+
+from report import Report
+from tilemapEditor import Grid
+
 
 class GameManager():
     time = 0
@@ -11,6 +16,7 @@ class GameManager():
     deltaTime = 0
     scale = 2
     farmer = None
+    grid = None
 
     def updateTime():
         GameManager.lastTime = GameManager.time
@@ -18,22 +24,18 @@ class GameManager():
         GameManager.deltaTime = GameManager.time - GameManager.lastTime
 
     def handleClick(gameObject):
-        if GameObject in type(gameObject).mro():
-            if gameObject.clickable == False:
-                return
         # pega a posição do mouse
         v2_mousePos = Mouse.getMousePos()
 
-        mouse3 = Mouse.clicked(1) # False
-
-        for event in Events.events:
-            if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_j:  # J
-                    mouse3 = True
+        # if GameObject in type(gameObject).mro():
+        #     if gameObject.clickable == False:
+        #         return
 
         if GameManager.farmer != None:
             if Mouse.clicked(0):
-                GameManager.farmer.moveTo(v2_mousePos)
+                if GameManager.grid != None:
+                    GameManager.farmer.moveTo(
+                        GameManager.grid.getScreenPosFromPoint(v2_mousePos))
 
     def loop():
         GameManager.updateTime()
@@ -50,3 +52,16 @@ class GameManager():
 
         for go in GameObject.all_objects:
             go.loop()
+
+        for item in Item.all_itens:
+            if item.isCollide(GameManager.farmer):
+                if type(item) == PlantItem:
+                    # Coletar planta
+                    Item.all_itens.remove(item)
+                    GameObject.all_objects.remove(item)
+                    Report.harvestReport(item.name)
+
+                elif type(item) == SeedItem:
+                    # Adicionar no inventario do fazendeiro
+                    # fazendeiro referencia -> GameManager.farmer
+                    pass

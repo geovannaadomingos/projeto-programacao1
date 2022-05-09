@@ -1,6 +1,7 @@
 import json
 import pygame
 from Events import Events
+from NodeState import NodeState
 import datamanager
 from farmer import Farmer
 from gamemanager import GameManager
@@ -46,9 +47,9 @@ def main():
     for y, planta_nome in enumerate(datamanager.DataManager.PLANTAS):
         SeedItem(Vector2(100, y*16*1.5*GameManager.scale), planta_nome)
 
+    spawnPoint = tilemap.layers[-1].getNodeWithState(NodeState.FarmerSpawn)
     GameManager.grid = Grid(Vector2(0,0), Vector2(SCREEN_W, SCREEN_H), 16 * GameManager.scale, enableLines=False)
-    GameManager.farmer = Farmer(Vector2(25, 200), speed=1.5)
-    
+    GameManager.farmer = Farmer(tilemap.layers[-1].getNodeScreenPos(spawnPoint), speed=1.5)
 
     GameManager.updateTime()
     

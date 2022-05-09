@@ -2,6 +2,7 @@ import json
 import os
 import pygame
 from Events import Events
+from NodeState import NodeState
 import datamanager
 from gameobject import GameObject
 from mouse import Mouse
@@ -10,16 +11,16 @@ import pathlib
 import time
 
 class Node():
-    def __init__(self, x, y, blocked, surface, item=None):
+    def __init__(self, x, y, surface, state=NodeState.Normal, item=None):
         self.x = x
         self.y = y
-        self.blocked = blocked
+        self.state = state
         self.surface = surface
         self.item = item
 
 
 class Grid(GameObject):
-    def __init__(self, v2_pos, v2_size, nodeDiameter, nodeSurface=None, item=None, enableLines=False):
+    def __init__(self, v2_pos, v2_size, nodeDiameter, nodeSurface=None, item=None, enableLines=False, drawState=False):
         super().__init__(v2_pos, v2_size, False)
         self.nodeDiameter = nodeDiameter
         self.sizeX = v2_size.x // self.nodeDiameter
@@ -28,6 +29,7 @@ class Grid(GameObject):
         self.enableLines = enableLines
         self.lineWidth = 1
         self.lineColor = (0,0,0)
+        self.drawState = drawState
 
         if nodeSurface == None:
             nodeSurface = pygame.Surface((self.nodeDiameter, self.nodeDiameter), pygame.SRCALPHA, 32).convert_alpha()
@@ -35,7 +37,7 @@ class Grid(GameObject):
         for y in range(self.sizeY):
             self.grid.append([])
             for x in range(self.sizeX):
-                self.grid[y].insert(x, Node(x, y, False, nodeSurface, item))
+                self.grid[y].insert(x, Node(x, y, surface=nodeSurface, item=item))
 
         self.nodeSurfaceMouse = pygame.Surface(
             (self.nodeDiameter, self.nodeDiameter))
@@ -48,6 +50,13 @@ class Grid(GameObject):
         pointY = min(self.sizeY-1, max(0, pointY))
 
         return pointX, pointY
+
+    def getNodeWithState(self, state):
+        for row in self.grid:
+            for node in row:
+                if node.state == state:
+                    return node
+        return None
 
     def getNodeFromPoint(self, v2_point):
         pointX, pointY = self.getPositionFromPoint(v2_point)
@@ -84,6 +93,11 @@ class Grid(GameObject):
             for node in nodeList:
                 if node.surface != None:
                     screen.blit(node.surface, self.getNodeScreenPos(node))
+                if self.drawState:
+                    if node.state != NodeState.Normal:
+                        self.nodeSurfaceMouse.fill(node.state)
+                        self.nodeSurfaceMouse.set_alpha(50)
+                        screen.blit(self.nodeSurfaceMouse, self.getNodeScreenPos(node))
         self.drawLines(screen)
 
 
@@ -155,7 +169,7 @@ class TilemapEditor():
             tileX = (tileX) % (TILES_GRID_W // TILE_LENGHT)
 
         layers.append(Grid(Vector2(0, 0), Vector2(
-            GRID_W, GRID_H), TILE_LENGHT, tiles[-1].surface, tiles[-1], enableLines = True))
+            GRID_W, GRID_H), TILE_LENGHT, tiles[-1].surface, tiles[-1], enableLines = True, drawState=True))
 
         tileSelected = None
 
@@ -174,6 +188,7 @@ class TilemapEditor():
             descer_layer = False
             subir_layer = False
             salvar = False
+            block = False
 
             for event in Events.events:
                 if event.type == pygame.KEYDOWN:
@@ -187,10 +202,12 @@ class TilemapEditor():
                         descer_layer = True
                     elif event.key == pygame.K_s:
                         salvar = True
+                    elif event.key == pygame.K_b:
+                        block = True
                 elif event.type == pygame.KEYUP:
                     if event.key == 8:
                         apagar = False
-
+            
             if subir_layer or descer_layer:
                 next_layer_index = current_layer_index + (1 if subir_layer else -1)
                 next_layer_index = max(0, min(len(layers)-1, next_layer_index))
@@ -200,7 +217,7 @@ class TilemapEditor():
                 print(f"Layer atual >: {current_layer_index}")
             
             elif criar_layer:
-                newLayer = Grid(Vector2(0, 0), Vector2(GRID_W, GRID_H), TILE_LENGHT, enableLines = True)
+                newLayer = Grid(Vector2(0, 0), Vector2(GRID_W, GRID_H), TILE_LENGHT, enableLines = True, drawState=True)
                 layers.append(newLayer)
                 print(f"Nova Layer criada >: {len(layers)-1}")
             elif salvar:
@@ -224,7 +241,7 @@ class TilemapEditor():
                             node_dict = {}
                             node_dict["x"] = node.x
                             node_dict["y"] = node.y
-                            node_dict["blocked"] = node.blocked
+                            node_dict["state"] = node.state
                             if node.item != None:
                                 node_dict["tile"] = {}
                                 if node.item.filePath not in file_dict["tiles"]:
@@ -236,7 +253,7 @@ class TilemapEditor():
                 file.write(json.dumps(file_dict, indent=4))
                 file.close()
                 print(f"Tilemap({fileName}) salvo com sucesso")
-
+            
             if layers[current_layer_index].isPointInside(Mouse.getMousePos()):
                 if Mouse.clicked_default(0) and tileSelected != None:
                     node = layers[current_layer_index].getNodeFromPoint(Mouse.getMousePos())
@@ -246,6 +263,17 @@ class TilemapEditor():
                     node = layers[current_layer_index].getNodeFromPoint(Mouse.getMousePos())
                     node.item = None
                     node.surface = None
+                elif block:
+                    node = layers[current_layer_index].getNodeFromPoint(Mouse.getMousePos())
+                    if node.state == NodeState.Normal:
+                        node.state = NodeState.Obstacle
+                    elif node.state == NodeState.Obstacle:
+                        node.state = NodeState.FarmerSpawn
+                    elif node.state == NodeState.FarmerSpawn:
+                        node.state = NodeState.Normal
+                    else:
+                        node.state = NodeState.Normal
+                        
             elif grid_tiles.isPointInside(Mouse.getMousePos()):
                 if Mouse.clicked(0):
                     tileSelected = grid_tiles.getNodeFromPoint(Mouse.getMousePos()).item

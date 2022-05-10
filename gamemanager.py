@@ -59,14 +59,15 @@ class GameManager():
 
         for item in Item.all_itens:
             if item.isCollide(GameManager.farmer):
-                if type(item) == PlantItem:
-                    # Coletar planta
-                    Item.all_itens.remove(item)
-                    gameobject.GameObject.all_objects.remove(item)
-                    Report.harvestReport(item.name)
+                if GameManager.farmer.canAddToInventory():
+                    if type(item) == PlantItem:
+                        # Coletar planta
+                        Item.all_itens.remove(item)
+                        gameobject.GameObject.all_objects.remove(item)
+                        Report.harvestReport(item.name)
 
-                elif type(item) == SeedItem:
-                    # Reportar no relatorio ( talvez )
-                    GameManager.farmer.addToInventory(item)
-                    Item.all_itens.remove(item)
-                    gameobject.GameObject.all_objects.remove(item)
+                    elif type(item) == SeedItem:
+                        # Reportar no relatorio ( talvez )
+                        GameManager.farmer.addToInventory(item)
+                        Item.all_itens.remove(item)
+                        gameobject.GameObject.all_objects.remove(item)

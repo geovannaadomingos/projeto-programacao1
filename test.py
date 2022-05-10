@@ -40,14 +40,7 @@ def main():
 
     # Criar plantas coletaveis
     for y, planta_nome in enumerate(datamanager.DataManager.PLANTAS):
-        PlantItem(Vector2(200, y*16*1.5*GameManager.scale), planta_nome)
-    
-    # Criar sementes coletaveis
-    for y, planta_nome in enumerate(datamanager.DataManager.PLANTAS):
-        seedItem = SeedItem(Vector2(500, y*16*1.5*GameManager.scale), planta_nome)
-
-        platation = Plantation(Vector2(700, y*16*1.5*GameManager.scale))
-        platation.receiveSeed(seedItem)
+        SeedItem(Vector2(300+((y//5) * 16*GameManager.scale), 200+((y%5)*16*GameManager.scale)), planta_nome)
 
 
     spawnPoint = tilemap.layers[-1].getNodePosWithState(NodeState.FarmerSpawn)

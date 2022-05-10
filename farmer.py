@@ -60,7 +60,11 @@ class Farmer(GameObject):
 
 
     def getCurrentItem(self):
-        return self.inventory[self.selectedInventoryIndex]
+        try:
+            return self.inventory[self.selectedInventoryIndex]
+        except:
+            return None
+
 
     def handleClick(self, gameObject, v2_mousePos):
         if gamemanager.GameManager.grid != None:
@@ -167,6 +171,8 @@ class Farmer(GameObject):
 
     def arar(self):
         self.targetObject.receiveSeed(self.getCurrentItem())
+        self.inventory[self.selectedInventoryIndex] = None
+        self.len_itens_inventory -= 1
         self.changeState("idle")
 
     def canAddToInventory(self):

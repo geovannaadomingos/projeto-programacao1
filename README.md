@@ -22,6 +22,23 @@ Essas foram as principais tecnologias utilizadas no desenvolvimento do projeto:
 ------
 
 
+## `Conceitos vistos na disciplina e aplicados no projeto`
+
+Essas foram as principais tecnologias utilizadas no desenvolvimento do projeto:
+
+| Conceito | Local onde foi utilizado |
+| --- | --- | --- |
+| `Conceito` | Local onde foi utilizado. |
+| `Conceito` | Local onde foi utilizado. |
+| `Conceito` | Local onde foi utilizado. |
+| `Conceito` | Local onde foi utilizado. |
+| `Conceito` | Local onde foi utilizado. |
+| `Conceito` | Local onde foi utilizado. |
+
+
+------
+
+
 ## `Instruções para executar o arquivo e jogar`
 * Instale o Python a partir da versão 3.6, [seguindo a documentação oficial](https://docs.github.com/pt/repositories/creating-and-managing-repositories/cloning-a-repository) 
 * Instale o Pygame, [seguindo a documentação oficial](https://www.pygame.org/download.shtml)
@@ -78,9 +95,9 @@ O gerencimento de atividades foi feito utilizando a ferramenta [Trello](https://
 * Demetriu Gabriel: x, y, z.
 * Geovanna Domingos: x, y, z.
 * Giovanna Machado: x, y, z.
+* José Luiz: x, y, z.
 * Luana Brito: x, y, z.
 * Lucas Campos: x, y, z.
-* Luiz Silva: x, y, z.
 
 
 ------
@@ -90,7 +107,7 @@ O gerencimento de atividades foi feito utilizando a ferramenta [Trello](https://
 
 Esse é o time de alunos, da graduação em Sistemas de Informações, responsável pela idealização e desenvovlimento do projeto:
 
-| [<img src="https://avatars.githubusercontent.com/u/53124770?v=4" width=115><br><sub>Geovanna Domingos</sub>](https://github.com/geovannaadomingos) |  [<img src="https://avatars.githubusercontent.com/u/104396639?v=4" width=115><br><sub>Luana Brito</sub>](https://github.com/LuanaCCBrito) |  [<img src="https://avatars.githubusercontent.com/u/104479818?v=4" width=115><br><sub>Luiz Silva</sub>](https://github.com/jldsn) |
+| [<img src="https://avatars.githubusercontent.com/u/53124770?v=4" width=115><br><sub>Geovanna Domingos</sub>](https://github.com/geovannaadomingos) |  [<img src="https://avatars.githubusercontent.com/u/104396639?v=4" width=115><br><sub>Luana Brito</sub>](https://github.com/LuanaCCBrito) |  [<img src="https://avatars.githubusercontent.com/u/104479818?v=4" width=115><br><sub>José Luiz</sub>](https://github.com/jldsn) |
 | :---: | :---: | :---:
 | [<img src="https://avatars.githubusercontent.com/u/34292933?v=4" width=115><br><sub>Lucas Campos</sub>](https://github.com/lucasccampos) |  [<img src="https://avatars.githubusercontent.com/u/54682631?v=4" width=115><br><sub>Demetriu Gabriel</sub>](https://github.com/DemetriuGabriel) |  [<img src="https://avatars.githubusercontent.com/u/86128256?v=4" width=115><br><sub>Giovanna Machado</sub>](https://avatars.githubusercontent.com/u/86128256?v=4) |
 

@@ -89,9 +89,13 @@ class Grid(GameObject):
         return self.v2_pos + Vector2(x * self.nodeDiameter, y * self.nodeDiameter) + Vector2(self.nodeDiameter, self.nodeDiameter)/2
 
     def getNodeScreenPos(self, node):
+        if node == None:
+            node = self.matrix[self.sizeY//2][self.sizeX//2]
         return self.getScreenPos(node.x, node.y)
 
     def getNodeScreenPosCenter(self, node):
+        if node == None:
+            node = self.matrix[self.sizeY//2][self.sizeX//2]
         return self.getScreenPosCenter(node.x, node.y)
 
     def getScreenPosFromPoint(self, v2_point):
@@ -258,7 +262,7 @@ class TilemapEditor():
                     grid = {}
                     grid['grid'] = []
 
-                    for row in layer.grid:
+                    for row in layer.matrix:
                         tiles = []
                         for node in row:
                             node_dict = {}
@@ -293,7 +297,7 @@ class TilemapEditor():
                     elif node.state == NodeState.Obstacle:
                         node.state = NodeState.FarmerSpawn
                     elif node.state == NodeState.FarmerSpawn:
-                        node.state = NodeState.Normal
+                        node.state = NodeState.Plantable
                     else:
                         node.state = NodeState.Normal
                         
@@ -307,6 +311,14 @@ class TilemapEditor():
                 layer.draw(screen)
             
             grid_tiles.draw(screen)
+
+            for event in Events.events:
+                if event.type == pygame.KEYDOWN:
+                    if event.key == pygame.K_ESCAPE:  # ESC
+                        run = False
+                elif event.type == pygame.QUIT:
+                    run = False
+                    continue
 
             pygame.display.update()
 

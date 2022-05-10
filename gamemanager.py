@@ -1,4 +1,5 @@
 import pygame
+from Events import Events
 import gameobject
 from item import Item, PlantItem, SeedItem
 from mouse import Mouse
@@ -49,6 +50,11 @@ class GameManager():
 
         GameManager.handleClick(go_sob_mouse)
 
+        for event in Events.events:
+            if event.type == pygame.KEYUP:
+                if event.key == pygame.K_SPACE:
+                    GameManager.farmer.arrar()
+
         for go in gameobject.GameObject.all_objects:
             go.loop()
 
@@ -61,6 +67,7 @@ class GameManager():
                     Report.harvestReport(item.name)
 
                 elif type(item) == SeedItem:
-                    # Adicionar no inventario do fazendeiro
-                    # fazendeiro referencia -> GameManager.farmer
-                    pass
+                    # Reportar no relatorio ( talvez )
+                    GameManager.farmer.addToInventory(item)
+                    Item.all_itens.remove(item)
+                    gameobject.GameObject.all_objects.remove(item)

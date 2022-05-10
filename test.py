@@ -15,7 +15,7 @@ from tilemap import Tilemap
 from tilemapEditor import Grid
 from vector2 import Vector2
 from waterWell import WaterWell
-
+from soundEffects import Sounds
 
 def main():
     pygame.init()
@@ -59,6 +59,8 @@ def main():
     GameManager.updateTime()
     
     relatorio_hud = HudReport(SCREEN_W, SCREEN_H, GameManager.scale)
+    Sounds.backgroundMusic()
+
     while running:
         clock.tick(FPS)
         # Preenche o display com a cor preta (0, 0, 0)
@@ -87,7 +89,7 @@ def main():
                     print(Report.currentHarvest)
             elif event.type == pygame.QUIT:
                 running = False
-    
+                continue
 
         # Atualiza a tela do pygame
         pygame.display.update()

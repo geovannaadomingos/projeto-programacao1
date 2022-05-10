@@ -1,5 +1,6 @@
 from gamemanager import GameManager
 from gameobject import GameObject
+from item import PlantItem
 from mouse import Mouse
 from vector2 import Vector2
 
@@ -9,7 +10,6 @@ class Plantation(GameObject):
         self.amountOfWater = 1 #porcentagem_agua abaixo de 50% a terra já pede
         self.evolucao = 0
         self.seed = None
-
         self.tempo_plantado = 0
         self.tempo_terreno = 0
 
@@ -24,14 +24,15 @@ class Plantation(GameObject):
                 # desenha gotinha
                 pass
 
-            if 0 <= self.getEvolution() <= 0.25:
-                #fase 1 evolution
+            evolucao = self.getEvolution()
+
+            if evolucao <= 0.25:
                 screen.blit(self.seed.data['planta-sprites'][0], self.v2_pos)
-            elif 0.3 >= self.getEvolution() <= 0.5:
+            elif evolucao <= 0.5:
                 screen.blit(self.seed.data['planta-sprites'][1], self.v2_pos)
-            elif 0.51 >= self.getEvolution() <= 0.75:
+            elif evolucao <= 0.75:
                 screen.blit(self.seed.data['planta-sprites'][2], self.v2_pos)
-            elif 0.76 >= self.getEvolution() <= 1:
+            else:
                 screen.blit(self.seed.data['planta-sprites'][3], self.v2_pos)
             #elif self.getEvolution() == 1:
                 #screen.blit(self.seed.data['planta-sprites'][3], self.v2_pos)
@@ -59,10 +60,8 @@ class Plantation(GameObject):
             return 0
 
     def brotar(self):
-        print('planta madura')
-        print(f"{self.seed.name} brotou")
+        PlantItem(self.v2_pos, self.seed.name)
         self.seed = None
-        pass
     
     def loop(self):
         if self.seed != None:

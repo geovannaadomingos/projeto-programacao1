@@ -35,7 +35,7 @@ class Tilemap():
         gridHeight = len(data["layers"][0]["grid"])
 
         for layer in data["layers"]:
-            grid = Grid(Vector2(0, 0), Vector2(gridWidth, gridHeight) * 16 * scale, 16*scale, enableLines=True)
+            grid = Grid(Vector2(0, 0), Vector2(gridWidth, gridHeight) * 16 * scale, 16*scale, enableLines=False)
             for y, row in enumerate(layer["grid"]):
                 for x, tile in enumerate(row):
                     spritePath = tile.get("tile", None)

@@ -44,7 +44,7 @@ def main():
     
     # Criar sementes coletaveis
     for y, planta_nome in enumerate(datamanager.DataManager.PLANTAS):
-        seedItem = SeedItem(Vector2(100, y*16*1.5*GameManager.scale), planta_nome)
+        seedItem = SeedItem(Vector2(500, y*16*1.5*GameManager.scale), planta_nome)
 
         platation = Plantation(Vector2(700, y*16*1.5*GameManager.scale))
         platation.receiveSeed(seedItem)

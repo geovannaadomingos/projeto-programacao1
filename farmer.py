@@ -1,11 +1,14 @@
 from math import gamma
 import pygame
 import datamanager
+from Events import Events
 import gamemanager
 from gameobject import GameObject
+from item import SeedItem
 from pathfinding import Pathfinding
 from plantation import Plantation
 from vector2 import Vector2
+from wateringCan import WateringCan
 
 
 class Farmer(GameObject):
@@ -22,7 +25,10 @@ class Farmer(GameObject):
         self.frameCount = 0
         self.frameDuration = frameDuration
         self.state = "idle"
-        self.inventory = []
+
+        self.inventory = [None for x in range(9)]
+        self.len_itens_inventory = 0
+        self.selectedInventoryIndex = 0
 
         self.v2_collideBox = Vector2(16,16) * (self.v2_size.x//48)
         self.v2_collideOffset = self.v2_collideBox
@@ -46,20 +52,32 @@ class Farmer(GameObject):
             elif self.state == "regador":
                 self.regar()
 
+        for event in Events.events:
+            if event.type == pygame.KEYDOWN:
+                if event.key in range(49, 58):
+                    self.selectedInventoryIndex = (event.key - 49)
+                    print(f"({self.selectedInventoryIndex}) Item atual >: {type(self.getCurrentItem())}")
 
+
+    def getCurrentItem(self):
+        return self.inventory[self.selectedInventoryIndex]
 
     def handleClick(self, gameObject, v2_mousePos):
         if gamemanager.GameManager.grid != None:
             if type(gameObject) == Plantation:
-                # verificar se o item selecionado = enxada
-                # self.moveTo(v2_mousePos, gameObject, self.ararAnimation)
-                self.moveTo(v2_mousePos, gameObject, self.regarAnimation)
+                currentItem = self.getCurrentItem()
+                if type(currentItem) == SeedItem:
+                    print(type(currentItem))
+                    if gameObject.canReceiveSeed():
+                        self.moveTo(v2_mousePos, gameObject, self.ararAnimation)
+                elif type(currentItem) == WateringCan:
+                    self.moveTo(v2_mousePos, gameObject, self.regarAnimation)
             else:
                 self.moveTo(v2_mousePos)
 
     def move(self):
         try:
-            if self.v2_targetPos != None:
+            if self.state == "walking" and self.v2_targetPos != None:
                 self.v2_direction = (self.targetPath[self.targetPathIndex] - self.getCenterPos())
                 if self.v2_direction.magnitude() > self.speed:
                     self.v2_pos += self.v2_direction.normalize() * self.speed
@@ -75,7 +93,6 @@ class Farmer(GameObject):
 
     def arrived(self):
         self.changeState("idle")
-        self.v2_targetPos = None
         if self.arriveEvent != None:
             temp_event = self.arriveEvent
             self.arriveEvent = None
@@ -149,8 +166,16 @@ class Farmer(GameObject):
         self.changeState("idle")
 
     def arar(self):
+        self.targetObject.receiveSeed(self.getCurrentItem())
         self.changeState("idle")
+
+    def canAddToInventory(self):
+        return self.len_itens_inventory < 9
 
     def addToInventory(self, item):
         item.enabled = False
-        self.inventory.append(item)
+        for index in range(9):
+            if self.inventory[index] == None:
+                break
+        self.len_itens_inventory += 1
+        self.inventory[index] = item

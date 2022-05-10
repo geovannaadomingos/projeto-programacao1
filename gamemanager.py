@@ -46,9 +46,6 @@ class GameManager():
             # Verifica se o mouse está posicionado sobre o objeto
             if go.clickable and go.isPointInside(Mouse.getMousePos()):
                 go_sob_mouse = go
-
-        if go_sob_mouse != None:
-            print(type(go_sob_mouse))
         
         GameManager.handleClick(go_sob_mouse)
 

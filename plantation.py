@@ -40,6 +40,9 @@ class Plantation(GameObject):
             #elif self.getEvolution() == 1:
                 #screen.blit(self.seed.data['planta-sprites'][3], self.v2_pos)
     
+    def canReceiveSeed(self):
+        return self.seed == None
+
     def receiveSeed(self, seed): # receber semente
         self.seed = seed
         self.tempo_plantado = 0

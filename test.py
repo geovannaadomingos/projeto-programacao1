@@ -41,7 +41,7 @@ def main():
 
     # Criar plantas coletaveis
     for y, planta_nome in enumerate(datamanager.DataManager.PLANTAS):
-        PlantItem(Vector2(200, y*16*1.5*GameManager.scale), planta_nome)
+        PlantItem(Vector2(300, y*16*1.5*GameManager.scale), planta_nome)
     
     # Criar sementes coletaveis
     for y, planta_nome in enumerate(datamanager.DataManager.PLANTAS):
@@ -58,7 +58,7 @@ def main():
 
     GameManager.updateTime()
     
-    relatorio_hud = HudReport(SCREEN_W, SCREEN_H)
+    relatorio_hud = HudReport(SCREEN_W, SCREEN_H, GameManager.scale)
     while running:
         clock.tick(FPS)
         # Preenche o display com a cor preta (0, 0, 0)

@@ -71,7 +71,7 @@ Descrição dos arquivos:
 ------
 
 
-## `Autores do projeto`
+## `Divisão de tarefas`
 
 O gerencimento de atividades foi feito utilizando a ferramenta [Trello](https://trello.com/pt-BR). De maneira geral, a execução de atividades se deu da seguinte forma:
 

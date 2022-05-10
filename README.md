@@ -27,7 +27,7 @@ Essas foram as principais tecnologias utilizadas no desenvolvimento do projeto:
 Essas foram as principais tecnologias utilizadas no desenvolvimento do projeto:
 
 | Conceito | Local onde foi utilizado |
-| --- | --- | --- |
+| --- | --- |
 | `Conceito` | Local onde foi utilizado. |
 | `Conceito` | Local onde foi utilizado. |
 | `Conceito` | Local onde foi utilizado. |

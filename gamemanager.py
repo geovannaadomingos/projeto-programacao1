@@ -5,7 +5,7 @@ from item import Item, PlantItem, SeedItem
 from mouse import Mouse
 import time
 from pathfinding import Pathfinding
-
+from soundEffects import Sounds
 from report import Report
 from tilemapEditor import Grid
 
@@ -36,6 +36,7 @@ class GameManager():
             if Mouse.clicked(0):
                 if GameManager.grid != None:
                     GameManager.farmer.moveTo(v2_mousePos)
+                    
 
     def loop():
         GameManager.updateTime()
@@ -54,6 +55,7 @@ class GameManager():
             if event.type == pygame.KEYUP:
                 if event.key == pygame.K_SPACE:
                     GameManager.farmer.arrar()
+                    Sounds.playSFX('dig.wav')
 
         for go in gameobject.GameObject.all_objects:
             go.loop()
@@ -65,6 +67,7 @@ class GameManager():
                     Item.all_itens.remove(item)
                     gameobject.GameObject.all_objects.remove(item)
                     Report.harvestReport(item.name)
+                    Sounds.playSFX('collect.wav')
 
                 elif type(item) == SeedItem:
                     # Reportar no relatorio ( talvez )

@@ -5,7 +5,7 @@ import gamemanager
 from gameobject import GameObject
 from pathfinding import Pathfinding
 from vector2 import Vector2
-
+from soundEffects import Sounds
 
 class Farmer(GameObject):
 
@@ -29,6 +29,8 @@ class Farmer(GameObject):
         self.surface = pygame.Surface(self.v2_collideBox)
         self.surface.fill((0,0,0))
 
+        self.cronometerWalking = 0
+
         self.targetPath = []
         self.targetPathIndex = 0
         
@@ -38,6 +40,15 @@ class Farmer(GameObject):
         self.frameCount += 1
         if self.frameCount == self.frameDuration * 8:
             self.frameCount = 0
+        
+        if self.state == "walking":
+            self.cronometerWalking += gamemanager.GameManager.deltaTime
+            if self.cronometerWalking >= 1:
+                self.playStepSounds()
+
+    def playStepSounds(self):
+        Sounds.playSFX("step.wav")
+        self.cronometerWalking = 0
 
     def handleClick(self, v2_mousePos):
         pass
@@ -98,6 +109,7 @@ class Farmer(GameObject):
                 self.targetPath = caminho
                 self.targetPathIndex = 0
                 self.changeState("walking")
+                self.playStepSounds()
         else:
             self.v2_targetPos = None
             self.arriveEvent = None

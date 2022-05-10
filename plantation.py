@@ -5,6 +5,7 @@ from mouse import Mouse
 from vector2 import Vector2
 
 class Plantation(GameObject):
+    all_plantations = []
     def __init__(self, v2_pos):
         super().__init__(v2_pos, Vector2(16, 16), clickable=True)
         self.amountOfWater = 1 #porcentagem_agua abaixo de 50% a terra já pede
@@ -12,6 +13,7 @@ class Plantation(GameObject):
         self.seed = None
         self.tempo_plantado = 0
         self.tempo_terreno = 0
+        Plantation.all_plantations.append(self)
 
     def draw(self, screen):
         # terreno

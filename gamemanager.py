@@ -34,8 +34,7 @@ class GameManager():
 
         if GameManager.farmer != None:
             if Mouse.clicked(0):
-                if GameManager.grid != None:
-                    GameManager.farmer.moveTo(v2_mousePos)
+                GameManager.farmer.handleClick(gameObject, v2_mousePos)
 
     def loop():
         GameManager.updateTime()
@@ -45,15 +44,18 @@ class GameManager():
         # for em todos os objetos pra achar o ULTIMO objeto que está sob o mouse
         for go in gameobject.GameObject.all_objects:
             # Verifica se o mouse está posicionado sobre o objeto
-            if go.isPointInside(Mouse.getMousePos()):
+            if go.clickable and go.isPointInside(Mouse.getMousePos()):
                 go_sob_mouse = go
 
+        if go_sob_mouse != None:
+            print(type(go_sob_mouse))
+        
         GameManager.handleClick(go_sob_mouse)
 
         for event in Events.events:
             if event.type == pygame.KEYUP:
                 if event.key == pygame.K_SPACE:
-                    GameManager.farmer.arrar()
+                    GameManager.farmer.ararAnimation()
 
         for go in gameobject.GameObject.all_objects:
             go.loop()

@@ -6,6 +6,7 @@ import datamanager
 from farmer import Farmer
 from gamemanager import GameManager
 from gameobject import GameObject
+from inventary import Inventory
 from item import Item, PlantItem, SeedItem
 from mouse import Mouse
 from plantation import Plantation
@@ -56,12 +57,11 @@ def main():
 
 
     GameManager.updateTime()
-    
+    inventario = Inventory()
     while running:
         clock.tick(FPS)
         # Preenche o display com a cor preta (0, 0, 0)
         screen.fill((255, 255, 255))
-
         Events.loop()
         Mouse.loop()
         GameManager.loop()
@@ -74,6 +74,8 @@ def main():
 
         for go in GameObject.all_objects:
             go.draw(screen)
+
+        inventario.draw(screen)
 
         for event in Events.events:
             if event.type == pygame.KEYDOWN:

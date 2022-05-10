@@ -1,31 +1,26 @@
 import pygame
 from gamemanager import GameManager
-from item import Item
-
-class InventarySlot:
-    def __init__(self, name, v2_pos):
-        self.image = pygame.image.load(name)
-        self.rect = self.image.get_rect()
-        self.rect.topleft = v2_pos
-        self.count = 0
-
-        self.font = pygame.font.SysFont("arial", 20)
-
-    def draw(self, screen):
-        text = self.font.render(str(self.count), True, (0, 0, 0))
-        screen.blit(self.image, self.rect)
-        screen.blit(text, self.rect.midright)
 
 class Inventory:
+    #rect = (612, 768, 300, 300)
     def __init__(self):
-        self.slots = GameManager.farmer.inventory
-        self.rect = self.image.get_rect()
-        self.rect.topleft = (10, 360)
-
-        self.slots.append(InventarySlot(Item.surface, 25))
+        self.slots = []
+        
+        for i in range(9):
+            surface = pygame.Surface((55, 55), pygame.SRCALPHA, 32)
+            pygame.draw.rect(surface, (75, 54, 33),(0,0, 55, 55))
+            self.slots.append(surface)
 
     def draw(self, screen):
-        self.backgroundInventory = pygame.rect(screen, (255, 255, 255), (1024//2, 768, 45, 234), 0, 9)
-        screen.blit(self.backgroundInventory, self.rect)
+        x = 0
+        y = 0
+        inventory = GameManager.farmer.inventory
+
         for slot in self.slots:
-            slot.render(screen)
+            screen.blit(slot, (x, y))
+
+            if len(inventory) > 0:
+                #for num in range(inventory):
+                screen.blit(inventory[0].surface, (x, y))
+            
+            x += 60

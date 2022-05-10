@@ -52,7 +52,7 @@ def main():
 
     spawnPoint = tilemap.layers[-1].getNodeWithState(NodeState.FarmerSpawn)
     GameManager.grid = tilemap.layers[-1]
-    GameManager.farmer = Farmer(tilemap.layers[-1].getNodeScreenPos(spawnPoint), speed=1.5)
+    GameManager.farmer = Farmer(tilemap.layers[-1].getNodeScreenPos(spawnPoint), speed=1.5*GameManager.scale)
 
 
     GameManager.updateTime()

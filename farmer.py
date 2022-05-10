@@ -106,6 +106,10 @@ class Farmer(GameObject):
         if v2_targetPos != None:
             nodeFarmer = gamemanager.GameManager.grid.getNodeFromPoint(self.getCenterPos())
             nodeDestino = gamemanager.GameManager.grid.getNodeFromPoint(v2_targetPos)
+
+            if nodeFarmer == nodeDestino:
+                return
+
             path = Pathfinding.get_path(nodeFarmer, nodeDestino, gamemanager.GameManager.grid)
             caminho = []
             if len(path) > 0:
@@ -115,7 +119,10 @@ class Farmer(GameObject):
                 self.v2_targetPos = caminho[-1]
 
                 if gameObject != None:
-                    caminho = caminho[1:-1]
+                    if len(caminho) <= 2:
+                        caminho = [caminho[0]]
+                    else:
+                        caminho = caminho[1:-1]
                 else:
                     caminho = caminho[1:]
 

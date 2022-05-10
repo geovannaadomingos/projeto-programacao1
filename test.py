@@ -56,8 +56,7 @@ def main():
 
 
     GameManager.updateTime()
-    background_music = pygame.mixer.music.load('mixkit-zanarkand-forest-169.mp3')
-    pygame.mixer.music.play(-1)
+    Sounds.backgroundMusic()
 
     while running:
         clock.tick(FPS)
@@ -81,16 +80,11 @@ def main():
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_ESCAPE:  # ESC
                     running = False
-<<<<<<< HEAD
-                elif event.key == pygame.K_SPACE:
-                    Sounds.plantSmthSound()
-=======
                 elif event.key == pygame.K_r:
                     print(Report.currentHarvest)
             elif event.type == pygame.QUIT:
                 running = False
                 continue
->>>>>>> 269851a51ff8cf6f17f1f5603f2ba70f5f336ad9
 
         # Atualiza a tela do pygame
         pygame.display.update()

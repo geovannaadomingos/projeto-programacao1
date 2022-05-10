@@ -21,5 +21,5 @@ class Inventory:
             x += 60
 
         for index in range(len(inventory)):
-            screen.blit(inventory[index].surface, (250+(index*60),y))
-            
+            if inventory[index] != None:
+                screen.blit(inventory[index].surface, (250+(index*60),y))

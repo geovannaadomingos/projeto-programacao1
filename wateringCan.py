@@ -11,7 +11,9 @@ class WateringCan(Item):
         self.amountOfWater = 1
 
     def water(self, plantation):
-        amountWaterNeeded = 1 - plantation.water
+        amountWaterNeeded = 1 - plantation.amountOfWater
+        print(f"Aquando >: {amountWaterNeeded}")
+        print(f"Agua do regador >: {self.amountOfWater}")
         if self.amountOfWater >= amountWaterNeeded:
             plantation.receiveWater(amountWaterNeeded)
             self.amountOfWater -= amountWaterNeeded

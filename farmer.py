@@ -39,6 +39,8 @@ class Farmer(GameObject):
         self.targetObject = None
         self.targetPath = []
         self.targetPathIndex = 0
+
+        self.addToInventory(WateringCan())
         
     def loop(self):
         self.move()
@@ -74,7 +76,10 @@ class Farmer(GameObject):
                     if gameObject.canReceiveSeed():
                         self.moveTo(v2_mousePos, gameObject, self.ararAnimation)
                 elif type(currentItem) == WateringCan:
-                    self.moveTo(v2_mousePos, gameObject, self.regarAnimation)
+                    if gameObject.seed != None:
+                        self.moveTo(v2_mousePos, gameObject, self.regarAnimation)
+                    else:
+                        self.moveTo(v2_mousePos)
                 elif currentItem == None:
                     if gameObject.canReceiveSeed():
                         self.moveTo(v2_mousePos)
@@ -170,6 +175,7 @@ class Farmer(GameObject):
             self.v2_direction = (self.v2_targetPos - self.getCenterPos())
     
     def regar(self):
+        self.getCurrentItem().water(self.targetObject)
         self.changeState("idle")
 
     def arar(self):

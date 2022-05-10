@@ -11,9 +11,9 @@ Nesse repositório, é possível encontrar os códigos desenvolvidos ao decorrer
 ## `Tecnologias utilizadas`
 | Ferramenta | Descrição | Justificativa para o uso |
 | --- | --- | --- |
-| `Python` | Descrição | Justificativa |
-| `Pygame` | Descrição | Justificativa |
-| `Git` | Descrição | Justificativa |
+| `Python` | Linguagem de programação | Justificativa |
+| `Pygame` | Biblioteca de jogos baseada em Python | Justificativa |
+| `Git` | Software de controle de versões | Justificativa |
 
 
 ------

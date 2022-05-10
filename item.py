@@ -10,6 +10,8 @@ class Item(GameObject):
     def __init__(self, v2_spawnPos, v2_size, name):
         super().__init__(v2_spawnPos, v2_size, False)
         self.name = name
+        self.enabled = True
+        self.surface = None
         Item.all_itens.append(self)
 
 class PlantItem(Item):
@@ -28,4 +30,6 @@ class SeedItem(Item):
         self.tempo_colher = self.data["time_to_grow_sec"]
 
     def draw(self, screen):
+        if not self.enabled:
+            return
         screen.blit(self.surface, self.v2_pos)

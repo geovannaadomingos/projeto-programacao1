@@ -140,7 +140,6 @@ class Farmer(GameObject):
         # screen.blit(self.surface, self.v2_pos + self.v2_collideOffset)
 
     def changeState(self, newState):
-        print(newState)
         if(self.state != newState):
             self.frameCount = 0
         self.state = newState

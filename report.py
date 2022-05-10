@@ -1,7 +1,7 @@
 import json
 
 class Report():
-    level = 1
+    level = 0
     levels = json.load(open("data\\levels.json"))
     usedSeeds = 0
     usedWateringCan = 0
@@ -24,6 +24,9 @@ class Report():
     def harvestReport(plantName):
         # relata plantas colhidas(coletadas)
         Report.currentHarvest[plantName] += 1
+
+        if Report.checkGoal():
+            print("Ganhei o level")
 
     def usedSeedsReport():
         # relata sementes utilizadas(coletadas)

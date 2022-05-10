@@ -12,15 +12,14 @@ class Inventory:
             self.slots.append(surface)
 
     def draw(self, screen):
-        x = 0
-        y = 0
+        x = 250
+        y = 670
         inventory = GameManager.farmer.inventory
 
         for slot in self.slots:
             screen.blit(slot, (x, y))
-
-            if len(inventory) > 0:
-                #for num in range(inventory):
-                screen.blit(inventory[0].surface, (x, y))
-            
             x += 60
+
+        for index in range(len(inventory)):
+            screen.blit(inventory[index].surface, (250+(index*60),y))
+            

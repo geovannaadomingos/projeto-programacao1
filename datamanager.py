@@ -23,6 +23,7 @@ class DataManager():
         DataManager.loadPlantasData(scale)
         DataManager.loadPlayerData(scale)
         DataManager.loadObjects(scale)
+        DataManager.loadItems(scale)
 
     def loadSheets():
         DataManager.plant_sheet = pygame.image.load(
@@ -40,6 +41,9 @@ class DataManager():
                 list_animations.append(DataManager.getImageFromSpriteSheet(
                     DataManager.player_sheet, frameX=x, frameY=index, width=48, height=48, scale=scale))
             DataManager.PLAYER_ANIMATIONS[animation] = list_animations
+
+    def loadItems(scale):
+        DataManager.OBJECTS["wateringCan"] = DataManager.getImageFromSpriteSheet(DataManager.itens_sheet, frameX=2, frameY=1, scale=scale)
 
     def loadPlantasData(scale):
         DataManager.PLANTAS = json.load(open("data\plants.json"))

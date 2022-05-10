@@ -1,10 +1,13 @@
-from gameobject import GameObject
+from vector2 import Vector2
+from datamanager import DataManager
+from item import Item
 
+class WateringCan(Item):
 
-class WateringCan(GameObject):
-
-    def __init__(self, v2_spawnPos, v2_size):
-        super().__init__(v2_spawnPos, v2_size, clickable=True)
+    def __init__(self):
+        self.surface = DataManager.OBJECTS['wateringCan']
+        super().__init__(Vector2(0,0), Vector2.FromList(self.surface.get_size()), "WateringCan", surface=self.surface)
+        self.enabled = False
         self.amountOfWater = 1
 
     def water(self, plantation):

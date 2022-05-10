@@ -16,6 +16,7 @@ class Node():
         self.y = y
         self.state = state
         self.surface = surface
+        self.surfaceState = None
         self.item = item
         self.parent = None
         self.g = 0
@@ -47,8 +48,7 @@ class Grid(GameObject):
                 self.matrix[y].insert(x, Node(x, y, surface=nodeSurface, item=item))
 
         self.nodeSurfaceMouse = pygame.Surface(
-            (self.nodeDiameter, self.nodeDiameter))
-        self.nodeSurfaceMouse.fill((255, 0, 0))
+            (self.nodeDiameter, self.nodeDiameter), pygame.SRCALPHA, 32)
 
     def neighbors(self, node):
         neighbors_list = []
@@ -130,10 +130,8 @@ class Grid(GameObject):
                 if node.surface != None:
                     screen.blit(node.surface, self.getNodeScreenPos(node))
                 if self.drawState:
-                    if node.state != NodeState.Normal:
-                        self.nodeSurfaceMouse.fill(node.state)
-                        self.nodeSurfaceMouse.set_alpha(50)
-                        screen.blit(self.nodeSurfaceMouse, self.getNodeScreenPos(node))
+                    if node.surfaceState != None:
+                        screen.blit(node.surfaceState, self.getNodeScreenPos(node))
         self.drawLines(screen)
 
 
@@ -301,14 +299,15 @@ class TilemapEditor():
                     node.surface = None
                 elif block:
                     node = layers[current_layer_index].getNodeFromPoint(Mouse.getMousePos())
-                    if node.state == NodeState.Normal:
-                        node.state = NodeState.Obstacle
-                    elif node.state == NodeState.Obstacle:
-                        node.state = NodeState.FarmerSpawn
-                    elif node.state == NodeState.FarmerSpawn:
-                        node.state = NodeState.Plantable
+                    node.state = NodeState.AllStates[node.state]
+
+                    if node.state != NodeState.Normal:
+                        surface = pygame.Surface(node.surface.get_size())
+                        surface.fill(node.state)
+                        surface.set_alpha(75)
+                        node.surfaceState = surface
                     else:
-                        node.state = NodeState.Normal
+                        node.surfaceState = None
                         
             elif grid_tiles.isPointInside(Mouse.getMousePos()):
                 if Mouse.clicked(0):

@@ -1,20 +1,25 @@
 import pygame
+from Events import Events
 from NodeState import NodeState
 
 import datamanager
+from gameobject import GameObject
 from plantation import Plantation
 from tilemapEditor import Grid
 from vector2 import Vector2
 import json
 
+from waterWell import WaterWell
+
 
 class Tilemap():
-    def __init__(self):
+    def __init__(self, drawLines=False):
         self.layers = []
         self.sheets = {}
         self.tiles = {}
         self.tiles[None] = None
         self.plantations = []
+        self.drawLines = drawLines
 
     def load(self, data, scale):
 
@@ -35,7 +40,8 @@ class Tilemap():
         gridHeight = len(data["layers"][0]["grid"])
 
         for layer in data["layers"]:
-            grid = Grid(Vector2(0, 0), Vector2(gridWidth, gridHeight) * 16 * scale, 16*scale, enableLines=False)
+            grid = Grid(Vector2(0, 0), Vector2(gridWidth, gridHeight)
+                        * 16 * scale, 16*scale, enableLines=self.drawLines)
             for y, row in enumerate(layer["grid"]):
                 for x, tile in enumerate(row):
                     spritePath = tile.get("tile", None)
@@ -47,7 +53,10 @@ class Tilemap():
                     grid.matrix[y][x].surface = self.tiles[spritePath]
 
                     if state == NodeState.Plantable:
-                        self.plantations.append(Plantation(grid.getScreenPos(x, y)))
+                        self.plantations.append(
+                            Plantation(grid.getScreenPos(x, y)))
+                    elif state == NodeState.WaterWell:
+                        WaterWell(grid.getScreenPos(x, y))
             self.layers.append(grid)
         print("loaded")
 
@@ -74,9 +83,11 @@ if __name__ == "__main__":
     FPS = 60
     clock = pygame.time.Clock()
 
-    tilemap = Tilemap()
+    tilemap = Tilemap(drawLines=True)
 
-    dataJson = json.load(open("data\\levels\\level_test.json"))
+    dataJson = json.load(open("data\\levels\\editor\\level_1652215111.json"))
+
+    datamanager.DataManager.load(2)
 
     tilemap.load(dataJson, scale=scale)
 
@@ -87,4 +98,16 @@ if __name__ == "__main__":
 
         tilemap.draw(screen)
 
+        for go in GameObject.all_objects:
+            go.draw(screen)
+
         pygame.display.update()
+
+        Events.loop()
+        for event in Events.events:
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_ESCAPE:  # ESC
+                    run = False
+            elif event.type == pygame.QUIT:
+                run = False
+                continue

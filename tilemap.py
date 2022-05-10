@@ -1,6 +1,8 @@
 import pygame
+from NodeState import NodeState
 
 import datamanager
+from plantation import Plantation
 from tilemapEditor import Grid
 from vector2 import Vector2
 import json
@@ -12,6 +14,7 @@ class Tilemap():
         self.sheets = {}
         self.tiles = {}
         self.tiles[None] = None
+        self.plantations = []
 
     def load(self, data, scale):
 
@@ -39,8 +42,12 @@ class Tilemap():
                     if spritePath != None:
                         spritePath = spritePath["path"]
 
-                    grid.matrix[y][x].state = tuple(tile.get("state"))
+                    state = tuple(tile.get("state"))
+                    grid.matrix[y][x].state = state
                     grid.matrix[y][x].surface = self.tiles[spritePath]
+
+                    if state == NodeState.Plantable:
+                        self.plantations.append(Plantation(grid.getScreenPos(x, y)))
             self.layers.append(grid)
         print("loaded")
 

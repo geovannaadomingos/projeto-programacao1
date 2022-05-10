@@ -36,6 +36,7 @@ class Grid(GameObject):
         self.lineWidth = 1
         self.lineColor = (0,0,0)
         self.drawState = drawState
+        GameObject.all_objects.remove(self)
 
         if nodeSurface == None:
             nodeSurface = pygame.Surface((self.nodeDiameter, self.nodeDiameter), pygame.SRCALPHA, 32).convert_alpha()
@@ -77,6 +78,14 @@ class Grid(GameObject):
                 if node.state == state:
                     return node
         return None
+
+    def getNodePosWithState(self, state):
+        node = self.getNodeWithState(state)
+        return self.getNodeScreenPos(node)
+
+    def getNodeCenterPosWithState(self, state):
+        node = self.getNodeWithState(state)
+        return self.getNodeScreenPosCenter(node)
 
     def getNodeFromPoint(self, v2_point):
         pointX, pointY = self.getPositionFromPoint(v2_point)

@@ -1,3 +1,4 @@
+from pygame import Surface
 from gamemanager import GameManager
 from gameobject import GameObject
 from item import PlantItem
@@ -5,20 +6,22 @@ from mouse import Mouse
 from vector2 import Vector2
 
 class Plantation(GameObject):
+    all_plantations = []
     def __init__(self, v2_pos):
-        super().__init__(v2_pos, Vector2(16, 16), clickable=True)
+        super().__init__(v2_pos, Vector2(16, 16) * GameManager.scale, clickable=True)
         self.amountOfWater = 1 #porcentagem_agua abaixo de 50% a terra já pede
         self.evolucao = 0
         self.seed = None
         self.tempo_plantado = 0
         self.tempo_terreno = 0
+        Plantation.all_plantations.append(self)
+        self.surface = Surface(self.v2_size)
+        self.surface.fill((0,0,0))
+
 
     def draw(self, screen):
-        # terreno
-        # screen.blit()
-        # planta
+        # screen.blit(self.surface, self.v2_pos)
         if self.seed != None:
-            #screen.blit(self.seed.data["planta-sprites"][3], self.v2_pos)
 
             if self.needWater():
                 # desenha gotinha
@@ -37,6 +40,9 @@ class Plantation(GameObject):
             #elif self.getEvolution() == 1:
                 #screen.blit(self.seed.data['planta-sprites'][3], self.v2_pos)
     
+    def canReceiveSeed(self):
+        return self.seed == None
+
     def receiveSeed(self, seed): # receber semente
         self.seed = seed
         self.tempo_plantado = 0

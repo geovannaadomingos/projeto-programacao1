@@ -7,6 +7,7 @@ from farmer import Farmer
 from gamemanager import GameManager
 from gameobject import GameObject
 from inventary import Inventory
+from hud import HudReport
 from item import Item, PlantItem, SeedItem
 from mouse import Mouse
 from plantation import Plantation
@@ -15,7 +16,7 @@ from tilemap import Tilemap
 from tilemapEditor import Grid
 from vector2 import Vector2
 from waterWell import WaterWell
-
+from soundEffects import Sounds
 
 def main():
     pygame.init()
@@ -41,23 +42,20 @@ def main():
 
     # Criar plantas coletaveis
     for y, planta_nome in enumerate(datamanager.DataManager.PLANTAS):
-        PlantItem(Vector2(200, y*16*1.5*GameManager.scale), planta_nome)
-    
-    # Criar sementes coletaveis
-    for y, planta_nome in enumerate(datamanager.DataManager.PLANTAS):
-        seedItem = SeedItem(Vector2(100, y*16*1.5*GameManager.scale), planta_nome)
-
-        platation = Plantation(Vector2(700, y*16*1.5*GameManager.scale))
-        platation.receiveSeed(seedItem)
+        SeedItem(Vector2(300+((y//5) * 16*GameManager.scale), 200+((y%5)*16*GameManager.scale)), planta_nome)
 
 
-    spawnPoint = tilemap.layers[-1].getNodeWithState(NodeState.FarmerSpawn)
+    spawnPoint = tilemap.layers[-1].getNodePosWithState(NodeState.FarmerSpawn)
     GameManager.grid = tilemap.layers[-1]
-    GameManager.farmer = Farmer(tilemap.layers[-1].getNodeScreenPos(spawnPoint), speed=1.5)
+    GameManager.farmer = Farmer(spawnPoint, speed=1.5)
 
 
     GameManager.updateTime()
     inventario = Inventory()
+    
+    relatorio_hud = HudReport(SCREEN_W, SCREEN_H, GameManager.scale)
+    Sounds.backgroundMusic()
+
     while running:
         clock.tick(FPS)
         # Preenche o display com a cor preta (0, 0, 0)
@@ -76,6 +74,7 @@ def main():
             go.draw(screen)
 
         inventario.draw(screen)
+        relatorio_hud.draw(screen)
 
         for event in Events.events:
             if event.type == pygame.KEYDOWN:

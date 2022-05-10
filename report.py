@@ -25,7 +25,6 @@ class Report():
 
     def harvestReport(plantName):
         # relata plantas colhidas(coletadas)
-        print(f"Planta coletada >: {plantName}")
         Report.currentHarvest[plantName] += 1
 
     def usedSeedsReport():

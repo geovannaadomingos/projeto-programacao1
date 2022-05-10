@@ -30,8 +30,8 @@ class Farmer(GameObject):
         self.len_itens_inventory = 0
         self.selectedInventoryIndex = 0
 
-        self.v2_collideBox = Vector2(16,16) * (self.v2_size.x//48)
-        self.v2_collideOffset = self.v2_collideBox
+        self.v2_collideBox = Vector2(16,16) * (self.v2_size.x//48) * 0.5
+        self.v2_collideOffset = (self.getCenterPos() - (self.v2_collideBox/2)) - self.v2_pos
 
         self.surface = pygame.Surface(self.v2_collideBox)
         self.surface.fill((0,0,0))
@@ -71,11 +71,15 @@ class Farmer(GameObject):
             if type(gameObject) == Plantation:
                 currentItem = self.getCurrentItem()
                 if type(currentItem) == SeedItem:
-                    print(type(currentItem))
                     if gameObject.canReceiveSeed():
                         self.moveTo(v2_mousePos, gameObject, self.ararAnimation)
                 elif type(currentItem) == WateringCan:
                     self.moveTo(v2_mousePos, gameObject, self.regarAnimation)
+                elif currentItem == None:
+                    if gameObject.canReceiveSeed():
+                        self.moveTo(v2_mousePos)
+
+
             else:
                 self.moveTo(v2_mousePos)
 
@@ -103,8 +107,6 @@ class Farmer(GameObject):
             temp_event()
 
     def draw(self, screen):
-        # screen.blit(self.surface, self.v2_pos + self.v2_collideOffset)
-
         direction = ""
         if abs(self.v2_direction.x) > abs(self.v2_direction.y):
             if self.v2_direction.x < 0:
@@ -118,6 +120,7 @@ class Farmer(GameObject):
                 direction = "down"
 
         screen.blit(self.animations[self.state+"_"+direction][self.frameCount // self.frameDuration], self.v2_pos)
+        # screen.blit(self.surface, self.v2_pos + self.v2_collideOffset)
 
     def changeState(self, newState):
         self.state = newState

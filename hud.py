@@ -16,7 +16,7 @@ class HudReport():
         self.fonte = pygame.font.Font('assets\\Kenney Blocks.ttf', 11*self.scale)
         self.largura = largura
         self.altura = altura
-        self.tamanho_retangulo_largura = (self.largura * 0.07)
+        self.tamanho_retangulo_largura = (self.largura * 0.114)
         self.tamanho_retangulo_altura = (self.altura * 0.61)
     
     def draw(self, screen):
@@ -29,5 +29,9 @@ class HudReport():
         for planta in DataManager.PLANTAS:
             screen.blit(DataManager.PLANTAS[planta]['item-sprite'], (5*self.scale, 6+(count*18)*self.scale))
             texto = self.fonte.render(str(Report.currentHarvest[planta]), True, WHITE, None)
+            barrinha = self.fonte.render('/', True, WHITE, None)
+            meta = self.fonte.render(str(Report.getCurrentHarvestGoal()[planta]), True, WHITE, None)
             screen.blit(texto, (25*self.scale, 4+(count*18)*self.scale))
+            screen.blit(barrinha, (35*self.scale, 4+(count*18)*self.scale))
+            screen.blit(meta, (48*self.scale, 4+(count*18)*self.scale))
             count += 1

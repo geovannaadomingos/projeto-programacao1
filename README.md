@@ -28,12 +28,11 @@ Esses foram os principais conceitos vistos na disciplina de Programação 1 e ap
 
 | Conceito | Local onde foi utilizado |
 | --- | --- |
-| `Conceito` | Local onde foi utilizado. |
-| `Conceito` | Local onde foi utilizado. |
-| `Conceito` | Local onde foi utilizado. |
-| `Conceito` | Local onde foi utilizado. |
-| `Conceito` | Local onde foi utilizado. |
-| `Conceito` | Local onde foi utilizado. |
+| `Programação Orientada a Objetos` | Local onde foi utilizado. |
+| `Laços de Repetição` | Local onde foi utilizado. |
+| `Estruturas Condicionais` | Local onde foi utilizado. |
+| `Listas e Dicionários` | Local onde foi utilizado. |
+| `Funções e métodos` | Local onde foi utilizado. |
 
 
 ------

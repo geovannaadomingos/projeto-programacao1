@@ -1,6 +1,6 @@
 # Fazendinha CIn
 
-Fazendinha CIn é um projeto feito para aplicar os conceitos e conteúdos vistos durante a disciplina de Programação 1, do Centro de Informática(CIn) da Universidade Federal de Pernambuco(UFPE). 
+Fazendinha CIn é um projeto feito para aplicar os conceitos e conteúdos vistos durante a disciplina de Programação 1, do Centro de Informática([CIn](https://portal.cin.ufpe.br/)) da Universidade Federal de Pernambuco([UFPE](https://www.ufpe.br)). 
 
 Nesse repositório, é possível encontrar os códigos desenvolvidos ao decorrer do processo, e também informações relevantes sobre ele, como a organização dos arquivos, divisão de tarefas, tecnologias utilizadas, etc.   
 

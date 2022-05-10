@@ -13,6 +13,7 @@ class DataManager():
 
     PLANTAS = {}
     PLAYER_ANIMATIONS = {}
+    OBJECTS = {}
     plant_sheet = None
     itens_sheet = None
     player_sheet = None
@@ -21,6 +22,7 @@ class DataManager():
         DataManager.loadSheets()
         DataManager.loadPlantasData(scale)
         DataManager.loadPlayerData(scale)
+        DataManager.loadObjects(scale)
 
     def loadSheets():
         DataManager.plant_sheet = pygame.image.load(
@@ -49,10 +51,19 @@ class DataManager():
                 DataManager.PLANTAS[planta]["planta-sprites"].append(DataManager.getImageFromSpriteSheet(
                     DataManager.plant_sheet, frameX=x, frameY=index+2, scale=scale))
 
+    def loadObjects(scale):
+        DataManager.OBJECTS["waterWell"] = DataManager.scaleImage(pygame.image.load(PREMIUM_ASSETS_FOLDER_OBJECTS + '\Water well.png') ,scale)
+
     def getImageFromSpriteSheet(sheet, frameX, frameY, width=16, height=16, scale=1):
         image = pygame.Surface((width, height), pygame.SRCALPHA, 32).convert_alpha()
         image.blit(sheet, (0, 0), ((frameX * width),
                    frameY * height, width, height))
-        # Scale
-        image = pygame.transform.scale(image, (width*scale, height*scale))
-        return image
+        
+        return DataManager.scaleImage(image, scale)
+
+    def scaleImage(image, scale):
+        if scale == 1:
+            return image
+        else:
+            width,height = image.get_size()
+            return pygame.transform.scale(image, (width*scale, height*scale))

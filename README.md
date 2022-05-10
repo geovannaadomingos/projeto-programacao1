@@ -24,7 +24,7 @@ Essas foram as principais tecnologias utilizadas no desenvolvimento do projeto:
 
 ## `Conceitos vistos na disciplina e aplicados no projeto`
 
-Essas foram as principais tecnologias utilizadas no desenvolvimento do projeto:
+Esses foram os principais conceitos vistos na disciplina de Programação 1 e aplicados no projeto:
 
 | Conceito | Local onde foi utilizado |
 | --- | --- |

@@ -73,7 +73,7 @@ Descrição dos arquivos:
 
 ## `Autores do projeto`
 
-O gerencimento de atividades foi feito utilizando a ferramenta [Trello](https://trello.com/pt-BR). De maneira geral, a execução de atividades foi da seguinte forma:
+O gerencimento de atividades foi feito utilizando a ferramenta [Trello](https://trello.com/pt-BR). De maneira geral, a execução de atividades se deu da seguinte forma:
 
 * Demetriu Gabriel: x, y, z.
 * Geovanna Domingos: x, y, z.

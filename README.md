@@ -9,6 +9,9 @@ Nesse repositório, é possível encontrar os códigos desenvolvidos ao decorrer
 
 
 ## `Tecnologias utilizadas`
+
+Essas foram as principais tecnologias utilizadas no desenvolvimento do projeto:
+
 | Ferramenta | Descrição | Justificativa para o uso |
 | --- | --- | --- |
 | `Python` | Linguagem de programação | É uma linguagem legível, de fácil manutenção e que possibilita a reutilização de códigos. Além disso, roda em diferentes sistemas operacionais e possui diversas bibliotecas. |
@@ -75,3 +78,11 @@ Esse é o time de alunos, da graduação em Sistemas de Informações, responsá
 | [<img src="https://avatars.githubusercontent.com/u/53124770?v=4" width=115><br><sub>Geovanna Domingos</sub>](https://github.com/geovannaadomingos) |  [<img src="https://avatars.githubusercontent.com/u/104396639?v=4" width=115><br><sub>Luana Brito</sub>](https://github.com/LuanaCCBrito) |  [<img src="https://avatars.githubusercontent.com/u/104479818?v=4" width=115><br><sub>Luiz Silva</sub>](https://github.com/jldsn) |
 | :---: | :---: | :---:
 | [<img src="https://avatars.githubusercontent.com/u/34292933?v=4" width=115><br><sub>Lucas Campos</sub>](https://github.com/lucasccampos) |  [<img src="https://avatars.githubusercontent.com/u/54682631?v=4" width=115><br><sub>Demetriu Gabriel</sub>](https://github.com/DemetriuGabriel) |  [<img src="https://avatars.githubusercontent.com/u/86128256?v=4" width=115><br><sub>Giovanna Machado</sub>](https://avatars.githubusercontent.com/u/86128256?v=4) |
+
+
+------
+
+
+## `Licenças`
+
+Colocar aqui as linceças do projeto

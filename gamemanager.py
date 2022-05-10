@@ -61,6 +61,7 @@ class GameManager():
                     Report.harvestReport(item.name)
 
                 elif type(item) == SeedItem:
-                    # Adicionar no inventario do fazendeiro
-                    # fazendeiro referencia -> GameManager.farmer
-                    pass
+                    # Reportar no relatorio ( talvez )
+                    GameManager.farmer.addToInventory(item)
+                    Item.all_itens.remove(item)
+                    gameobject.GameObject.all_objects.remove(item)

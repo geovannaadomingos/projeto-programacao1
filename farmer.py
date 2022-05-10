@@ -97,3 +97,7 @@ class Farmer(GameObject):
         else:
             self.v2_targetPos = None
             self.arriveEvent = None
+
+    def addToInventory(self, item):
+        item.enabled = False
+        self.inventory.append(item)

@@ -258,7 +258,7 @@ class TilemapEditor():
                     grid = {}
                     grid['grid'] = []
 
-                    for row in layer.grid:
+                    for row in layer.matrix:
                         tiles = []
                         for node in row:
                             node_dict = {}
@@ -293,7 +293,7 @@ class TilemapEditor():
                     elif node.state == NodeState.Obstacle:
                         node.state = NodeState.FarmerSpawn
                     elif node.state == NodeState.FarmerSpawn:
-                        node.state = NodeState.Normal
+                        node.state = NodeState.Plantable
                     else:
                         node.state = NodeState.Normal
                         
@@ -307,6 +307,14 @@ class TilemapEditor():
                 layer.draw(screen)
             
             grid_tiles.draw(screen)
+
+            for event in Events.events:
+                if event.type == pygame.KEYDOWN:
+                    if event.key == pygame.K_ESCAPE:  # ESC
+                        run = False
+                elif event.type == pygame.QUIT:
+                    run = False
+                    continue
 
             pygame.display.update()
 

@@ -81,6 +81,9 @@ def main():
                     running = False
                 elif event.key == pygame.K_r:
                     print(Report.currentHarvest)
+            elif event.type == pygame.QUIT:
+                running = False
+                continue
 
         # Atualiza a tela do pygame
         pygame.display.update()

@@ -28,7 +28,7 @@ Esses foram os principais conceitos vistos na disciplina de Programação 1 e ap
 
 | Conceito | Local onde foi utilizado |
 | --- | --- |
-| `Programação Orientada a Objetos` | Local onde foi utilizado. |
+| `Programação Orientada a Objetos` | A maior parte dos arquivos do projeto possuem classes, as quais representam objetos e possibilitam a aplicação de hierarquias. Um exemplo é a classe GameObject, a qual representa um objeto gráfico genérico do jogo e que, por isso, outros objetos, como o regador e as sementes, derivam dela. |
 | `Laços de Repetição` | Local onde foi utilizado. |
 | `Estruturas Condicionais` | Local onde foi utilizado. |
 | `Listas e Dicionários` | Local onde foi utilizado. |

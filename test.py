@@ -9,7 +9,7 @@ from plantation import Plantation
 from seeds import Seed
 from vector2 import Vector2
 from waterWell import WaterWell
-
+from soundEffects import Sounds
 
 def main():
     pygame.init()
@@ -31,7 +31,9 @@ def main():
     GameManager.farmer = Farmer(Vector2(25, 200), speed=1.5)
 
     GameManager.updateTime()
-    
+    background_music = pygame.mixer.music.load('mixkit-zanarkand-forest-169.mp3')
+    pygame.mixer.music.play(-1)
+
     while running:
         clock.tick(FPS)
         # Preenche o display com a cor preta (0, 0, 0)
@@ -49,6 +51,8 @@ def main():
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_ESCAPE:  # ESC
                     running = False
+                elif event.key == pygame.K_SPACE:
+                    Sounds.plantSmthSound()
 
         # Atualiza a tela do pygame
         pygame.display.update()

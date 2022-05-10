@@ -89,9 +89,13 @@ class Grid(GameObject):
         return self.v2_pos + Vector2(x * self.nodeDiameter, y * self.nodeDiameter) + Vector2(self.nodeDiameter, self.nodeDiameter)/2
 
     def getNodeScreenPos(self, node):
+        if node == None:
+            node = self.matrix[self.sizeY//2][self.sizeX//2]
         return self.getScreenPos(node.x, node.y)
 
     def getNodeScreenPosCenter(self, node):
+        if node == None:
+            node = self.matrix[self.sizeY//2][self.sizeX//2]
         return self.getScreenPosCenter(node.x, node.y)
 
     def getScreenPosFromPoint(self, v2_point):

@@ -1,4 +1,5 @@
 import pygame
+from Events import Events
 import gameobject
 from item import Item, PlantItem, SeedItem
 from mouse import Mouse
@@ -48,6 +49,11 @@ class GameManager():
                 go_sob_mouse = go
 
         GameManager.handleClick(go_sob_mouse)
+
+        for event in Events.events:
+            if event.type == pygame.KEYUP:
+                if event.key == pygame.K_SPACE:
+                    GameManager.farmer.arrar()
 
         for go in gameobject.GameObject.all_objects:
             go.loop()

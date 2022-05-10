@@ -39,6 +39,9 @@ class Farmer(GameObject):
         if self.frameCount == self.frameDuration * 8:
             self.frameCount = 0
 
+    def handleClick(self, v2_mousePos):
+        pass
+
     def move(self):
         if self.v2_targetPos != None:
             self.v2_direction = (self.targetPath[self.targetPathIndex] - self.getCenterPos())
@@ -78,6 +81,7 @@ class Farmer(GameObject):
 
     def changeState(self, newState):
         self.state = newState
+        self.frameCount = 0
 
     def moveTo(self, v2_targetPos, eventHandler=None):
         if v2_targetPos != None:
@@ -97,6 +101,9 @@ class Farmer(GameObject):
         else:
             self.v2_targetPos = None
             self.arriveEvent = None
+
+    def arrar(self):
+        self.changeState("enxada")
 
     def addToInventory(self, item):
         item.enabled = False

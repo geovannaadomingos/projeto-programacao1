@@ -88,6 +88,18 @@ Descrição dos arquivos:
 ------
 
 
+## `Dificuldades enfrentadas`
+
+Ao decorrer da idealização e do desenvolvimento do projeto, algumas dificuldades foram enfrentadas, mas, a partir disso, algumas lições foram aprendidas, conforme os tópicos a seguir:
+
+* Maior erro enfrentado e como lidamos com ele:
+* Maior desafio enfrentado e como lidamos com ele:
+* Lições aprendidas durante o projeto:
+
+
+------
+
+
 ## `Divisão de tarefas`
 
 O gerencimento de atividades foi feito utilizando a ferramenta [Trello](https://trello.com/pt-BR). De maneira geral, a execução de atividades se deu da seguinte forma:

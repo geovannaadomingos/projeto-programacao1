@@ -8,6 +8,7 @@ from item import SeedItem
 from pathfinding import Pathfinding
 from plantation import Plantation
 from vector2 import Vector2
+from soundEffects import Sounds
 from wateringCan import WateringCan
 
 
@@ -36,6 +37,8 @@ class Farmer(GameObject):
         self.surface = pygame.Surface(self.v2_collideBox)
         self.surface.fill((0,0,0))
 
+        self.cronometerWalking = 0
+
         self.targetObject = None
         self.targetPath = []
         self.targetPathIndex = 0
@@ -48,11 +51,20 @@ class Farmer(GameObject):
         self.frameCount += 1
         if self.frameCount == self.frameDuration * 8:
             self.frameCount = 0
+        
+        if self.state == "walking":
+            self.cronometerWalking += gamemanager.GameManager.deltaTime
+            if self.cronometerWalking >= 1:
+                self.playStepSounds()
 
-            if self.state == "enxada":
-                self.arar()
-            elif self.state == "regador":
-                self.regar()
+    def playStepSounds(self):
+        Sounds.playSFX("step.wav")
+        self.cronometerWalking = 0
+
+        if self.state == "enxada":
+            self.arar()
+        elif self.state == "regador":
+            self.regar()
 
         for event in Events.events:
             if event.type == pygame.KEYDOWN:
@@ -160,6 +172,7 @@ class Farmer(GameObject):
                 self.targetPath = caminho
                 self.targetPathIndex = 0
                 self.changeState("walking")
+                self.playStepSounds()
         else:
             self.v2_targetPos = None
             self.arriveEvent = None
@@ -193,4 +206,4 @@ class Farmer(GameObject):
             if self.inventory[index] == None:
                 break
         self.len_itens_inventory += 1
-        self.inventory[index] = item
+        self.inventory[index] = item 

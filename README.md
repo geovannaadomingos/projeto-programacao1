@@ -11,9 +11,9 @@ Nesse repositório, é possível encontrar os códigos desenvolvidos ao decorrer
 ## `Tecnologias utilizadas`
 | Ferramenta | Descrição | Justificativa para o uso |
 | --- | --- | --- |
-| `Python` | Linguagem de programação | Justificativa |
-| `Pygame` | Biblioteca de jogos baseada em Python | Justificativa |
-| `Git` | Software de controle de versões | Justificativa |
+| `Python` | Linguagem de programação | É uma linguagem legível, de fácil manutenção e que possibilita a reutilização de códigos. Além disso, roda em diferentes sistemas operacionais e possui diversas bibliotecas. |
+| `Pygame` | Biblioteca de jogos baseada em Python | É uma biblioteca que nos permite, por meio do Python, criar jogos, já que fornece métodos prontos que facilitam o desenvolvimento. Assim, é possível renderizar imagens, definir larguras e comprimentos para o display, controlar o tempo, etc. |
+| `Git` | Software de controle de versões | É um software que nos permite salvar e controlar versões desenvolvidas do nosso projeto. Ele possibilita a criação de espaços(branchs) de atuação para cada funcionalidade ou membro diferente da equipe. |
 
 
 ------

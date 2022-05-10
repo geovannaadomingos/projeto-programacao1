@@ -21,6 +21,7 @@ class Farmer(GameObject):
         self.frameCount = 0
         self.frameDuration = frameDuration
         self.state = "idle"
+        self.inventory = []
 
         self.v2_collideBox = Vector2(16,16) * (self.v2_size.x//48)
         self.v2_collideOffset = self.v2_collideBox

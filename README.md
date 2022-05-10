@@ -13,6 +13,18 @@ Nesse repositório, é possível encontrar os códigos desenvolvidos ao decorrer
 | --- | --- | --- |
 | `Python` | Descrição | Justificativa |
 | `Pygame` | Descrição | Justificativa |
+| `Git` | Descrição | Justificativa |
+
+
+------
+
+
+## `Instruções para executar o arquivo e jogar:`
+* Instale o Python a partir da versão 3.6, [seguindo a documentação oficial](https://docs.github.com/pt/repositories/creating-and-managing-repositories/cloning-a-repository) 
+* Instale o Pygame, [seguindo a documentação oficial](https://www.pygame.org/download.shtml)
+* Clone o projeto em sua máquina, [seguindo essas instruções](https://docs.github.com/pt/repositories/creating-and-managing-repositories/cloning-a-repository)
+* Execute, utilizando linha de comandos, o arquivo main.py do projeto-programacao1
+* Comece a jogar utilizando o seu mouse 
 
 
 ------
@@ -21,7 +33,7 @@ Nesse repositório, é possível encontrar os códigos desenvolvidos ao decorrer
 ## `Arquitetura e organização dos arquivos`
 
 ```
- 📁 app-divertido
+ 📁 projeto-programacao1
    |
    |-  📁 src
    |    |

@@ -19,7 +19,7 @@ Nesse repositório, é possível encontrar os códigos desenvolvidos ao decorrer
 ------
 
 
-## `Instruções para executar o arquivo e jogar:`
+## `Instruções para executar o arquivo e jogar`
 * Instale o Python a partir da versão 3.6, [seguindo a documentação oficial](https://docs.github.com/pt/repositories/creating-and-managing-repositories/cloning-a-repository) 
 * Instale o Pygame, [seguindo a documentação oficial](https://www.pygame.org/download.shtml)
 * Clone o projeto em sua máquina, [seguindo essas instruções](https://docs.github.com/pt/repositories/creating-and-managing-repositories/cloning-a-repository)

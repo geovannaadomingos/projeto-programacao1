@@ -29,7 +29,7 @@ Esses foram os principais conceitos vistos na disciplina de Programação 1 e ap
 | Conceito | Local onde foi utilizado |
 | --- | --- |
 | `Programação Orientada a Objetos` | A maior parte dos arquivos do projeto possuem classes, as quais representam objetos do mundo real e que possibilitam a aplicação de hierarquias, bem como a reutilização de códigos. Um exemplo disso é a classe GameObject, que representa um objeto gráfico genérico do jogo e que, por isso, outros objetos, como o regador e as sementes, derivam dela. |
-| `Laços de Repetição` | Local onde foi utilizado. |
+| `Laços de Repetição` | Um exemplo de arquivo em que laços de repetição são utilizados, mais especificamente o while, é o arquivo Main. Nesse arquivo, que é o arquivo principal do projeto, enquanto o projeto estiver rodando, o display é atualizado seguindo uma largura e uma altura. |
 | `Estruturas Condicionais` | Local onde foi utilizado. |
 | `Listas e Dicionários` | Local onde foi utilizado. |
 | `Funções e métodos` | Local onde foi utilizado. |

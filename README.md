@@ -70,7 +70,7 @@ Descrição dos arquivos:
 
 ## `Autores do projeto`
 
-Esse é o time de alunos responsáveis pela idealização e desenvovlimento do projeto:
+Esse é o time de alunos, da graduação em Sistemas de Informações, responsáveis pela idealização e desenvovlimento do projeto:
 
 | [<img src="https://avatars.githubusercontent.com/u/53124770?v=4" width=115><br><sub>Geovanna Domingos</sub>](https://github.com/geovannaadomingos) |  [<img src="https://avatars.githubusercontent.com/u/104396639?v=4" width=115><br><sub>Luana Brito</sub>](https://github.com/LuanaCCBrito) |  [<img src="https://avatars.githubusercontent.com/u/104479818?v=4" width=115><br><sub>Luiz Silva</sub>](https://github.com/jldsn) |
 | :---: | :---: | :---:

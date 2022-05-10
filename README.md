@@ -73,6 +73,21 @@ Descrição dos arquivos:
 
 ## `Autores do projeto`
 
+O gerencimento de atividades foi feito utilizando a ferramenta [Trello](https://trello.com/pt-BR). De maneira geral, a execução de atividades foi da seguinte forma:
+
+* Demetriu Gabriel: x, y, z.
+* Geovanna Domingos: x, y, z.
+* Giovanna Machado: x, y, z.
+* Luana Brito: x, y, z.
+* Lucas Campos: x, y, z.
+* Luiz Silva: x, y, z.
+
+
+------
+
+
+## `Autores do projeto`
+
 Esse é o time de alunos, da graduação em Sistemas de Informações, responsável pela idealização e desenvovlimento do projeto:
 
 | [<img src="https://avatars.githubusercontent.com/u/53124770?v=4" width=115><br><sub>Geovanna Domingos</sub>](https://github.com/geovannaadomingos) |  [<img src="https://avatars.githubusercontent.com/u/104396639?v=4" width=115><br><sub>Luana Brito</sub>](https://github.com/LuanaCCBrito) |  [<img src="https://avatars.githubusercontent.com/u/104479818?v=4" width=115><br><sub>Luiz Silva</sub>](https://github.com/jldsn) |

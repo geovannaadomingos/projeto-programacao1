@@ -42,7 +42,7 @@ def main():
 
     # Criar plantas coletaveis
     for y, planta_nome in enumerate(datamanager.DataManager.PLANTAS):
-        SeedItem(Vector2(300+((y//5) * 16*GameManager.scale), 200+((y%5)*16*GameManager.scale)), planta_nome)
+        SeedItem(Vector2(320+((y//5) * 16*GameManager.scale), 258+((y%5)*16*GameManager.scale)), planta_nome)
 
 
     spawnPoint = tilemap.layers[-1].getNodePosWithState(NodeState.FarmerSpawn)
@@ -54,7 +54,7 @@ def main():
     inventario = Inventory()
     
     relatorio_hud = HudReport(SCREEN_W, SCREEN_H, GameManager.scale)
-    Sounds.backgroundMusic()
+    #Sounds.backgroundMusic()
 
     while running:
         clock.tick(FPS)

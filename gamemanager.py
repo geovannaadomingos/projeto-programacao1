@@ -49,11 +49,6 @@ class GameManager():
         
         GameManager.handleClick(go_sob_mouse)
 
-        for event in Events.events:
-            if event.type == pygame.KEYUP:
-                if event.key == pygame.K_SPACE:
-                    GameManager.farmer.ararAnimation()
-
         for go in gameobject.GameObject.all_objects:
             go.loop()
 

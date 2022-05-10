@@ -105,7 +105,7 @@ O gerencimento de atividades foi feito utilizando a ferramenta [Trello](https://
 
 ## `Autores do projeto`
 
-Esse é o time de alunos, da graduação em Sistemas de Informações, responsável pela idealização e desenvovlimento do projeto:
+Esse é o time de alunos, da graduação em Sistemas de Informações, responsável pela idealização e desenvolvimento do projeto:
 
 | [<img src="https://avatars.githubusercontent.com/u/53124770?v=4" width=115><br><sub>Geovanna Domingos</sub>](https://github.com/geovannaadomingos) |  [<img src="https://avatars.githubusercontent.com/u/104396639?v=4" width=115><br><sub>Luana Brito</sub>](https://github.com/LuanaCCBrito) |  [<img src="https://avatars.githubusercontent.com/u/104479818?v=4" width=115><br><sub>José Luiz</sub>](https://github.com/jldsn) |
 | :---: | :---: | :---:

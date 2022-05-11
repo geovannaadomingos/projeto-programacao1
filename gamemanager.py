@@ -5,7 +5,7 @@ from item import Item, PlantItem, SeedItem
 from mouse import Mouse
 import time
 from pathfinding import Pathfinding
-
+from soundEffects import Sounds
 from report import Report
 from tilemapEditor import Grid
 

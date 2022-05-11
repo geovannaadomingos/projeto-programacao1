@@ -7,7 +7,7 @@ BLACK = (0,0,0)
 WHITE = (255,255,255)
 GRAY = (128, 128, 128) 
 BROWN = (150, 75, 0)
-GREEN = (0, 128, 0)
+TERRA = (226, 227, 125)
 
 class HudReport():
     def __init__(self, largura, altura, scale):
@@ -23,26 +23,22 @@ class HudReport():
     def draw(self, screen):
         img = pygame.Surface((self.tamanho_retangulo_largura+10, self.tamanho_retangulo_altura+10), pygame.SRCALPHA, 32) #tamanho do quadrado
         pygame.draw.rect(img, BROWN, (2*self.scale, 2*self.scale, self.tamanho_retangulo_largura, self.tamanho_retangulo_altura), 0, 10) #(tela, cor, (X, Y, largura do retângulo, altura do retângulo))
-        img.set_alpha(75)
+        img.set_alpha(100)
         screen.blit(img, (self.x, self.y))
 
         count = 0
         for planta in DataManager.PLANTAS:
+            cor = WHITE
+            if Report.currentHarvest[planta] >= Report.getCurrentHarvestGoal()[planta]:
+                cor = TERRA
+            
             screen.blit(DataManager.PLANTAS[planta]['item-sprite'], (5*self.scale, 6+(count*18)*self.scale))
-            coletadas = self.fonte.render(str(Report.currentHarvest[planta]), True, WHITE, None)
-            barrinha = self.fonte.render('/', True, WHITE, None)
-            meta = self.fonte.render(str(Report.getCurrentHarvestGoal()[planta]), True, WHITE, None)
+            coletadas = self.fonte.render(str(Report.currentHarvest[planta]), True, cor, None)
+            barrinha = self.fonte.render('/', True, cor, None)
+            meta = self.fonte.render(str(Report.getCurrentHarvestGoal()[planta]), True, cor, None)
             screen.blit(coletadas, (25*self.scale, 4+(count*18)*self.scale))
             screen.blit(barrinha, (35*self.scale, 4+(count*18)*self.scale))
             screen.blit(meta, (48*self.scale, 4+(count*18)*self.scale))
             count += 1
-            
-            if coletadas == meta:
-                coletadas = self.fonte.render(str(Report.currentHarvest[planta]), True, GREEN, None)
-                barrinha = self.fonte.render('/', True, GREEN, None)
-                meta = self.fonte.render(str(Report.getCurrentHarvestGoal()[planta]), True, GREEN, None)
-                screen.blit(coletadas, (25*self.scale, 4+(count*18)*self.scale))
-                screen.blit(barrinha, (35*self.scale, 4+(count*18)*self.scale))
-                screen.blit(meta, (48*self.scale, 4+(count*18)*self.scale))
 
 

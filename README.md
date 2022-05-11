@@ -108,7 +108,7 @@ O gerencimento de atividades foi feito utilizando a ferramenta [Trello](https://
 * Giovanna Machado: Menu
 * José Luiz: SoundEffects
 * Luana Brito: Pathfinding e Hud report (Interface do relatório para usuário, pontuando objetos coletados)
-* Lucas Campos: Auxílio com Python e Pygame, TileMap(imagens, interfaces gráficas e cenários do jogo), criação dos arquivos e classes mais gerais(test, main, gamemanager, gameobject, mouse, vector2, place e item)
+* Lucas Campos: Auxílio com Python e Pygame, Farmer(fazendeiro player) TileMap(imagens, interfaces gráficas e cenários do jogo), criação dos arquivos e classes mais gerais(test, main, gamemanager, gameobject, mouse, vector2, place e item)
 
 
 ------

@@ -54,7 +54,7 @@ def main():
     inventario = Inventory()
     
     relatorio_hud = HudReport(SCREEN_W, SCREEN_H, GameManager.scale)
-    #Sounds.backgroundMusic()
+    Sounds.backgroundMusic()
 
     while running:
         clock.tick(FPS)

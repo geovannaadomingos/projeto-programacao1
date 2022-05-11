@@ -36,12 +36,12 @@ class MainMenu(Menu):
         while self.run_display:
             self.game.check_events()
             self.check_input()
-            self.game.display.fill(self.game.logo)
-            self.game.draw_text('Fazendinha Cin', 80, self.game.DISPLAY_W / 2, self.game.DISPLAY_H / 2 - 80)
-            self.game.draw_text("Start Game", 80, self.startx, self.starty)
-            self.game.draw_text("Levels", 80, self.levelsx, self.levelsy)
-            self.game.draw_text("Volume", 80, self.optionsx, self.optionsy)
-            self.game.draw_text("Credits", 80, self.creditsx, self.creditsy)
+            self.game.display.fill((0,0,0))
+            self.game.draw_text('Fazendinha Cin', 20, self.game.DISPLAY_W / 2, self.game.DISPLAY_H / 2 - 20)
+            self.game.draw_text("Start Game", 20, self.startx, self.starty)
+            self.game.draw_text("Levels", 20, self.levelsx, self.levelsy)
+            self.game.draw_text("Volume", 20, self.optionsx, self.optionsy)
+            self.game.draw_text("Credits", 20, self.creditsx, self.creditsy)
             self.draw_cursor()
             self.blit_screen()
 

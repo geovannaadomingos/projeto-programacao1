@@ -4,6 +4,7 @@ from gameobject import GameObject
 from item import PlantItem
 from mouse import Mouse
 from vector2 import Vector2
+from soundEffects import Sounds
 
 class Plantation(GameObject):
     all_plantations = []
@@ -68,6 +69,7 @@ class Plantation(GameObject):
     def brotar(self):
         PlantItem(self.v2_pos, self.seed.name)
         self.seed = None
+        Sounds.playSFX('ready.wav')
     
     def loop(self):
         if self.seed != None:

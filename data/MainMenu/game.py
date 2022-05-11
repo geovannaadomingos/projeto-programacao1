@@ -14,12 +14,13 @@ class Game():
         self.window = pygame.display.set_mode(((self.DISPLAY_W, self.DISPLAY_H)))
         ttf_path = os.path.join(sys.path[0], "fonte.ttf")
         self.font = pygame.font.Font(ttf_path, 80)
-        self.logo, self.WHITE = ('imagens/LogoMenu.jpeg'), (255, 255, 255)  # CORES
-        self.main_menu = MainMenu(
-            self)  # referncia meu objeto do menu principal  epermite que a de baixo mude de acordo com o que for selecionado
+        self.background = pygame.image.load(os.path.join(sys.path[0], "TELAA.png"))
+        self.background_credits = pygame.image.load(os.path.join(sys.path[0], "telaredd.png"))
+        self.BLACK, self.WHITE = (0,0,0), ((105,105,105))  # CORES
+        self.main_menu = MainMenu(self)  # referncia meu objeto do menu principal  epermite que a de baixo mude de acordo com o que for selecionado
         self.credits = CreditsMenu(self)
         self.levels = LevelsMenu(self)
-        self.volume = VolumeMenu(self)
+        self.controls = ControlsMenu(self)
         self.curr_menu = self.main_menu  # o jogo vai passar a si proprio como parametro para o menu principal class
 
     def game_loop(self):

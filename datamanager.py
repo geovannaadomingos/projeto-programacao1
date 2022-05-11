@@ -4,10 +4,10 @@ import json
 
 from gamemanager import GameManager
 
-PREMIUM_ASSETS_FOLDER = "assets/sprites/premium_sprites"
-PREMIUM_ASSETS_FOLDER_OBJECTS =  f"{PREMIUM_ASSETS_FOLDER}/objects"
-PREMIUM_ASSETS_FOLDER_CHARACTERS =  f"{PREMIUM_ASSETS_FOLDER}/characters"
-PREMIUM_ASSETS_FOLDER_ITEMS =  f"{PREMIUM_ASSETS_FOLDER_OBJECTS}/Items"
+PREMIUM_ASSETS_FOLDER = os.path.join("assets", "sprites", "premium_sprites")
+PREMIUM_ASSETS_FOLDER_OBJECTS =  os.path.join("assets", "sprites", "premium_sprites", "objects")
+PREMIUM_ASSETS_FOLDER_CHARACTERS =  os.path.join("assets", "sprites", "premium_sprites", "characters")
+PREMIUM_ASSETS_FOLDER_ITEMS =  os.path.join("assets", "sprites", "premium_sprites", "objects", "Items")
 
 
 class DataManager():

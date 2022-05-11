@@ -1,10 +1,9 @@
 import json
-levels = json.load(open("data\\levels.json"))
-
+import os
 
 class Report():
-
-    level = 1
+    level = 0
+    levels = json.load(open(os.path.join("data", "levels.json")))
     usedSeeds = 0
     usedWateringCan = 0
     currentHarvest = {
@@ -25,21 +24,25 @@ class Report():
 
     def harvestReport(plantName):
         # relata plantas colhidas(coletadas)
-        print(f"Planta coletada >: {plantName}")
         Report.currentHarvest[plantName] += 1
+
+        if Report.checkGoal():
+            print("Ganhei o level")
 
     def usedSeedsReport():
         # relata sementes utilizadas(coletadas)
         Report.usedSeeds += 1
+
+    def getCurrentHarvestGoal():
+        return Report.levels[str(Report.level)]["harvestGoal"]
 
     def usedWateringCanReport():
         # relata quantas vezes o regador foi coletado
         Report.usedWateringCan += 1
 
     def checkGoal():
-
         # verfica se a colheita atual atingiu a meta do level
-        goal = levels[str(Report.level)]["harvestGoal"]
+        goal = Report.getCurrentHarvestGoal()
 
         for i in Report.currentHarvest:
             # retorna o valor de colheita de cada planta

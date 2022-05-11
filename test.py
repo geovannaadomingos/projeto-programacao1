@@ -1,8 +1,10 @@
 import json
+import os
 import pygame
 from Events import Events
 from NodeState import NodeState
 import datamanager
+from pathlib import Path
 from farmer import Farmer
 from gamemanager import GameManager
 from gameobject import GameObject
@@ -32,7 +34,7 @@ def main():
     datamanager.DataManager.load(GameManager.scale)
 
     tilemap = Tilemap()
-    dataJson = json.load(open("data\\levels\\level_test.json"))
+    dataJson = json.load(open(Path("data/levels/level_test.json")))
     tilemap.load(dataJson, scale=GameManager.scale)
 
     running = True
@@ -42,7 +44,7 @@ def main():
 
     # Criar plantas coletaveis
     for y, planta_nome in enumerate(datamanager.DataManager.PLANTAS):
-        SeedItem(Vector2(300+((y//5) * 16*GameManager.scale), 200+((y%5)*16*GameManager.scale)), planta_nome)
+        SeedItem(Vector2(320+((y//5) * 16*GameManager.scale), 258+((y%5)*16*GameManager.scale)), planta_nome)
 
 
     spawnPoint = tilemap.layers[-1].getNodePosWithState(NodeState.FarmerSpawn)

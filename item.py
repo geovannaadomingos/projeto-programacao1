@@ -12,6 +12,8 @@ class Item(GameObject):
         self.name = name
         self.enabled = True
         self.surface = surface
+        self.v2_collideBox = Vector2(16,16) * (self.v2_size.x//16) * 0.5
+        self.v2_collideOffset = (self.getCenterPos() - (self.v2_collideBox/2)) - self.v2_pos
         Item.all_itens.append(self)
 
 class PlantItem(Item):

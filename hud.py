@@ -1,3 +1,4 @@
+import os
 from report import Report
 import pygame
 from pygame.locals import *
@@ -13,7 +14,7 @@ class HudReport():
         self.x = 0
         self.y = 0
         self.scale = scale
-        self.fonte = pygame.font.Font('assets\\Kenney Blocks.ttf', 11*self.scale)
+        self.fonte = pygame.font.Font(os.path.join("assets", "Kenney Blocks.ttf"), 11*self.scale)
         self.largura = largura
         self.altura = altura
         self.tamanho_retangulo_largura = (self.largura * 0.07)

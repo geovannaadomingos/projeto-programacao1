@@ -1,3 +1,4 @@
+import os
 import pygame
 import json
 
@@ -26,12 +27,9 @@ class DataManager():
         DataManager.loadItems(scale)
 
     def loadSheets():
-        DataManager.plant_sheet = pygame.image.load(
-            PREMIUM_ASSETS_FOLDER_OBJECTS+"\Farming Plants.png")
-        DataManager.itens_sheet = pygame.image.load(
-            PREMIUM_ASSETS_FOLDER_ITEMS+"\All items.png")
-        DataManager.player_sheet = pygame.image.load(
-            PREMIUM_ASSETS_FOLDER_CHARACTERS+"\Premium Charakter Spritesheet.png")
+        DataManager.plant_sheet = pygame.image.load(os.path.join(PREMIUM_ASSETS_FOLDER_OBJECTS, "Farming Plants.png"))
+        DataManager.itens_sheet = pygame.image.load(os.path.join(PREMIUM_ASSETS_FOLDER_ITEMS, "All items.png"))
+        DataManager.player_sheet = pygame.image.load(os.path.join(PREMIUM_ASSETS_FOLDER_CHARACTERS, "Premium Charakter Spritesheet.png"))
 
     def loadPlayerData(scale):
         ordem = ["idle_down", "idle_up", "idle_left", "idle_right", "walking_down", "walking_up", "walking_right", "walking_left", "running_down", "running_up", "running_right", "running_left", "enxada_down", "enxada_up", "enxada_left", "enxada_right", "machado_down", "machado_up", "machado_left", "machado_right", "regador_down", "regador_up", "regador_left", "regador_right"]
@@ -46,7 +44,7 @@ class DataManager():
         DataManager.OBJECTS["wateringCan"] = DataManager.getImageFromSpriteSheet(DataManager.itens_sheet, frameX=2, frameY=1, scale=scale)
 
     def loadPlantasData(scale):
-        DataManager.PLANTAS = json.load(open("data\plants.json"))
+        DataManager.PLANTAS = json.load(open(os.path.join("data", "plants.json")))
         for index, planta in enumerate(DataManager.PLANTAS.keys()):
             DataManager.PLANTAS[planta]["item-sprite"] = DataManager.getImageFromSpriteSheet(DataManager.itens_sheet, frameX=1, frameY=index+2, scale=scale)
             DataManager.PLANTAS[planta]["semente-sprite"] = DataManager.getImageFromSpriteSheet(DataManager.itens_sheet, frameX=0, frameY=index+2, scale=scale)

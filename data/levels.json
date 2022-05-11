@@ -49,5 +49,73 @@
             "Estrelinha": 9,
             "Pepino": 10
         }
+    },
+    "3":{
+        "harvestGoal": {
+            "Cenoura": 4,
+            "Repolho": 6,
+            "Goiaba": 2,
+            "Berinjela": 0,
+            "Azulzinha": 8,
+            "Alface": 8,
+            "Trigo": 7,
+            "Abobora": 8,
+            "Nabo": 4,
+            "Rosinha": 8,
+            "Beterraba": 20,
+            "Estrelinha": 9,
+            "Pepino": 10
+        }
+    },
+    "4":{
+        "harvestGoal": {
+            "Cenoura": 4,
+            "Repolho": 6,
+            "Goiaba": 2,
+            "Berinjela": 0,
+            "Azulzinha": 8,
+            "Alface": 8,
+            "Trigo": 7,
+            "Abobora": 8,
+            "Nabo": 4,
+            "Rosinha": 8,
+            "Beterraba": 20,
+            "Estrelinha": 9,
+            "Pepino": 10
+        }
+    },
+    "5":{
+        "harvestGoal": {
+            "Cenoura": 4,
+            "Repolho": 6,
+            "Goiaba": 2,
+            "Berinjela": 0,
+            "Azulzinha": 8,
+            "Alface": 8,
+            "Trigo": 7,
+            "Abobora": 8,
+            "Nabo": 4,
+            "Rosinha": 8,
+            "Beterraba": 20,
+            "Estrelinha": 9,
+            "Pepino": 10
+        }
+    },
+    "6":{
+        "harvestGoal": {
+            "Cenoura": 4,
+            "Repolho": 6,
+            "Goiaba": 2,
+            "Berinjela": 0,
+            "Azulzinha": 8,
+            "Alface": 8,
+            "Trigo": 7,
+            "Abobora": 8,
+            "Nabo": 4,
+            "Rosinha": 8,
+            "Beterraba": 20,
+            "Estrelinha": 9,
+            "Pepino": 10
+        }
     }
 }

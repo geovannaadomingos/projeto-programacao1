@@ -78,7 +78,7 @@ class MainMenu(Menu):
         self.move_cursor()
         if self.game.START_KEY:
             if self.state == 'Start':
-                GameManager.runLevel(self.game.window, 0)
+                GameManager.runLevel(self.game.window, GameManager.level+1)
             elif self.state == 'Levels':
                 self.game.curr_menu = self.game.levels
             elif self.state == 'Controls':

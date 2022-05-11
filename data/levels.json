@@ -33,7 +33,7 @@
             "Pepino": 0
         }
     },
-    "2":{
+    "2": {
         "harvestGoal": {
             "Cenoura": 2,
             "Repolho": 2,
@@ -43,31 +43,31 @@
             "Alface": 0,
             "Trigo": 1,
             "Abobora": 0,
-            "Nabo": 0,
+            "Nabo": 1,
             "Rosinha": 0,
             "Beterraba": 0,
             "Estrelinha": 0,
             "Pepino": 1
         }
     },
-    "3":{
+    "3": {
         "harvestGoal": {
-            "Cenoura": 1,
-            "Repolho": 1,
+            "Cenoura": 2,
+            "Repolho": 2,
             "Goiaba": 1,
             "Berinjela": 1,
             "Azulzinha": 1,
             "Alface": 1,
-            "Trigo": 1,
-            "Abobora": 1,
-            "Nabo": 1,
+            "Trigo": 2,
+            "Abobora": 2,
+            "Nabo": 4,
             "Rosinha": 1,
-            "Beterraba": 1,
-            "Estrelinha": 1,
-            "Pepino": 1
+            "Beterraba": 2,
+            "Estrelinha": 3,
+            "Pepino": 2
         }
     },
-    "4":{
+    "4": {
         "harvestGoal": {
             "Cenoura": 4,
             "Repolho": 6,
@@ -84,38 +84,21 @@
             "Pepino": 1
         }
     },
-    "5":{
+    "5": {
         "harvestGoal": {
             "Cenoura": 4,
             "Repolho": 6,
             "Goiaba": 2,
             "Berinjela": 0,
-            "Azulzinha": 8,
-            "Alface": 8,
+            "Azulzinha": 3,
+            "Alface": 3,
             "Trigo": 7,
-            "Abobora": 8,
+            "Abobora": 3,
             "Nabo": 4,
-            "Rosinha": 8,
-            "Beterraba": 20,
-            "Estrelinha": 9,
-            "Pepino": 10
-        }
-    },
-    "6":{
-        "harvestGoal": {
-            "Cenoura": 4,
-            "Repolho": 6,
-            "Goiaba": 2,
-            "Berinjela": 0,
-            "Azulzinha": 8,
-            "Alface": 8,
-            "Trigo": 7,
-            "Abobora": 8,
-            "Nabo": 4,
-            "Rosinha": 8,
-            "Beterraba": 20,
-            "Estrelinha": 9,
-            "Pepino": 10
+            "Rosinha": 2,
+            "Beterraba": 2,
+            "Estrelinha": 2,
+            "Pepino": 1
         }
     }
 }

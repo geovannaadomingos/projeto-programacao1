@@ -103,12 +103,12 @@ Ao decorrer da idealização e do desenvolvimento do projeto, algumas dificuldad
 
 O gerencimento de atividades foi feito utilizando a ferramenta [Trello](https://trello.com/pt-BR). De maneira geral, a execução de atividades se deu da seguinte forma:
 
-* Demetriu Gabriel: x, y, z.
-* Geovanna Domingos: x, y, z.
-* Giovanna Machado: x, y, z.
-* José Luiz: x, y, z.
-* Luana Brito: x, y, z.
-* Lucas Campos: x, y, z.
+* Demetriu Gabriel: class Plantation(plantação), class Inventary(Inventário)
+* Geovanna Domingos: Auxílio com git e github, class WateringCan(Regador), class WaterWell(Poço), class Report(relatório para o usuário) e README.md.
+* Giovanna Machado: Menu
+* José Luiz: SoundEffects
+* Luana Brito: Pathfinding e Hud report (Interface do relatório para usuário, pontuando objetos coletados)
+* Lucas Campos: Auxílio com Python e Pygame, TileMap(imagens, interfaces gráficas e cenários do jogo), criação dos arquivos e classes mais gerais(test, main, gamemanager, gameobject, mouse, vector2, place e item)
 
 
 ------

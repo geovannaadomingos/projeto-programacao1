@@ -79,9 +79,9 @@ Esses foram os principais conceitos vistos na disciplina de Programação 1 e ap
 
 ```
 Descrição dos arquivos:
-* Arquivo: Descrição
-* Arquivo: Descrição
-* Arquivo: Descrição
+* `Arquivo:` Descrição
+* `Arquivo:` Descrição
+* `Arquivo:` Descrição
 
 
 ------
@@ -91,9 +91,9 @@ Descrição dos arquivos:
 
 Ao decorrer da idealização e do desenvolvimento do projeto, algumas dificuldades foram enfrentadas, mas, a partir disso, algumas lições foram aprendidas, conforme os tópicos a seguir:
 
-* Maior erro enfrentado e como lidamos com ele: Estabelecemos muitas features para o projeto, mas não priorizamos e nem levamos em consideração os requisitos básicos estabelecidos pelos orientadores. Nesse contexto, com um pouco menos de tempo para o desenvolvimento, percebemos isso e nos reunimos para mudar o escopo, cumprindo primordialmente os requistos básicos e deixando outras features em stand by. Dessa forma, foi possível garantir o básico e, dessa forma, partir para o mais complexo.
-* Maior desafio enfrentado e como lidamos com ele:
-* Lições aprendidas durante o projeto:
+* `Maior erro enfrentado e como lidamos com ele:` Estabelecemos muitas features para o projeto, mas não priorizamos e nem levamos em consideração os requisitos básicos estabelecidos pelos orientadores. Nesse contexto, com um pouco menos de tempo para o desenvolvimento, percebemos isso e nos reunimos para mudar o escopo, cumprindo primordialmente os requistos básicos e deixando outras features em stand by. Dessa forma, foi possível garantir o básico e, dessa forma, partir para o mais complexo.
+* `Maior desafio enfrentado e como lidamos com ele:`
+* `Lições aprendidas durante o projeto:`
 
 
 ------
@@ -103,12 +103,12 @@ Ao decorrer da idealização e do desenvolvimento do projeto, algumas dificuldad
 
 O gerencimento de atividades foi feito utilizando a ferramenta [Trello](https://trello.com/pt-BR). De maneira geral, a execução de atividades se deu da seguinte forma:
 
-* Demetriu Gabriel: class Plantation(plantação), class Inventary(Inventário)
-* Geovanna Domingos: Auxílio com git e github, class WateringCan(Regador), class WaterWell(Poço), class Report(relatório para o usuário) e README.md.
-* Giovanna Machado: Menu
-* José Luiz: SoundEffects
-* Luana Brito: Pathfinding e Hud report (Interface do relatório para usuário, pontuando objetos coletados)
-* Lucas Campos: Auxílio com Python e Pygame, Farmer(fazendeiro player) TileMap(imagens, interfaces gráficas e cenários do jogo), criação dos arquivos e classes mais gerais(test, main, gamemanager, gameobject, mouse, vector2, place e item)
+* `Demetriu Gabriel:` class Plantation(plantação), class Inventary(Inventário)
+* `Geovanna Domingos:` Auxílio com git e github, class WateringCan(Regador), class WaterWell(Poço), class Report(relatório para o usuário) e README.md.
+* `Giovanna Machado:` Menu
+* `José Luiz:` SoundEffects
+* `Luana Brito:` Pathfinding e Hud report (Interface do relatório para usuário, pontuando objetos coletados)
+* `Lucas Campos:` Auxílio com Python e Pygame, Farmer(fazendeiro player) TileMap(imagens, interfaces gráficas e cenários do jogo), criação dos arquivos e classes mais gerais(test, main, gamemanager, gameobject, mouse, vector2, place e item)
 
 
 ------

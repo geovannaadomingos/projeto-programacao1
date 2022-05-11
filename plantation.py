@@ -1,4 +1,5 @@
 from pygame import Surface
+import datamanager
 import gamemanager
 from gameobject import GameObject
 from item import PlantItem
@@ -8,6 +9,7 @@ from soundEffects import Sounds
 
 class Plantation(GameObject):
     all_plantations = []
+
     def __init__(self, v2_pos):
         super().__init__(v2_pos, Vector2(16, 16) * gamemanager.GameManager.scale, clickable=True)
         self.amountOfWater = 1 #porcentagem_agua abaixo de 50% a terra já pede
@@ -18,16 +20,12 @@ class Plantation(GameObject):
         Plantation.all_plantations.append(self)
         self.surface = Surface(self.v2_size)
         self.surface.fill((0,0,0))
+        self.v2_dropPos = self.v2_pos + Vector2(self.v2_size.x,0) - (Vector2(datamanager.DataManager.OBJECTS["waterDrop"].get_size()[0], 0))
 
 
     def draw(self, screen):
         # screen.blit(self.surface, self.v2_pos)
         if self.seed != None:
-
-            if self.needWater():
-                # desenha gotinha
-                pass
-
             evolucao = self.getEvolution()
 
             if evolucao <= 0.25:
@@ -40,6 +38,8 @@ class Plantation(GameObject):
                 screen.blit(self.seed.data['planta-sprites'][3], self.v2_pos)
             #elif self.getEvolution() == 1:
                 #screen.blit(self.seed.data['planta-sprites'][3], self.v2_pos)
+            if self.needWater() or True:
+                screen.blit(datamanager.DataManager.OBJECTS["waterDrop"], self.v2_dropPos)
     
     def canReceiveSeed(self):
         return self.seed == None
@@ -53,7 +53,7 @@ class Plantation(GameObject):
         self.amountOfWater = min(self.amountOfWater, 1)
 
     def needWater(self): # pede agua quando a planta tiver secando
-        return self.amountOfWater <= 0.5
+        return self.amountOfWater <= 0.05
 
     """def mudar_imagem(self):
         if seeds.evolucao >= 25:
@@ -81,7 +81,7 @@ class Plantation(GameObject):
                     # brotar
                     self.brotar()
 
-            if self.tempo_terreno >= 10:
+            if self.tempo_terreno >= 1:
                 self.tempo_terreno = 0
                 self.amountOfWater -= 0.1
                 self.amountOfWater = max(0, self.amountOfWater)

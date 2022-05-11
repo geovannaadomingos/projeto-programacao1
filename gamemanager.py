@@ -91,13 +91,14 @@ class GameManager():
 
         SCREEN_W, SCREEN_H = screen.get_size()
 
-        tilemap = Tilemap()
+        tilemap = Tilemap(drawLines=True)
         dataJson = json.load(open(Path(f"data/levels/level_{level}.json")))
         tilemap.load(dataJson, scale=GameManager.scale)
 
         # Criar plantas coletaveis
         for y, planta_nome in enumerate(DataManager.PLANTAS):
             PlantItem(Vector2(320+((y//5) * 16*GameManager.scale), 258+((y%5)*16*GameManager.scale)), planta_nome)
+            SeedItem(Vector2(320+((y//5) * 16*GameManager.scale), 258+((y%5)*16*GameManager.scale)), planta_nome)
 
 
         spawnPoint = tilemap.layers[-1].getNodePosWithState(NodeState.FarmerSpawn)

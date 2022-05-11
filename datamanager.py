@@ -4,7 +4,8 @@ import json
 from pathlib import Path
 
 DATA_FOLDER = Path("data")
-PREMIUM_ASSETS_FOLDER = Path("assets/sprites/premium_sprites")
+SPRITES_ASSETS_FOLDER = Path("assets/sprites")
+PREMIUM_ASSETS_FOLDER = SPRITES_ASSETS_FOLDER / "premium_sprites"
 PREMIUM_ASSETS_FOLDER_OBJECTS = PREMIUM_ASSETS_FOLDER / "objects"
 PREMIUM_ASSETS_FOLDER_CHARACTERS =  PREMIUM_ASSETS_FOLDER / "characters"
 PREMIUM_ASSETS_FOLDER_ITEMS =  PREMIUM_ASSETS_FOLDER_OBJECTS / "Items"
@@ -57,6 +58,7 @@ class DataManager():
                     DataManager.plant_sheet, frameX=x, frameY=index+2, scale=scale))
 
     def loadObjects(scale):
+        DataManager.OBJECTS["waterDrop"] = DataManager.scaleImage(pygame.image.load(SPRITES_ASSETS_FOLDER / 'waterDrop3.png'), 1)
         DataManager.OBJECTS["waterWell"] = DataManager.scaleImage(pygame.image.load(PREMIUM_ASSETS_FOLDER_OBJECTS / 'Water well.png') ,scale)
 
     def getImageFromSpriteSheet(sheet, frameX, frameY, width=16, height=16, scale=1):
@@ -71,4 +73,4 @@ class DataManager():
             return image
         else:
             width,height = image.get_size()
-            return pygame.transform.scale(image, (width*scale, height*scale))
+            return pygame.transform.scale(image, ((width*scale)//1, (height*scale)//1))

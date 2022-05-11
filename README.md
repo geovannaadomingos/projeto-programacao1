@@ -104,7 +104,7 @@ Ao decorrer da idealização e do desenvolvimento do projeto, algumas dificuldad
 O gerencimento de atividades foi feito utilizando a ferramenta [Trello](https://trello.com/pt-BR). De maneira geral, a execução de atividades se deu da seguinte forma:
 
 * `Demetriu Gabriel:` class Plantation(plantação), class Inventary(Inventário)
-* `Geovanna Domingos:` Auxílio com git e github, class WateringCan(Regador), class WaterWell(Poço), class Report(relatório para o usuário) e README.md.
+* `Geovanna Domingos:` Auxílio com git e github, class WateringCan(Regador), class WaterWell(Poço), class Report(relatório para o usuário) e README.md
 * `Giovanna Machado:` Menu
 * `José Luiz:` SoundEffects
 * `Luana Brito:` Pathfinding e Hud report (Interface do relatório para usuário, pontuando objetos coletados)

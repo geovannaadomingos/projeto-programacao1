@@ -24,10 +24,13 @@ class Tilemap():
 
     def load(self, data, scale):
 
+        barrinha = Path("assets")
+        print(barrinha)
+
         for tilePath in data["tiles"]:
             tilePath = Path(tilePath)
             position = tilePath.name
-            sheetPath = Path(str(tilePath).replace(position, ""))
+            sheetPath = Path(str(tilePath).replace("\\", "/").replace(position, ""))
             imageX, imageY = map(int, position.split("_"))
 
             sheet = self.sheets.get(str(Path(sheetPath)), None)
@@ -49,7 +52,7 @@ class Tilemap():
                 for x, tile in enumerate(row):
                     spritePath = tile.get("tile", None)
                     if spritePath != None:
-                        spritePath = str(Path(spritePath["path"]))
+                        spritePath = str(Path(spritePath["path"].replace("\\", "/")))
 
                     state = tuple(tile.get("state"))
                     grid.matrix[y][x].state = state

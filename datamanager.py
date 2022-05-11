@@ -1,13 +1,14 @@
 import os
 import pygame
 import json
+from pathlib import Path
 
 from gamemanager import GameManager
 
-PREMIUM_ASSETS_FOLDER = os.path.join("assets", "sprites", "premium_sprites")
-PREMIUM_ASSETS_FOLDER_OBJECTS =  os.path.join("assets", "sprites", "premium_sprites", "objects")
-PREMIUM_ASSETS_FOLDER_CHARACTERS =  os.path.join("assets", "sprites", "premium_sprites", "characters")
-PREMIUM_ASSETS_FOLDER_ITEMS =  os.path.join("assets", "sprites", "premium_sprites", "objects", "Items")
+PREMIUM_ASSETS_FOLDER = Path("assets/sprites/premium_sprites")
+PREMIUM_ASSETS_FOLDER_OBJECTS = PREMIUM_ASSETS_FOLDER / "objects"
+PREMIUM_ASSETS_FOLDER_CHARACTERS =  PREMIUM_ASSETS_FOLDER / "characters"
+PREMIUM_ASSETS_FOLDER_ITEMS =  PREMIUM_ASSETS_FOLDER_OBJECTS / "Items"
 
 
 class DataManager():
@@ -27,9 +28,9 @@ class DataManager():
         DataManager.loadItems(scale)
 
     def loadSheets():
-        DataManager.plant_sheet = pygame.image.load(os.path.join(PREMIUM_ASSETS_FOLDER_OBJECTS, "Farming Plants.png"))
-        DataManager.itens_sheet = pygame.image.load(os.path.join(PREMIUM_ASSETS_FOLDER_ITEMS, "All items.png"))
-        DataManager.player_sheet = pygame.image.load(os.path.join(PREMIUM_ASSETS_FOLDER_CHARACTERS, "Premium Charakter Spritesheet.png"))
+        DataManager.plant_sheet = pygame.image.load(PREMIUM_ASSETS_FOLDER_OBJECTS / "Farming Plants.png")
+        DataManager.itens_sheet = pygame.image.load(PREMIUM_ASSETS_FOLDER_ITEMS / "All items.png")
+        DataManager.player_sheet = pygame.image.load(PREMIUM_ASSETS_FOLDER_CHARACTERS / "Premium Charakter Spritesheet.png")
 
     def loadPlayerData(scale):
         ordem = ["idle_down", "idle_up", "idle_left", "idle_right", "walking_down", "walking_up", "walking_right", "walking_left", "running_down", "running_up", "running_right", "running_left", "enxada_down", "enxada_up", "enxada_left", "enxada_right", "machado_down", "machado_up", "machado_left", "machado_right", "regador_down", "regador_up", "regador_left", "regador_right"]
@@ -54,7 +55,7 @@ class DataManager():
                     DataManager.plant_sheet, frameX=x, frameY=index+2, scale=scale))
 
     def loadObjects(scale):
-        DataManager.OBJECTS["waterWell"] = DataManager.scaleImage(pygame.image.load(PREMIUM_ASSETS_FOLDER_OBJECTS + '\Water well.png') ,scale)
+        DataManager.OBJECTS["waterWell"] = DataManager.scaleImage(pygame.image.load(PREMIUM_ASSETS_FOLDER_OBJECTS / 'Water well.png') ,scale)
 
     def getImageFromSpriteSheet(sheet, frameX, frameY, width=16, height=16, scale=1):
         image = pygame.Surface((width, height), pygame.SRCALPHA, 32).convert_alpha()

@@ -1,3 +1,4 @@
+from pathlib import Path
 import pygame
 from Events import Events
 from NodeState import NodeState
@@ -24,7 +25,7 @@ class Tilemap():
     def load(self, data, scale):
 
         for tilePath in data["tiles"]:
-            sheetPath, position = tilePath.split("/")
+            sheetPath, position = Path(tilePath).split("/")
             imageX, imageY = map(int, position.split("_"))
 
             sheet = self.sheets.get(sheetPath, None)

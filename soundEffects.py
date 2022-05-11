@@ -2,7 +2,7 @@ import pygame
 from pathlib import Path
 
 class Sounds():
-    SoundsFolder = Path("assets\\Sounds")
+    SoundsFolder = Path("assets/Sounds")
 
     def playSFX(musicName):
         playSE = pygame.mixer.Sound(Sounds.SoundsFolder / musicName)

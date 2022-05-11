@@ -24,7 +24,7 @@ class SeedSpawner(GameObject):
         item_nome = "Cenoura"
         keys = list(Report.getCurrentHarvestGoal().keys())
         for x in range(5):
-            rnd = random.randint(0, len(keys))
+            rnd = random.randint(0, len(keys)-1)
             if Report.getCurrentHarvestGoal()[keys[rnd]] > 0:
                 item_nome = keys[rnd]
                 break

@@ -1,8 +1,9 @@
 import json
+import os
 
 class Report():
     level = 0
-    levels = json.load(open("data\\levels.json"))
+    levels = json.load(open(os.path.join("data", "levels.json")))
     usedSeeds = 0
     usedWateringCan = 0
     currentHarvest = {

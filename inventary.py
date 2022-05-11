@@ -1,5 +1,5 @@
 import pygame
-from gamemanager import GameManager
+import gamemanager
 
 class Inventory:
     #rect = (612, 768, 300, 300)
@@ -14,7 +14,8 @@ class Inventory:
     def draw(self, screen):
         x = 250
         y = 670
-        inventory = GameManager.farmer.inventory
+        inventory = gamemanager.GameManager.farmer.inventory
+        
 
         for slot in self.slots:
             screen.blit(slot, (x, y))

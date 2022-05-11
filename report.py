@@ -1,9 +1,8 @@
-import json
-import os
+from datamanager import DataManager
+
+import gamemanager
 
 class Report():
-    level = 0
-    levels = json.load(open(os.path.join("data", "levels.json")))
     usedSeeds = 0
     usedWateringCan = 0
     currentHarvest = {
@@ -27,14 +26,14 @@ class Report():
         Report.currentHarvest[plantName] += 1
 
         if Report.checkGoal():
-            print("Ganhei o level")
+            gamemanager.GameManager.levelCompleted()
 
     def usedSeedsReport():
         # relata sementes utilizadas(coletadas)
         Report.usedSeeds += 1
 
     def getCurrentHarvestGoal():
-        return Report.levels[str(Report.level)]["harvestGoal"]
+        return DataManager.LEVELS_DATA[str(gamemanager.GameManager.level)]["harvestGoal"]
 
     def usedWateringCanReport():
         # relata quantas vezes o regador foi coletado
@@ -49,3 +48,10 @@ class Report():
             if Report.currentHarvest[i] < goal[i]:
                 return False
         return True
+
+    def clearCurrentHarvest():
+        for i in Report.currentHarvest:
+            Report.currentHarvest[i] = 0
+        Report.usedSeeds = 0
+        Report.usedWateringCan = 0
+

@@ -128,4 +128,4 @@ Esse é o time de alunos, da graduação em Sistemas de Informações, responsá
 
 ## `Licenças`
 
-Colocar aqui as linceças do projeto
+Esse projeto é licenciado pela [GPLv3](https://www.gnu.org/licenses/gpl-3.0.pt-br.html).

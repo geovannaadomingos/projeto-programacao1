@@ -7,6 +7,7 @@ BLACK = (0,0,0)
 WHITE = (255,255,255)
 GRAY = (128, 128, 128) 
 BROWN = (150, 75, 0)
+GREEN = (0, 128, 0)
 
 class HudReport():
     def __init__(self, largura, altura, scale):
@@ -28,10 +29,20 @@ class HudReport():
         count = 0
         for planta in DataManager.PLANTAS:
             screen.blit(DataManager.PLANTAS[planta]['item-sprite'], (5*self.scale, 6+(count*18)*self.scale))
-            texto = self.fonte.render(str(Report.currentHarvest[planta]), True, WHITE, None)
+            coletadas = self.fonte.render(str(Report.currentHarvest[planta]), True, WHITE, None)
             barrinha = self.fonte.render('/', True, WHITE, None)
             meta = self.fonte.render(str(Report.getCurrentHarvestGoal()[planta]), True, WHITE, None)
-            screen.blit(texto, (25*self.scale, 4+(count*18)*self.scale))
+            screen.blit(coletadas, (25*self.scale, 4+(count*18)*self.scale))
             screen.blit(barrinha, (35*self.scale, 4+(count*18)*self.scale))
             screen.blit(meta, (48*self.scale, 4+(count*18)*self.scale))
             count += 1
+            
+            if coletadas == meta:
+                coletadas = self.fonte.render(str(Report.currentHarvest[planta]), True, GREEN, None)
+                barrinha = self.fonte.render('/', True, GREEN, None)
+                meta = self.fonte.render(str(Report.getCurrentHarvestGoal()[planta]), True, GREEN, None)
+                screen.blit(coletadas, (25*self.scale, 4+(count*18)*self.scale))
+                screen.blit(barrinha, (35*self.scale, 4+(count*18)*self.scale))
+                screen.blit(meta, (48*self.scale, 4+(count*18)*self.scale))
+
+

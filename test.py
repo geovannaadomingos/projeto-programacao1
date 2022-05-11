@@ -34,11 +34,7 @@ def main():
     datamanager.DataManager.load(GameManager.scale)
 
     tilemap = Tilemap()
-<<<<<<< HEAD
     dataJson = json.load(open(Path("data/levels/level_test.json")))
-=======
-    dataJson = json.load(open(os.path.join("data", "levels", "level_test.json")))
->>>>>>> 3ecc8df6f2d5e412e08f508b879196d4d6b28f2d
     tilemap.load(dataJson, scale=GameManager.scale)
 
     running = True

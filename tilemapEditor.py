@@ -300,7 +300,7 @@ class TilemapEditor():
                     node.state = NodeState.AllStates[node.state]
 
                     if node.state != NodeState.Normal:
-                        surface = pygame.Surface(node.surface.get_size())
+                        surface = pygame.Surface(Vector2(16,16)*scale)
                         surface.fill(node.state)
                         surface.set_alpha(75)
                         node.surfaceState = surface
@@ -310,7 +310,7 @@ class TilemapEditor():
             elif grid_tiles.isPointInside(Mouse.getMousePos()):
                 if Mouse.clicked(0):
                     tileSelected = grid_tiles.getNodeFromPoint(Mouse.getMousePos()).item
-                    layers[current_layer_index].nodeSurfaceMouse = tileSelected.surface
+                    # layers[current_layer_index].nodeSurfaceMouse = tileSelected.surface
 
 
             for layer in layers:

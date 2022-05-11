@@ -105,26 +105,26 @@ Descrição dos arquivos:
 * `MainMenu:` Pasta que contém objetos, com seus atributos e métodos, do menu do jogo
 * `assets:` Pasta mídias(sons, imagens, fontes, logo, etc.) do jogo 
 * `data:` Pasta que contém arquivos em json e dados(como de levels e estados das plantas) utilizados no jogo
-* `.gitignore:` Descrição
+* `.gitignore:` Arquivo que permite ignorar alguns arquivos, como de cache, etc., durante o versionamento
 * `Events.py` Descrição
-* `LICENSE:` Descrição
+* `LICENSE:` Arquivo que contém a licença do projeto
 * `NodeState.py:` Descrição
-* `README.md:` Descrição
+* `README.md:` Arquivo que contém descrições e informações relevantes do projeto em markdown
 * `datamanager.py:` Descrição
-* `farmer.py:` Descrição
+* `farmer.py:` Arquivo que contém os métodos e atributos do objeto fazendeiro (player)
 * `gamemanager.py:` Descrição
 * `gameobject.py:` Descrição
-* `hud.py:` Descrição
-* `inventary.py:` Descrição
+* `hud.py:` Arquivo que contém a interface do relatório, pontuando quantas plantas foram colhidas, para o player
+* `inventary.py:` Arquivo que contém os objetos coletados pelo usuário durante o jogo
 * `item.py:` Descrição
-* `main.py:` Descrição
+* `main.py:` Arquivo principal, que contém a intância de todos objetos utilizados no jogo, e que deve ser executado para jogar
 * `mouse.py:` Descrição
 * `pathfinding.py:` Descrição
-* `place.py:` Descrição
-* `plantation.py:` Descrição
-* `report.py:` Descrição
-* `soundEffects.py:` Descrição
-* `test.py:` Descrição
+* `place.py:` Arquivo que contém o objeto de lugar, uma classe genérica da qual outras classes que representam lugares no jogo vão derivar (exemplo: poço)
+* `plantation.py:` Arquivo que contém os métodos e os atributos da plantação
+* `report.py:` Arquivo que a classe que recebe informacões sobre os objetos coletados e manipulados pelo player
+* `soundEffects.py:` Arquivo que contém manipulação de sons do jogo
+* `test.py:` Arquivo que serve para rodar testes durante o desenvolvimento
 * `tilemap.py:` Descrição
 * `tilemapEditor.py:` Descrição
 * `vector2.py:` Descrição

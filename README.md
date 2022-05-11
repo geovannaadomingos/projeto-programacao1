@@ -106,28 +106,21 @@ Descrição dos arquivos:
 * `assets:` Pasta mídias(sons, imagens, fontes, logo, etc.) do jogo 
 * `data:` Pasta que contém arquivos em json e dados(como de levels e estados das plantas) utilizados no jogo
 * `.gitignore:` Arquivo que permite ignorar alguns arquivos, como de cache, etc., durante o versionamento
-* `Events.py` Descrição
 * `LICENSE:` Arquivo que contém a licença do projeto
-* `NodeState.py:` Descrição
 * `README.md:` Arquivo que contém descrições e informações relevantes do projeto em markdown
-* `datamanager.py:` Descrição
 * `farmer.py:` Arquivo que contém os métodos e atributos do objeto fazendeiro (player)
-* `gamemanager.py:` Descrição
-* `gameobject.py:` Descrição
 * `hud.py:` Arquivo que contém a interface do relatório, pontuando quantas plantas foram colhidas, para o player
 * `inventary.py:` Arquivo que contém os objetos coletados pelo usuário durante o jogo
-* `item.py:` Descrição
+* `item.py:` Arquivo que representa itens do jogo, como as sementes e as plantas
 * `main.py:` Arquivo principal, que contém a intância de todos objetos utilizados no jogo, e que deve ser executado para jogar
-* `mouse.py:` Descrição
-* `pathfinding.py:` Descrição
+* `mouse.py:` Arquivo que identifica o uso do mouse no game
+* `pathfinding.py:` Arquivo em que há a identificação de caminhos pelos quais o player deve seguir
 * `place.py:` Arquivo que contém o objeto de lugar, uma classe genérica da qual outras classes que representam lugares no jogo vão derivar (exemplo: poço)
 * `plantation.py:` Arquivo que contém os métodos e os atributos da plantação
 * `report.py:` Arquivo que a classe que recebe informacões sobre os objetos coletados e manipulados pelo player
 * `soundEffects.py:` Arquivo que contém manipulação de sons do jogo
 * `test.py:` Arquivo que serve para rodar testes durante o desenvolvimento
-* `tilemap.py:` Descrição
-* `tilemapEditor.py:` Descrição
-* `vector2.py:` Descrição
+* `tilemap.py:` Arquivo que manipula imagens, interfaces gráficas e cenários do jogo
 * `waterWell.py:` Arquivo que contém a classe do espaço poço, seus atributos e métodos
 * `wateringCan.py:` Arquivo que contém a classe do objeto regador, seus atributos e métodos
 
@@ -168,7 +161,7 @@ Esse é o time de alunos, da graduação em Sistemas de Informações, responsá
 
 | [<img src="https://avatars.githubusercontent.com/u/53124770?v=4" width=115><br><sub>Geovanna Domingos</sub>](https://github.com/geovannaadomingos) |  [<img src="https://avatars.githubusercontent.com/u/104396639?v=4" width=115><br><sub>Luana Brito</sub>](https://github.com/LuanaCCBrito) |  [<img src="https://avatars.githubusercontent.com/u/104479818?v=4" width=115><br><sub>José Luiz</sub>](https://github.com/jldsn) |
 | :---: | :---: | :---:
-| [<img src="https://avatars.githubusercontent.com/u/34292933?v=4" width=115><br><sub>Lucas Campos</sub>](https://github.com/lucasccampos) |  [<img src="https://avatars.githubusercontent.com/u/54682631?v=4" width=115><br><sub>Demetriu Gabriel</sub>](https://github.com/DemetriuGabriel) |  [<img src="https://avatars.githubusercontent.com/u/86128256?v=4" width=115><br><sub>Giovanna Machado</sub>](https://avatars.githubusercontent.com/u/86128256?v=4) |
+| [<img src="https://avatars.githubusercontent.com/u/34292933?v=4" width=115><br><sub>Lucas Campos</sub>](https://github.com/lucasccampos) |  [<img src="https://avatars.githubusercontent.com/u/54682631?v=4" width=115><br><sub>Demetriu Gabriel</sub>](https://github.com/DemetriuGabriel) |  [<img src="https://avatars.githubusercontent.com/u/86128256?v=4" width=115><br><sub>Giovanna Machado</sub>](https://github.com/giovannamachado) |
 
 
 ------

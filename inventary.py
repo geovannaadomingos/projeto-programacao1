@@ -1,5 +1,9 @@
 import pygame
+from datamanager import DataManager
 import gamemanager
+
+BROWN = (150, 75, 0)
+RED = (255, 0, 0)
 
 class Inventory:
     #rect = (612, 768, 300, 300)
@@ -8,7 +12,8 @@ class Inventory:
         
         for i in range(9):
             surface = pygame.Surface((55, 55), pygame.SRCALPHA, 32)
-            pygame.draw.rect(surface, (75, 54, 33),(0,0, 55, 55))
+            pygame.draw.rect(surface, BROWN,(0, 0, 55, 55), 0, 10)
+            surface.set_alpha(100)
             self.slots.append(surface)
 
     def draw(self, screen):
@@ -23,4 +28,7 @@ class Inventory:
 
         for index in range(len(inventory)):
             if inventory[index] != None:
-                screen.blit(inventory[index].surface, (250+(index*60),y))
+                screen.blit(DataManager.scaleImage(inventory[index].surface, 1.5), (254+(index*60), y+4))
+        
+        gamemanager.GameManager.farmer.selectedInventoryIndex
+        pygame.draw.rect(screen, RED,(250+(gamemanager.GameManager.farmer.selectedInventoryIndex*60), y, 55, 55), 2, 10)

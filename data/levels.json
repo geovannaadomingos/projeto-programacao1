@@ -1,4 +1,21 @@
 {
+    "0": {
+        "harvestGoal": {
+            "Cenoura": 1,
+            "Repolho": 1,
+            "Goiaba": 1,
+            "Berinjela": 1,
+            "Azulzinha": 1,
+            "Alface": 1,
+            "Trigo": 1,
+            "Abobora": 1,
+            "Nabo": 1,
+            "Rosinha": 1,
+            "Beterraba": 1,
+            "Estrelinha": 1,
+            "Pepino": 1
+        }
+    },
     "1": {
         "harvestGoal": {
             "Cenoura": 4,

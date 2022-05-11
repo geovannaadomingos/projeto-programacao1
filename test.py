@@ -1,11 +1,14 @@
 import json
+import os
 import pygame
 from Events import Events
 from NodeState import NodeState
 import datamanager
+from pathlib import Path
 from farmer import Farmer
 from gamemanager import GameManager
 from gameobject import GameObject
+from inventary import Inventory
 from hud import HudReport
 from item import Item, PlantItem, SeedItem
 from mouse import Mouse
@@ -31,7 +34,7 @@ def main():
     datamanager.DataManager.load(GameManager.scale)
 
     tilemap = Tilemap()
-    dataJson = json.load(open("data\\levels\\level_test.json"))
+    dataJson = json.load(open(Path("data/levels/level_test.json")))
     tilemap.load(dataJson, scale=GameManager.scale)
 
     running = True
@@ -41,7 +44,7 @@ def main():
 
     # Criar plantas coletaveis
     for y, planta_nome in enumerate(datamanager.DataManager.PLANTAS):
-        SeedItem(Vector2(300+((y//5) * 16*GameManager.scale), 200+((y%5)*16*GameManager.scale)), planta_nome)
+        SeedItem(Vector2(320+((y//5) * 16*GameManager.scale), 258+((y%5)*16*GameManager.scale)), planta_nome)
 
 
     spawnPoint = tilemap.layers[-1].getNodePosWithState(NodeState.FarmerSpawn)
@@ -50,6 +53,7 @@ def main():
 
 
     GameManager.updateTime()
+    inventario = Inventory()
     
     relatorio_hud = HudReport(SCREEN_W, SCREEN_H, GameManager.scale)
     Sounds.backgroundMusic()
@@ -58,7 +62,6 @@ def main():
         clock.tick(FPS)
         # Preenche o display com a cor preta (0, 0, 0)
         screen.fill((255, 255, 255))
-
         Events.loop()
         Mouse.loop()
         GameManager.loop()
@@ -72,6 +75,7 @@ def main():
         for go in GameObject.all_objects:
             go.draw(screen)
 
+        inventario.draw(screen)
         relatorio_hud.draw(screen)
 
         for event in Events.events:

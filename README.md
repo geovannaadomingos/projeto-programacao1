@@ -32,7 +32,7 @@ Esses foram os principais conceitos vistos na disciplina de Programação 1 e ap
 | `Laços de Repetição` | Um exemplo de arquivo em que laços de repetição são utilizados, mais especificamente o while, é o arquivo Main. Nesse arquivo, que é o arquivo principal do projeto, enquanto o projeto estiver rodando, o display é atualizado seguindo uma largura e uma altura. |
 | `Estruturas Condicionais` | As estruturas condicionais também foram utilizadas em diversos locais do projeto. Um exemplo de arquivo onde isso acontece é o plantation, arquivo que contém a classe da plantação, na qual a evolução das plantas e suas respectivas imagens são controladas graças às condicionais. |
 | `Listas e Dicionários` | Um dos arquivos que utiliza listas e dicionários é o relatório para o usuário(report). Nele, conseguimos armazenar quantas plantas(apresentadas no dicionário) o usuário coletou e, consequentimente, identificar se ele atingiu a meta daquele level. |
-| `Funções e métodos` | Local onde foi utilizado. |
+| `Funções e métodos` | Assim como o conceito de POO, as funções também foram utilizadas na maioria dos arquivos. Um dos arquivos em que a utilização de funções é mais recorrente é o arquivo farmer, que representa o fazendeiro e player do jogo. Diante disso, as ações dele, de andar, arar a terra, colher planta, etc., são representadas por funções. |
 
 
 ------

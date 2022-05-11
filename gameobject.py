@@ -1,6 +1,4 @@
 from vector2 import Vector2
-import gamemanager
-
 
 class GameObject():
     all_objects = []

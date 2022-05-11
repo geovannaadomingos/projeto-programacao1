@@ -1,10 +1,10 @@
 import pygame
 import datamanager
-from gameobject import GameObject
+import gameobject
 from vector2 import Vector2
 
 
-class Item(GameObject):
+class Item(gameobject.GameObject):
     all_itens = []
 
     def __init__(self, v2_spawnPos, v2_size, name, surface=None):

@@ -10084,9 +10084,9 @@
                         "x": 22,
                         "y": 2,
                         "state": [
-                            0,
-                            0,
-                            0
+                            161, 
+                            23, 
+                            252
                         ],
                         "tile": {
                             "path": "assets\\sprites\\premium_sprites\\tilesets\\Grass.png/2_3"

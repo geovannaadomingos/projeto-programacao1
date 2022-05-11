@@ -13,7 +13,8 @@ class SeedSpawner(GameObject):
         self.spawnRandomSeed()
     
     def loop(self):
-        if self.lastItem == None or (self.lastItem != None and self.lastItem in Item.all_itens):
+        if self.lastItem == None or (self.lastItem != None and self.lastItem not in Item.all_itens):
+            self.lastItem = None
             self.temporizador += gamemanager.GameManager.deltaTime
             if self.temporizador >= 5:
                 self.spawnRandomSeed()

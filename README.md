@@ -91,7 +91,7 @@ Descrição dos arquivos:
 
 Ao decorrer da idealização e do desenvolvimento do projeto, algumas dificuldades foram enfrentadas, mas, a partir disso, algumas lições foram aprendidas, conforme os tópicos a seguir:
 
-* `Maior erro enfrentado e como lidamos com ele:` Estabelecemos muitas features para o projeto, mas não priorizamos e nem levamos em consideração os requisitos básicos estabelecidos pelos orientadores. Nesse contexto, com um pouco menos de tempo para o desenvolvimento, percebemos isso e nos reunimos para mudar o escopo, cumprindo primordialmente os requistos básicos e deixando outras features em stand by. Dessa forma, foi possível garantir o básico e, dessa forma, partir para o mais complexo.
+* `Maior erro enfrentado e como lidamos com ele:` Estabelecemos muitas features para o projeto, mas não priorizamos e nem levamos em consideração os requisitos básicos estabelecidos pelos orientadores. Nesse contexto, com um pouco menos de tempo para o desenvolvimento, percebemos isso e nos reunimos para mudar o escopo, cumprindo primordialmente os requistos básicos e deixando outras features em stand by. Dessa forma, foi possível garantir o básico e, somente assim, partir para o mais complexo.
 * `Maior desafio enfrentado e como lidamos com ele:`
 * `Lições aprendidas durante o projeto:`
 

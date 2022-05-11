@@ -3,8 +3,7 @@ import pygame
 import json
 from pathlib import Path
 
-from gamemanager import GameManager
-
+DATA_FOLDER = Path("data")
 PREMIUM_ASSETS_FOLDER = Path("assets/sprites/premium_sprites")
 PREMIUM_ASSETS_FOLDER_OBJECTS = PREMIUM_ASSETS_FOLDER / "objects"
 PREMIUM_ASSETS_FOLDER_CHARACTERS =  PREMIUM_ASSETS_FOLDER / "characters"
@@ -14,6 +13,7 @@ PREMIUM_ASSETS_FOLDER_ITEMS =  PREMIUM_ASSETS_FOLDER_OBJECTS / "Items"
 class DataManager():
 
     PLANTAS = {}
+    LEVELS_DATA = {}
     PLAYER_ANIMATIONS = {}
     OBJECTS = {}
     plant_sheet = None
@@ -21,11 +21,13 @@ class DataManager():
     player_sheet = None
 
     def load(scale):
-        DataManager.loadSheets()
-        DataManager.loadPlantasData(scale)
-        DataManager.loadPlayerData(scale)
-        DataManager.loadObjects(scale)
-        DataManager.loadItems(scale)
+        if DataManager.plant_sheet == None: # ainda não foi carregado
+            DataManager.loadSheets()
+            DataManager.loadPlantasData(scale)
+            DataManager.loadPlayerData(scale)
+            DataManager.loadObjects(scale)
+            DataManager.loadItems(scale)
+            DataManager.LEVELS_DATA = json.load(open(DATA_FOLDER / "levels.json"))
 
     def loadSheets():
         DataManager.plant_sheet = pygame.image.load(PREMIUM_ASSETS_FOLDER_OBJECTS / "Farming Plants.png")

@@ -1,13 +1,23 @@
+import json
+from pathlib import Path
 import pygame
 from Events import Events
+from NodeState import NodeState
+from datamanager import DataManager
+import farmer
 import gameobject
+from hud import HudReport
+from inventary import Inventory
 from item import Item, PlantItem, SeedItem
 from mouse import Mouse
 import time
 from pathfinding import Pathfinding
+from plantation import Plantation
 from soundEffects import Sounds
 from report import Report
+from tilemap import Tilemap
 from tilemapEditor import Grid
+from vector2 import Vector2
 
 
 class GameManager():
@@ -18,6 +28,8 @@ class GameManager():
     farmer = None
     grid = None
     grid_collider = None
+    level = 0
+    running = False
 
     def updateTime():
         GameManager.lastTime = GameManager.time
@@ -68,3 +80,97 @@ class GameManager():
                         Item.all_itens.remove(item)
                         gameobject.GameObject.all_objects.remove(item)
                         Sounds.playSFX("bag.wav")
+
+    def runLevel(screen, level):
+        GameManager.level = level
+
+        FPS = 60
+        clock = pygame.time.Clock()
+
+        DataManager.load(GameManager.scale)
+
+        SCREEN_W, SCREEN_H = screen.get_size()
+
+        tilemap = Tilemap()
+        dataJson = json.load(open(Path(f"data/levels/level_{level}.json")))
+        tilemap.load(dataJson, scale=GameManager.scale)
+
+        # Criar plantas coletaveis
+        for y, planta_nome in enumerate(DataManager.PLANTAS):
+            PlantItem(Vector2(320+((y//5) * 16*GameManager.scale), 258+((y%5)*16*GameManager.scale)), planta_nome)
+
+
+        spawnPoint = tilemap.layers[-1].getNodePosWithState(NodeState.FarmerSpawn)
+        GameManager.grid = tilemap.layers[-1]
+        GameManager.farmer = farmer.Farmer(spawnPoint, speed=1.5)
+
+
+        GameManager.updateTime()
+        
+        inventario = Inventory()
+        relatorio_hud = HudReport(SCREEN_W, SCREEN_H, GameManager.scale)
+        Sounds.backgroundMusic()
+
+        GameManager.running = True
+        while GameManager.running:
+            clock.tick(FPS)
+            # Preenche o display com a cor preta (0, 0, 0)
+            screen.fill((255, 255, 255))
+            Events.loop()
+            Mouse.loop()
+            GameManager.loop()
+
+            # desenha todos os objetos na tela
+            # if GameManager.grid != None:
+            #     GameManager.grid.draw(screen)
+
+            tilemap.draw(screen)
+
+            for go in gameobject.GameObject.all_objects:
+                go.draw(screen)
+
+            inventario.draw(screen)
+            relatorio_hud.draw(screen)
+
+            for event in Events.events:
+                if event.type == pygame.KEYDOWN:
+                    if event.key == pygame.K_ESCAPE:  # ESC
+                        GameManager.running = False
+                    elif event.key == pygame.K_r:
+                        print(Report.currentHarvest)
+                elif event.type == pygame.QUIT:
+                    GameManager.running = False
+
+            # Atualiza a tela do pygame
+            pygame.display.update()
+        GameManager.clearObjects()
+
+    def levelCompleted():
+        print("ganhei")
+        GameManager.running = False
+
+    def clearObjects():
+        GameManager.deltaTime = 0
+        GameManager.farmer = None
+        GameManager.grid = None
+        GameManager.grid_collider = None
+
+        Events.events = []
+        gameobject.GameObject.all_objects = []
+        Item.all_itens = []
+        Plantation.all_objects = []
+        Report.clearCurrentHarvest()
+
+def main():
+    pygame.init()
+    pygame.display.set_caption("Teste Projetinho P1")
+
+    # Screen
+    SCREEN_W = 16 * 32 * GameManager.scale
+    SCREEN_H = 16 * 24 * GameManager.scale
+    screen = pygame.display.set_mode((SCREEN_W, SCREEN_H))
+
+    GameManager.runLevel(screen, 0)
+
+if __name__ == "__main__":
+    main()

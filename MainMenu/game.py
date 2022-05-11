@@ -1,3 +1,4 @@
+from pathlib import Path
 import pygame
 from menu import *  # importa todas as classes
 import os
@@ -12,10 +13,10 @@ class Game():
         self.DISPLAY_W, self.DISPLAY_H = 1024, 768  # TAMANHO DA DELA
         self.display = pygame.Surface((self.DISPLAY_W, self.DISPLAY_H))  # CRIA A TELA COM AQUELAS DIMESSÕES
         self.window = pygame.display.set_mode(((self.DISPLAY_W, self.DISPLAY_H)))
-        ttf_path = os.path.join(sys.path[0], "fonte.ttf")
+        ttf_path = (Path(sys.path[0]) / "assets") / "fonte.ttf"
         self.font = pygame.font.Font(ttf_path, 80)
-        self.background = pygame.image.load(os.path.join(sys.path[0], "TELAA.png"))
-        self.background_credits = pygame.image.load(os.path.join(sys.path[0], "telaredd.png"))
+        self.background = pygame.image.load((Path(sys.path[0]) / "assets") / "TELAA.png")
+        self.background_credits = pygame.image.load((Path(sys.path[0]) / "assets") / "telaredd.png")
         self.BLACK, self.WHITE = (0,0,0), ((105,105,105))  # CORES
         self.main_menu = MainMenu(self)  # referncia meu objeto do menu principal  epermite que a de baixo mude de acordo com o que for selecionado
         self.credits = CreditsMenu(self)
@@ -29,7 +30,7 @@ class Game():
             if self.START_KEY:
                 self.playing = False
             self.display.fill(self.BLACK)
-            self.draw_text('NOSSO JOGUINHO AQUI :)', 20, self.DISPLAY_W / 2, self.DISPLAY_H / 2)
+            # self.draw_text('NOSSO JOGUINHO AQUI :)', 20, self.DISPLAY_W / 2, self.DISPLAY_H / 2)
             self.window.blit(self.display, (0, 0))
             pygame.display.update()
             self.reset_keys()

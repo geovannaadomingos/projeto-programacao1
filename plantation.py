@@ -1,5 +1,5 @@
 from pygame import Surface
-from gamemanager import GameManager
+import gamemanager
 from gameobject import GameObject
 from item import PlantItem
 from mouse import Mouse
@@ -9,7 +9,7 @@ from soundEffects import Sounds
 class Plantation(GameObject):
     all_plantations = []
     def __init__(self, v2_pos):
-        super().__init__(v2_pos, Vector2(16, 16) * GameManager.scale, clickable=True)
+        super().__init__(v2_pos, Vector2(16, 16) * gamemanager.GameManager.scale, clickable=True)
         self.amountOfWater = 1 #porcentagem_agua abaixo de 50% a terra já pede
         self.evolucao = 0
         self.seed = None
@@ -74,8 +74,8 @@ class Plantation(GameObject):
     def loop(self):
         if self.seed != None:
             if self.needWater() == False:
-                self.tempo_plantado += GameManager.deltaTime
-                self.tempo_terreno += GameManager.deltaTime
+                self.tempo_plantado += gamemanager.GameManager.deltaTime
+                self.tempo_terreno += gamemanager.GameManager.deltaTime
 
                 if self.getEvolution() >= 1:
                     # brotar

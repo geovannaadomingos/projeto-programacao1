@@ -1,14 +1,15 @@
 import pygame
+from pathlib import Path
 
 class Sounds():
-    SoundsFolder = "assets\\Sounds\\"
+    SoundsFolder = Path("assets\\Sounds")
 
     def playSFX(musicName):
-        playSE = pygame.mixer.Sound(Sounds.SoundsFolder+musicName)
+        playSE = pygame.mixer.Sound(Sounds.SoundsFolder / musicName)
         playSE.play()
 
     def backgroundMusic():
-        background_music = pygame.mixer.music.load(Sounds.SoundsFolder+'bg music.mp3')
+        background_music = pygame.mixer.music.load(Sounds.SoundsFolder / 'bg music.mp3')
         pygame.mixer.music.set_volume(0.2)
         pygame.mixer.music.play(-1)
       

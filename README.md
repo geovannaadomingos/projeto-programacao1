@@ -93,7 +93,7 @@ Ao decorrer da idealização e do desenvolvimento do projeto, algumas dificuldad
 
 * `Maior erro enfrentado e como lidamos com ele:` Estabelecemos muitas features para o projeto, mas não priorizamos e nem levamos em consideração os requisitos básicos propostos pelos orientadores. Nesse contexto, com um pouco menos de tempo para o desenvolvimento, percebemos isso e nos reunimos para mudar o escopo, cumprindo primordialmente os requistos básicos e deixando outras features em stand by. Dessa forma, foi possível garantir o básico e, somente assim, partir para o mais complexo.
 * `Maior desafio enfrentado e como lidamos com ele:` A maior parte da equipe nunca tinha feito interfaces 2D utilizando Python. Diante disso, concordamos em, individualmente, antes de desenvolver o projeto, fazer um pequeno jogo, similar ao jogo [Flappy Bird](https://flappybird.io/), a fim de que todos passassem a ter essa noção básica de como criar tais interfaces. A partir daí, tornou-se um pouco mais simples o desenvolvimento dos códigos ao longo do projeto.
-* `Lições aprendidas durante o projeto:`
+* `Lições aprendidas durante o projeto:` Dentre tantos conceitos técnicos estudados e aplicados, também foi possível aprender sobre a necessidade de priorizar tarefas, de respeitar os pré-requisitos para o desenvolvimento e de enxergar a importância da organização e do planejamento antes do "mão na massa". Além disso, vimos o quanto o trabalho em equipe e o apoio mútuo são fundamentais para enfrentar dificuldades e desafios que surgem ao longo de qualquer projeto de desenvolvimento.
 
 
 ------

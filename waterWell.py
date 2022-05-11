@@ -9,4 +9,4 @@ class WaterWell(Place):
         self.surface = image
 
     def restockWateringCan(self, wateringCan):
-        wateringCan.restock(self, 1)
+        wateringCan.restock(1)

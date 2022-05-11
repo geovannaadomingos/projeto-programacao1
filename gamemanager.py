@@ -18,6 +18,7 @@ from report import Report
 from tilemap import Tilemap
 from tilemapEditor import Grid
 from vector2 import Vector2
+from waterWell import WaterWell
 
 
 class GameManager():
@@ -100,6 +101,8 @@ class GameManager():
             PlantItem(Vector2(320+((y//5) * 16*GameManager.scale), 258+((y%5)*16*GameManager.scale)), planta_nome)
             SeedItem(Vector2(320+((y//5) * 16*GameManager.scale), 258+((y%5)*16*GameManager.scale)), planta_nome)
 
+
+        WaterWell(Vector2(400, 400))
 
         spawnPoint = tilemap.layers[-1].getNodePosWithState(NodeState.FarmerSpawn)
         GameManager.grid = tilemap.layers[-1]

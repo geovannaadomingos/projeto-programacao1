@@ -9,6 +9,7 @@ from pathfinding import Pathfinding
 from plantation import Plantation
 from vector2 import Vector2
 from soundEffects import Sounds
+from waterWell import WaterWell
 from wateringCan import WateringCan
 
 
@@ -31,6 +32,7 @@ class Farmer(GameObject):
         self.inventory = [None for x in range(9)]
         self.len_itens_inventory = 0
         self.selectedInventoryIndex = 0
+        self.blockInventory = False
 
         self.v2_collideBox = Vector2(16, 16) * (self.v2_size.x//48) * 0.5
         self.v2_collideOffset = (
@@ -55,7 +57,7 @@ class Farmer(GameObject):
             self.frameCount = 0
             
             if self.state == "enxada":
-                self.arar()
+                self.plantar()
             elif self.state == "regador":
                 self.regar()
 
@@ -64,12 +66,13 @@ class Farmer(GameObject):
             if self.cronometerWalking >= 1:
                 self.playStepSounds()
 
-        for event in Events.events:
-            if event.type == pygame.KEYDOWN:
-                if event.key in range(49, 58):
-                    self.selectedInventoryIndex = (event.key - 49)
-                    print(
-                        f"({self.selectedInventoryIndex}) Item atual >: {type(self.getCurrentItem())}")
+        if self.blockInventory == False:
+            for event in Events.events:
+                if event.type == pygame.KEYDOWN:
+                    if event.key in range(49, 58):
+                        self.selectedInventoryIndex = (event.key - 49)
+                        print(
+                            f"({self.selectedInventoryIndex}) Item atual >: {type(self.getCurrentItem())}")
 
     def playStepSounds(self):
         Sounds.playSFX("step.wav")
@@ -87,17 +90,26 @@ class Farmer(GameObject):
             if type(currentItem) == SeedItem:
                 if gameObject.canReceiveSeed():
                     self.moveTo(v2_mousePos, gameObject, self.ararAnimation)
+                    self.blockInventory = True
             elif type(currentItem) == WateringCan:
-                if gameObject.seed != None:
+                if currentItem.hasWater() and gameObject.seed != None:
                     self.moveTo(v2_mousePos, gameObject, self.regarAnimation)
+                    self.blockInventory = True
                 else:
                     self.moveTo(v2_mousePos)
+                    self.blockInventory = False
             elif currentItem == None:
                 if gameObject.canReceiveSeed():
                     self.moveTo(v2_mousePos)
-
+        elif type(gameObject) == WaterWell:
+            currentItem = self.getCurrentItem()
+            if type(currentItem) == WateringCan:
+                if currentItem.canRestock():
+                    self.moveTo(v2_mousePos, gameObject, self.recarregarAnimation)
+                    self.blockInventory = True
         else:
             self.moveTo(v2_mousePos)
+            self.blockInventory = False
 
     def move(self):
         try:
@@ -186,26 +198,59 @@ class Farmer(GameObject):
             self.arriveEvent = None
 
     def ararAnimation(self):
-        self.changeState("enxada")
-        Sounds.playSFX("dig.wav")
-        if self.v2_targetPos != None:
-            self.v2_direction = (self.v2_targetPos - self.getCenterPos())
+        try:
+            self.changeState("enxada")
+            Sounds.playSFX("dig.wav")
+            if self.v2_targetPos != None:
+                self.v2_direction = (self.v2_targetPos - self.getCenterPos())
+        except:
+            pass
 
     def regarAnimation(self):
-        self.changeState("regador")
-        Sounds.playSFX("water.wav")
-        if self.v2_targetPos != None:
-            self.v2_direction = (self.v2_targetPos - self.getCenterPos())
+        try:
+            self.changeState("regador")
+            Sounds.playSFX("water.wav")
+            if self.v2_targetPos != None:
+                self.v2_direction = (self.v2_targetPos - self.getCenterPos())
+        except:
+            pass
+    
+    def recarregarAnimation(self):
+        try:
+            # self.changeState("regador")
+            Sounds.playSFX("water.wav")
+            if self.v2_targetPos != None:
+                self.v2_direction = (self.v2_targetPos - self.getCenterPos())
+
+            self.recarregarRegador()
+        except:
+            pass
+
+    def recarregarRegador(self):
+        try:
+            self.targetObject.restockWateringCan(self.getCurrentItem())
+            self.changeState("idle")
+            self.blockInventory = False
+        except:
+            pass
 
     def regar(self):
-        self.getCurrentItem().water(self.targetObject)
-        self.changeState("idle")
+        try:
+            self.getCurrentItem().water(self.targetObject)
+            self.changeState("idle")
+            self.blockInventory = False
+        except:
+            pass
 
-    def arar(self):
-        self.targetObject.receiveSeed(self.getCurrentItem())
-        self.inventory[self.selectedInventoryIndex] = None
-        self.len_itens_inventory -= 1
-        self.changeState("idle")
+    def plantar(self):
+        try:
+            self.targetObject.receiveSeed(self.getCurrentItem())
+            self.inventory[self.selectedInventoryIndex] = None
+            self.len_itens_inventory -= 1
+            self.changeState("idle")
+            self.blockInventory = False
+        except:
+            pass
 
     def canAddToInventory(self):
         return self.len_itens_inventory < 9

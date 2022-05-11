@@ -1,7 +1,7 @@
 {
     "Cenoura": {
         "name": "Cenoura",
-        "time_to_grow_sec": 6
+        "time_to_grow_sec": 3
     },
     "Repolho": {
         "name": "Repolho",
@@ -9,46 +9,46 @@
     },
     "Goiaba": {
         "name": "Goiaba",
-        "time_to_grow_sec": 11
+        "time_to_grow_sec": 5
     },
     "Berinjela": {
         "name": "Berinjela",
-        "time_to_grow_sec": 4
+        "time_to_grow_sec": 6
     },
     "Azulzinha": {
         "name": "Azulzinha",
-        "time_to_grow_sec": 4
+        "time_to_grow_sec": 8
     },
     "Alface": {
         "name": "Alface",
-        "time_to_grow_sec": 4
+        "time_to_grow_sec": 9
     },
     "Trigo": {
         "name": "Trigo",
-        "time_to_grow_sec": 4
+        "time_to_grow_sec": 10
     },
     "Abobora": {
         "name": "Abobora",
-        "time_to_grow_sec": 4
+        "time_to_grow_sec": 11
     },
     "Nabo": {
         "name": "Nabo",
-        "time_to_grow_sec": 4
+        "time_to_grow_sec": 12
     },
     "Rosinha": {
         "name": "Rosinha",
-        "time_to_grow_sec": 4
+        "time_to_grow_sec": 13
     },
     "Beterraba": {
         "name": "Beterraba",
-        "time_to_grow_sec": 8
+        "time_to_grow_sec": 14
     },
     "Estrelinha": {
         "name": "Estrelinha",
-        "time_to_grow_sec": 4
+        "time_to_grow_sec": 15
     },
     "Pepino": {
         "name": "Pepino",
-        "time_to_grow_sec": 10
+        "time_to_grow_sec": 16
     }
 }

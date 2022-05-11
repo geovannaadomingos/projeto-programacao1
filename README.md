@@ -92,7 +92,7 @@ Descrição dos arquivos:
 Ao decorrer da idealização e do desenvolvimento do projeto, algumas dificuldades foram enfrentadas, mas, a partir disso, algumas lições foram aprendidas, conforme os tópicos a seguir:
 
 * `Maior erro enfrentado e como lidamos com ele:` Estabelecemos muitas features para o projeto, mas não priorizamos e nem levamos em consideração os requisitos básicos propostos pelos orientadores. Nesse contexto, com um pouco menos de tempo para o desenvolvimento, percebemos isso e nos reunimos para mudar o escopo, cumprindo primordialmente os requistos básicos e deixando outras features em stand by. Dessa forma, foi possível garantir o básico e, somente assim, partir para o mais complexo.
-* `Maior desafio enfrentado e como lidamos com ele:`
+* `Maior desafio enfrentado e como lidamos com ele:` A maior parte da equipe nunca tinha feito interfaces 2D utilizando Python. Diante disso, concordamos em fazer um pequeno jogo, similar ao jogo [Flappy Bird](https://flappybird.io/), a fim de que todos passassem a ter essa noção básica de como criar tais interfaces. A partir daí, tornou-se um pouco mais simples o desenvolvimento dos códigos ao longo do projeto.
 * `Lições aprendidas durante o projeto:`
 
 

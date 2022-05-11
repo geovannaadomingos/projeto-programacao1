@@ -54,7 +54,7 @@ class DataManager():
                     DataManager.plant_sheet, frameX=x, frameY=index+2, scale=scale))
 
     def loadObjects(scale):
-        DataManager.OBJECTS["waterWell"] = DataManager.scaleImage(pygame.image.load(PREMIUM_ASSETS_FOLDER_OBJECTS + '\Water well.png') ,scale)
+        DataManager.OBJECTS["waterWell"] = DataManager.scaleImage(pygame.image.load(os.path.join(PREMIUM_ASSETS_FOLDER_OBJECTS, 'Water well.png')) ,scale)
 
     def getImageFromSpriteSheet(sheet, frameX, frameY, width=16, height=16, scale=1):
         image = pygame.Surface((width, height), pygame.SRCALPHA, 32).convert_alpha()

@@ -1,4 +1,5 @@
 import json
+import os
 import pygame
 from Events import Events
 from NodeState import NodeState
@@ -32,7 +33,7 @@ def main():
     datamanager.DataManager.load(GameManager.scale)
 
     tilemap = Tilemap()
-    dataJson = json.load(open("data\\levels\\level_test.json"))
+    dataJson = json.load(open(os.path.join("data", "levels", "level_test.json")))
     tilemap.load(dataJson, scale=GameManager.scale)
 
     running = True

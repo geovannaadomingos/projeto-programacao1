@@ -77,7 +77,6 @@ class MainMenu(Menu):
     def check_input(self):  # ver o que o usuario deseja fazer
         self.move_cursor()
         if self.game.START_KEY:
-            print(f"Estado atual >: {self.state}")
             if self.state == 'Start':
                 GameManager.runLevel(self.game.window, 0)
             elif self.state == 'Levels':

@@ -4,10 +4,9 @@ import pygame
 from Events import Events
 from NodeState import NodeState
 import datamanager
-from gameobject import GameObject
+import gameobject
 from mouse import Mouse
 from vector2 import Vector2
-import pathlib
 import time
 
 class Node():
@@ -25,8 +24,7 @@ class Node():
     def valor_f(self):
         return self.g + self.h
 
-
-class Grid(GameObject):
+class Grid(gameobject.GameObject):
     def __init__(self, v2_pos, v2_size, nodeDiameter, nodeSurface=None, item=None, enableLines=False, drawState=False):
         super().__init__(v2_pos, v2_size, False)
         self.nodeDiameter = nodeDiameter
@@ -37,7 +35,7 @@ class Grid(GameObject):
         self.lineWidth = 1
         self.lineColor = (0,0,0)
         self.drawState = drawState
-        GameObject.all_objects.remove(self)
+        gameobject.GameObject.all_objects.remove(self)
 
         if nodeSurface == None:
             nodeSurface = pygame.Surface((self.nodeDiameter, self.nodeDiameter), pygame.SRCALPHA, 32).convert_alpha()
@@ -135,6 +133,7 @@ class Grid(GameObject):
         self.drawLines(screen)
 
 
+
 class Tile():
     def __init__(self, path, surface, tileX, tileY):
         self.tileX = tileX
@@ -175,9 +174,8 @@ class TilemapEditor():
         grid_tiles.enableLines = True
         grid_tiles.lineColor = (156, 98, 54)
 
-        tileset_folder = datamanager.PREMIUM_ASSETS_FOLDER + "\\tilesets"
-        tilesets_sheets_paths = list(
-            pathlib.Path(tileset_folder).glob('*.png'))
+        tileset_folder = datamanager.PREMIUM_ASSETS_FOLDER / "tilesets"
+        tilesets_sheets_paths = list(tileset_folder.glob('*.png'))
 
         tiles = []
 

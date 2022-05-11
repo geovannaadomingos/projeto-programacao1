@@ -68,8 +68,6 @@ class Farmer(gameobject.GameObject):
             if event.type == pygame.KEYDOWN:
                 if event.key in range(49, 58):
                     self.selectedInventoryIndex = (event.key - 49)
-                    print(
-                        f"({self.selectedInventoryIndex}) Item atual >: {type(self.getCurrentItem())}")
 
     def playStepSounds(self):
         Sounds.playSFX("step.wav")

@@ -60,6 +60,7 @@ class GameManager():
                         Item.all_itens.remove(item)
                         gameobject.GameObject.all_objects.remove(item)
                         Report.harvestReport(item.name)
+                        Sounds.backgroundMusic("collect.wav")
 
                     elif type(item) == SeedItem:
                         # Reportar no relatorio ( talvez )

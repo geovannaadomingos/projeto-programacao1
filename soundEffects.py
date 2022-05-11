@@ -5,12 +5,16 @@ class Sounds():
 
     def playSFX(musicName):
         playSE = pygame.mixer.Sound(Sounds.SoundsFolder+musicName)
-        pygame.mixer.music.set_volume(0.5)
         playSE.play()
 
     def backgroundMusic():
         background_music = pygame.mixer.music.load(Sounds.SoundsFolder+'bg music.mp3')
+        pygame.mixer.music.set_volume(0.3)
         pygame.mixer.music.play(-1)
+
+    def volume():
+        pygame.mixer.music.set_volume()
+        
 
 #Som que faz qdo plantar algo
 #Som que faz qdo regar

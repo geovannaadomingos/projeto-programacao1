@@ -101,7 +101,18 @@ class ControlsMenu(Menu):
                 self.run_display = False
             self.game.display.fill(self.game.BLACK)  # REDEFINE A TEA PARA PRETO
             self.game.display.blit(self.game.background_credits, (0,0))
-            self.game.draw_text('CONTROLES', 25, self.game.DISPLAY_W / 2, self.game.DISPLAY_H / 2 - 250)
+            self.game.draw_text('CONTROLES', 25, self.game.DISPLAY_W / 2, self.game.DISPLAY_H / 2 - 300)
+            self.game.draw_text(' - Use o Mouse para mover o seu player', -20, self.game.DISPLAY_W / 2, self.game.DISPLAY_H / 2 - 200)
+            self.game.draw_text(' - Colha as sementes movendo ', -20, self.game.DISPLAY_W / 2, self.game.DISPLAY_H / 2 - 150)
+            self.game.draw_text('  o player por cima dela', -20, self.game.DISPLAY_W / 2, self.game.DISPLAY_H / 2 - 100)
+            self.game.draw_text(' - Presione o número do slot da semente', -20, self.game.DISPLAY_W / 2, self.game.DISPLAY_H / 2 - 50)
+            self.game.draw_text(' - Pressione o botão direito do ', -20, self.game.DISPLAY_W / 2, self.game.DISPLAY_H / 2 - 0)
+            self.game.draw_text('  seu mouse para plantar', -20, self.game.DISPLAY_W / 2, self.game.DISPLAY_H / 2 - (-50))
+            self.game.draw_text(' - Selecione o slot do regador (1)', -20, self.game.DISPLAY_W / 2, self.game.DISPLAY_H / 2 - (-100))
+            self.game.draw_text(' - Clique com o botão direito do', -50, self.game.DISPLAY_W / 2, self.game.DISPLAY_H / 2 - (-150))
+            self.game.draw_text('    mouse para regar', -50, self.game.DISPLAY_W / 2, self.game.DISPLAY_H / 2 - (-200))
+            self.game.draw_text(' - Depois recolha a planta até ', -50, self.game.DISPLAY_W / 2, self.game.DISPLAY_H / 2 - (-250))
+            self.game.draw_text('   completar o seu objetivo :)', -50, self.game.DISPLAY_W / 2, self.game.DISPLAY_H / 2 - (-300))
             self.blit_screen()
       
 

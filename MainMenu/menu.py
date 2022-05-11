@@ -96,12 +96,12 @@ class ControlsMenu(Menu):
         self.run_display = True
         while self.run_display:
             self.game.check_events()
-            if self.game.START_KEY or self.game.BACK_KEY:
+            if self.game.START_KEY or self.game.ESC_KEY:
                 self.game.curr_menu = self.game.main_menu
                 self.run_display = False
             self.game.display.fill(self.game.BLACK)  # REDEFINE A TEA PARA PRETO
             self.game.display.blit(self.game.background_credits, (0,0))
-            self.game.draw_text('CONTROLES', 25, self.game.DISPLAY_W / 2, self.game.DISPLAY_H / 2 - 120)
+            self.game.draw_text('CONTROLES', 25, self.game.DISPLAY_W / 2, self.game.DISPLAY_H / 2 - 250)
             self.blit_screen()
       
 
@@ -115,7 +115,7 @@ class LevelsMenu(Menu):
         self.run_display = True
         while self.run_display:
             self.game.check_events()
-            if self.game.BACK_KEY:
+            if self.game.ESC_KEY:
                 self.close_menu()
                 continue
             self.game.display.fill(self.game.BLACK)  # REDEFINE A TEA PARA PRETO
@@ -155,7 +155,7 @@ class CreditsMenu(Menu):
         self.run_display = True
         while self.run_display:
             self.game.check_events()
-            if self.game.START_KEY or self.game.BACK_KEY:
+            if self.game.START_KEY or self.game.ESC_KEY:
                 self.game.curr_menu = self.game.main_menu
                 self.run_display = False
             self.game.display.fill(self.game.BLACK)

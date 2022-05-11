@@ -9,7 +9,7 @@ class Game():
     def __init__(self):
         pygame.init()
         self.running, self.playing = True, False
-        self.UP_KEY, self.DOWN_KEY, self.START_KEY, self.BACK_KEY = False, False, False, False  # TECLAS
+        self.UP_KEY, self.DOWN_KEY, self.START_KEY, self.ESC_KEY = False, False, False, False  # TECLAS
         self.DISPLAY_W, self.DISPLAY_H = 1024, 768  # TAMANHO DA DELA
         self.display = pygame.Surface((self.DISPLAY_W, self.DISPLAY_H))  # CRIA A TELA COM AQUELAS DIMESSÕES
         self.window = pygame.display.set_mode(((self.DISPLAY_W, self.DISPLAY_H)))
@@ -43,15 +43,15 @@ class Game():
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_RETURN:
                     self.START_KEY = True
-                if event.key == pygame.K_BACKSPACE:
-                    self.BACK_KEY = True
+                if event.key == pygame.K_ESCAPE:
+                    self.ESC_KEY = True
                 if event.key == pygame.K_DOWN:
                     self.DOWN_KEY = True
                 if event.key == pygame.K_UP:
                     self.UP_KEY = True
 
     def reset_keys(self):  # verifica se o jogador ainda ta segurando a tecla chave
-        self.UP_KEY, self.DOWN_KEY, self.START_KEY, self.BACK_KEY = False, False, False, False
+        self.UP_KEY, self.DOWN_KEY, self.START_KEY, self.ESC_KEY = False, False, False, False
 
     def draw_text(self, text, size, x, y):  # desenhar texto na tela
         text_surface = self.font.render(text, True, self.WHITE)

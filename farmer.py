@@ -3,8 +3,8 @@ import pygame
 import datamanager
 from Events import Events
 import gamemanager
-from gameobject import GameObject
-from item import SeedItem
+import gameobject
+import item
 from pathfinding import Pathfinding
 from plantation import Plantation
 from vector2 import Vector2
@@ -12,7 +12,7 @@ from soundEffects import Sounds
 from wateringCan import WateringCan
 
 
-class Farmer(GameObject):
+class Farmer(gameobject.GameObject):
 
     def __init__(self, v2_pos, speed, frameDuration=6):
         self.animations = datamanager.DataManager.PLAYER_ANIMATIONS
@@ -84,7 +84,7 @@ class Farmer(GameObject):
     def handleClick(self, gameObject, v2_mousePos):
         if type(gameObject) == Plantation:
             currentItem = self.getCurrentItem()
-            if type(currentItem) == SeedItem:
+            if type(currentItem) == item.SeedItem:
                 if gameObject.canReceiveSeed():
                     self.moveTo(v2_mousePos, gameObject, self.ararAnimation)
             elif type(currentItem) == WateringCan:

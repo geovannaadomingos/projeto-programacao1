@@ -6,6 +6,7 @@ from NodeState import NodeState
 import datamanager
 from gameobject import GameObject
 from plantation import Plantation
+from seedSpawner import SeedSpawner
 from tilemapEditor import Grid
 from vector2 import Vector2
 import json
@@ -63,6 +64,8 @@ class Tilemap():
                             Plantation(grid.getScreenPos(x, y)))
                     elif state == NodeState.WaterWell:
                         WaterWell(grid.getScreenPos(x, y))
+                    elif state == NodeState.SeedSpawn:
+                        SeedSpawner(grid.getScreenPos(x, y))
             self.layers.append(grid)
         print("loaded")
 

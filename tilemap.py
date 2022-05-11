@@ -1,4 +1,4 @@
-from pathlib import Path
+from pathlib import Path, WindowsPath
 import pygame
 from Events import Events
 from NodeState import NodeState
@@ -25,16 +25,18 @@ class Tilemap():
     def load(self, data, scale):
 
         for tilePath in data["tiles"]:
-            sheetPath, position = Path(tilePath).split("/")
+            tilePath = Path(tilePath)
+            position = tilePath.name
+            sheetPath = Path(str(tilePath).replace(position, ""))
             imageX, imageY = map(int, position.split("_"))
 
-            sheet = self.sheets.get(sheetPath, None)
+            sheet = self.sheets.get(str(WindowsPath(sheetPath)), None)
 
             if sheet == None:
                 sheet = pygame.image.load(sheetPath)
-                self.sheets[sheetPath] = sheet
+                self.sheets[str(WindowsPath(sheetPath))] = sheet
 
-            self.tiles[tilePath] = datamanager.DataManager.getImageFromSpriteSheet(
+            self.tiles[str(WindowsPath(tilePath))] = datamanager.DataManager.getImageFromSpriteSheet(
                 sheet, imageX, imageY, scale=scale)
 
         gridWidth = len(data["layers"][0]["grid"][0])
@@ -47,7 +49,7 @@ class Tilemap():
                 for x, tile in enumerate(row):
                     spritePath = tile.get("tile", None)
                     if spritePath != None:
-                        spritePath = spritePath["path"]
+                        spritePath = str(WindowsPath(spritePath["path"]))
 
                     state = tuple(tile.get("state"))
                     grid.matrix[y][x].state = state

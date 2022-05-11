@@ -28,9 +28,9 @@ class Tilemap():
         print(barrinha)
 
         for tilePath in data["tiles"]:
-            tilePath = Path(tilePath)
+            tilePath = Path(tilePath.replace("\\", "/"))
             position = tilePath.name
-            sheetPath = Path(str(tilePath).replace("\\", "/").replace(position, ""))
+            sheetPath = Path(str(tilePath).replace(position, ""))
             imageX, imageY = map(int, position.split("_"))
 
             sheet = self.sheets.get(str(Path(sheetPath)), None)
@@ -39,7 +39,7 @@ class Tilemap():
                 sheet = pygame.image.load(sheetPath)
                 self.sheets[str(Path(sheetPath))] = sheet
 
-            self.tiles[str(Path(tilePath.replace("\\", "/")))] = datamanager.DataManager.getImageFromSpriteSheet(
+            self.tiles[str(Path(tilePath))] = datamanager.DataManager.getImageFromSpriteSheet(
                 sheet, imageX, imageY, scale=scale)
 
         gridWidth = len(data["layers"][0]["grid"][0])

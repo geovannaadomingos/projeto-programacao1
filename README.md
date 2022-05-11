@@ -54,34 +54,82 @@ Esses foram os principais conceitos vistos na disciplina de Programação 1 e ap
 ```
  📁 projeto-programacao1
    |
-   |-  📁 src
-   |    |
-   |    |- 📁 assets
-   |         |- 📄 imagem.svg
-   |
-   |    |- 📁 components
-   |         |- 📁 Banner 
-   |                |- 📄 index.js
-   |                |- 📄 styles.css
-   |         |- 📁 Menu 
-   |                |- 📄 index.js
-   |                |- 📄 styles.css
-   |
-   |    |- 📁 routes
-   |         |- 📄 Routes.js 
-   |    
-   |
-   |
-   |    |- 📄 App.js
-   |    |- 📄 index.js
-   |    |- 📄 global.css
+   |-  📁 MainMenu
+   |     |- 📄 game.py
+   |     |- 📄 menu.py
+   | 
+   |-  📁 assets
+   |     |- 📁 Sounds
+   |     |- 📁 sprites
+   |     |- 📄 Kenney Blocks.ttf
+   |     |- 📄 LogoMenu-removebg-preview (1).png
+   |     |- 📄 TELAA.png
+   |     |- 📄 fonte.ttf
+   |     |- 📄 logo.png
+   |     |- 📄 telaredd.png
+   | 
+   |-  📁 data
+   |     |- 📁 levels
+   |     |- 📄 levels.json
+   |     |- 📄 plants.json
+   |  
+   |   📄 .gitignore
+   |   📄 Events.py
+   |   📄 LICENSE
+   |   📄 NodeState.py
+   |   📄 README.md
+   |   📄 datamanager.py
+   |   📄 farmer.py
+   |   📄 gamemanager.py
+   |   📄 gameobject.py
+   |   📄 hud.py
+   |   📄 inventary.py
+   |   📄 item.py
+   |   📄 main.py
+   |   📄 mouse.py
+   |   📄 pathfinding.py
+   |   📄 place.py
+   |   📄 plantation.py
+   |   📄 report.py
+   |   📄 soundEffects.py
+   |   📄 test.py
+   |   📄 tilemap.py
+   |   📄 tilemapEditor.py
+   |   📄 vector2.py
+   |   📄 waterWell.py
+   |   📄 wateringCan.py
    |
 
 ```
 Descrição dos arquivos:
-* `Arquivo:` Descrição
-* `Arquivo:` Descrição
-* `Arquivo:` Descrição
+* `MainMenu:` Pasta que contém objetos, com seus atributos e métodos, do menu do jogo
+* `assets:` Pasta mídias(sons, imagens, fontes, logo, etc.) do jogo 
+* `data:` Pasta que contém arquivos em json e dados(como de levels e estados das plantas) utilizados no jogo
+* `.gitignore:` Descrição
+* `Events.py` Descrição
+* `LICENSE:` Descrição
+* `NodeState.py:` Descrição
+* `README.md:` Descrição
+* `datamanager.py:` Descrição
+* `farmer.py:` Descrição
+* `gamemanager.py:` Descrição
+* `gameobject.py:` Descrição
+* `hud.py:` Descrição
+* `inventary.py:` Descrição
+* `item.py:` Descrição
+* `main.py:` Descrição
+* `mouse.py:` Descrição
+* `pathfinding.py:` Descrição
+* `place.py:` Descrição
+* `plantation.py:` Descrição
+* `report.py:` Descrição
+* `soundEffects.py:` Descrição
+* `test.py:` Descrição
+* `tilemap.py:` Descrição
+* `tilemapEditor.py:` Descrição
+* `vector2.py:` Descrição
+* `waterWell.py:` Arquivo que contém a classe do espaço poço, seus atributos e métodos
+* `wateringCan.py:` Arquivo que contém a classe do objeto regador, seus atributos e métodos
 
 
 ------

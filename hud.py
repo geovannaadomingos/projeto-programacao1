@@ -18,7 +18,7 @@ class HudReport():
         self.fonte = pygame.font.Font(os.path.join("assets", "Kenney Blocks.ttf"), 11*self.scale)
         self.largura = largura
         self.altura = altura
-        self.tamanho_retangulo_largura = (self.largura * 0.114)
+        self.tamanho_retangulo_largura = (self.largura * 0.125)
         self.tamanho_retangulo_altura = (self.altura * 0.61)
     
     def draw(self, screen):
@@ -41,5 +41,3 @@ class HudReport():
             screen.blit(barrinha, (35*self.scale, 4+(count*18)*self.scale))
             screen.blit(meta, (48*self.scale, 4+(count*18)*self.scale))
             count += 1
-
-

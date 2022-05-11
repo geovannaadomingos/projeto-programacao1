@@ -43,7 +43,13 @@ Esses foram os principais conceitos vistos na disciplina de Programação 1 e ap
 * Instale o Pygame, [seguindo a documentação oficial](https://www.pygame.org/download.shtml)
 * Clone o projeto em sua máquina, [seguindo essas instruções](https://docs.github.com/pt/repositories/creating-and-managing-repositories/cloning-a-repository)
 * Execute, utilizando linha de comandos, o arquivo main.py do projeto-programacao1
-* Comece a jogar utilizando o seu mouse 
+* Comece a jogar com os comandos:
+ **Seta para baixo e para cima e enter para manipular o menu
+ **Use cliques do mouse para mover o seu player
+ **Colha as plantas movendo o player por cima delas
+ **Pressione o número do slot da semente (2, 3, 4, 5, 6, 7, 8) ou do regador(1) para utilizá-los no plantio
+ **Pressione o botão direito do mouse para plantar uma semente ou para regar
+
 
 
 ------

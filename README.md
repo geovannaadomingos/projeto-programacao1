@@ -9,7 +9,7 @@ Nesse repositório, é possível encontrar os códigos desenvolvidos ao decorrer
 
 ## DEMO
 
-![](https://github.com/lucasccampos/projeto-programacao1/blob/master/screenshots/demo.gif?raw=true)
+![myfile](screenshots/demo.gif)
 
 
 ## `Tecnologias utilizadas`
